@@ -69,11 +69,20 @@
             </div>
             
             <!-- Dynamic Gradient Headline (Inline and stable) -->
+          <!-- Dynamic Gradient Headline (Flexbox Locked) -->
             <h1 class="animate-fade-in-up" style="animation-delay: 0.2s;">
-                Smart <span id="dynamic-text" class="text-gradient">Financing</span><br>
+                <span class="headline-top-line">
+                    <span>Smart</span>
+                    <span class="dynamic-wrapper">
+                        <!-- Invisible placeholder reserves exact space -->
+                        <span class="placeholder">Mortgages,</span>
+                        <!-- Visible rotating text -->
+                        <span id="dynamic-text" class="text-gradient">Financing</span>
+                    </span>
+                </span>
+                <br>
                 Simplified.
             </h1>
-            
             <!-- Subtext -->
             <p class="animate-fade-in-up" style="animation-delay: 0.3s;">
                 Experience the fastest, most transparent loan advisory platform. We partner with top-tier lenders to secure your perfect rate without the traditional banking delays.
@@ -443,7 +452,202 @@
             
         </div>
     </div>
-</section>
+    </section>
+
+    <!-- Premium Claymorphism FAQ Section (With Ambient Depth) -->
+    <section id="faq" class="faq-section clay-bg">
+        
+        <!-- NEW: Ambient Background Lights -->
+        <div class="faq-ambient-bg">
+            <div class="faq-blob faq-blob-1"></div>
+            <div class="faq-blob faq-blob-2"></div>
+        </div>
+
+        <!-- Added 'relative-z' to keep content above the light pools -->
+        <div class="faq-wrapper reveal relative-z">
+            <div class="faq-header">
+                <h2>Clarity before commitment.</h2>
+                <p>Everything you need to know about how we structure your capital.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item clay-faq-item">
+                    <button class="faq-question">
+                        <span>How do you secure lower rates than my primary bank?</span>
+                        <div class="faq-icon clay-icon">
+                            <span class="horizontal"></span>
+                            <span class="vertical"></span>
+                        </div>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer-content">
+                            <p>Retail banking operates on rigid algorithms. As principal advisors, we bypass the retail branch entirely and negotiate directly with the wholesale underwriting teams of over 40+ financial institutions. This institutional access allows us to secure rates typically reserved for ultra-high-net-worth portfolios.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item clay-faq-item">
+                    <button class="faq-question">
+                        <span>Do you charge upfront advisory fees?</span>
+                        <div class="faq-icon clay-icon">
+                            <span class="horizontal"></span>
+                            <span class="vertical"></span>
+                        </div>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer-content">
+                            <p>Absolutely not. Our advisory framework is completely transparent. We do not charge any upfront consulting or processing fees to our clients. Our firm is compensated directly by the lending institution only after your loan is successfully disbursed and you are completely satisfied with the structure.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item clay-faq-item">
+                    <button class="faq-question">
+                        <span>How does the collateral process work for a Loan Against Property?</span>
+                        <div class="faq-icon clay-icon">
+                            <span class="horizontal"></span>
+                            <span class="vertical"></span>
+                        </div>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer-content">
+                            <p>We streamline the valuation and legal checks to ensure maximum equity release without tying up your time. Your property deeds remain secure with the lender, while you unlock up to 75% of the property's market value in pure liquidity, all while retaining full ownership and usage rights.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item clay-faq-item">
+                    <button class="faq-question">
+                        <span>How fast can a commercial facility be approved?</span>
+                        <div class="faq-icon clay-icon">
+                            <span class="horizontal"></span>
+                            <span class="vertical"></span>
+                        </div>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer-content">
+                            <p>Through our expedited underwriting channels, standard residential and working capital loans often see preliminary approvals within 48 hours. Highly structured commercial facilities or massive debt consolidations are typically structured and approved within 5 to 7 business days.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Ultimate Premium Contact Section (Apple Glassmorphism) -->
+    <section id="contact" class="contact-section apple-glass-section">
+        
+        <!-- Abstract background blurs to refract through the glass -->
+        <div class="contact-bg-glow">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+        </div>
+
+        <div class="contact-container reveal relative-z">
+            
+            <div class="apple-header">
+                <h2>Let's architect your capital.</h2>
+                <p>Skip the waiting lines. Speak directly with our principal advisors to structure a loan that fits your exact ambitions.</p>
+            </div>
+            
+            <div class="apple-grid">
+                
+                <!-- Left Side: Clean Info Card -->
+                <div class="glass-card info-card">
+                    <div class="info-details">
+                        <!-- Direct Line -->
+                        <div class="info-item">
+                            <div class="glass-icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            <div class="info-text">
+                                <strong>Direct Line</strong>
+                                <span>+91 98765 43210</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Desk -->
+                        <div class="info-item">
+                            <div class="glass-icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div class="info-text">
+                                <strong>Email Desk</strong>
+                                <span>guidancepoint@gmail.com</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Headquarters -->
+                        <div class="info-item">
+                            <div class="glass-icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div class="info-text">
+                                <strong>Office</strong>
+                                <span>Ahmedabad, Gujarat/span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Frosted Glass Form -->
+                <div class="glass-card form-card">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="inquiry-form" class="apple-form">
+                        
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="New High-Net-Worth Loan Inquiry">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <div class="form-row">
+                            <div class="input-group-glass">
+                                <input type="text" name="name" id="name" class="glass-input" required placeholder=" ">
+                                <label for="name">Full Name</label>
+                            </div>
+                            <div class="input-group-glass">
+                                <input type="tel" name="phone" id="phone" class="glass-input" required placeholder=" ">
+                                <label for="phone">Phone Number</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group-glass">
+                            <input type="email" name="email" id="email" class="glass-input" required placeholder=" ">
+                            <label for="email">Email Address</label>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group-glass">
+                                <select name="loan_type" id="loan_type" class="glass-input" required>
+                                    <option value="" disabled selected>Select Loan Type</option>
+                                    <option value="Home Loan">Residential Mortgage</option>
+                                    <option value="Business Loan">Commercial Capital</option>
+                                    <option value="Loan Against Property">Loan Against Property</option>
+                                    <option value="Other">Other Structuring</option>
+                                </select>
+                            </div>
+                            <div class="input-group-glass">
+                                <input type="text" name="amount" id="amount" class="glass-input" required placeholder=" ">
+                                <label for="amount">Estimated Amount (₹)</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-apple-submit">
+                            <span>Request Consultation</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                        
+                        <p class="form-disclaimer">Secured via end-to-end encryption.</p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
    <footer class="apple-footer">
         <div class="footer-container">
             <!-- Top Grid -->
@@ -482,7 +686,7 @@
                     <ul>
                         <li><a href="mailto:hello@guidancepoint.com" class="contact-link">hello@guidancepoint.com</a></li>
                         <li><a href="tel:+919876543210" class="contact-link">+91 98765 43210</a></li>
-                        <li class="address">Level 43, World Trade Center<br>Financial District</li>
+                        <li class="address">Ahmedabad<br>Gujarat</li>
                     </ul>
                 </div>
             </div>

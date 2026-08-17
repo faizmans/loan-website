@@ -198,4 +198,29 @@ document.addEventListener("DOMContentLoaded", () => {
         // Initialize
         calculateEMI();
     }
+
+
+    // =========================================
+    // PREMIUM FAQ ACCORDION LOGIC
+    // =========================================
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const questionButton = item.querySelector('.faq-question');
+        
+        questionButton.addEventListener('click', () => {
+            // Check if the clicked item is already active
+            const isActive = item.classList.contains('active');
+            
+            // Close all items to keep the UI clean (Optional, but very Apple-like)
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            // If it wasn't active before, open it now
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
 });
