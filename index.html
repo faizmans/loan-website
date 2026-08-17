@@ -3,245 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guidance Point Consulting | Elite Loan Advisory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Guidance Point Consulting | Premium Loan Advisory</title>
+    <!-- We need a bolder, tighter font for the Ambak look -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Cinematic Detailed SVG Preloader -->
+    
+    <!-- Cinematic Detailed SVG Preloader (Retained from previous step) -->
     <div id="preloader">
         <div class="preloader-content">
-            <!-- Full SVG Logo Animation -->
             <svg class="preloader-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-                <!-- Staggered Growth Bars -->
-                <rect class="preloader-bar bar-1" x="4" y="26" width="8" height="14" rx="2" fill="var(--color-green)"/>
-                <rect class="preloader-bar bar-2" x="16" y="16" width="8" height="24" rx="2" fill="var(--color-teal)"/>
-                <rect class="preloader-bar bar-3" x="28" y="6" width="8" height="34" rx="2" fill="var(--color-blue)"/>
-                
-                <!-- Drawing Arrow -->
-                <path class="preloader-arrow draw-arrow-body" d="M2 32L18 20L26 26L42 12" stroke="var(--color-silver)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path class="preloader-arrow draw-arrow-head" d="M32 12H42V22" stroke="var(--color-silver)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect class="preloader-bar bar-1" x="4" y="26" width="8" height="14" rx="2" fill="#10B981"/>
+                <rect class="preloader-bar bar-2" x="16" y="16" width="8" height="24" rx="2" fill="#06B6D4"/>
+                <rect class="preloader-bar bar-3" x="28" y="6" width="8" height="34" rx="2" fill="#FFFFFF"/>
+                <path class="preloader-arrow draw-arrow-body" d="M2 32L18 20L26 26L42 12" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="preloader-arrow draw-arrow-head" d="M32 12H42V22" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            
-            <!-- Brand Reveal -->
-            <div class="preloader-text">Guidance Point</div>
-            
-            <!-- Sleek Loading Line -->
-            <div class="preloader-progress">
-                <div class="progress-bar"></div>
-            </div>
+            <div class="preloader-text" style="color: #FFF;">Guidance Point</div>
+            <div class="preloader-progress"><div class="progress-bar"></div></div>
         </div>
     </div>
-    <!-- Premium Navigation -->
-    <nav class="navbar glass" id="navbar">
+
+   <nav class="navbar apple-glass" id="navbar">
+        <!-- Logo Link with Adaptive SVG -->
         <a href="#home" class="logo-link" aria-label="Guidance Point Home">
+            <!-- The SVG Logo -->
             <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="26" width="8" height="14" rx="2" fill="var(--color-green)"/>
-                <rect x="16" y="16" width="8" height="24" rx="2" fill="var(--color-teal)"/>
-                <rect x="28" y="6" width="8" height="34" rx="2" fill="var(--color-blue)"/>
-                <path d="M2 32L18 20L26 26L42 12" stroke="var(--color-silver)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 12H42V22" stroke="var(--color-silver)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="4" y="26" width="8" height="14" rx="2" fill="var(--color-accent)"/>
+                <rect x="16" y="16" width="8" height="24" rx="2" fill="#06B6D4"/>
+                <!-- currentColor makes these parts adapt to the scroll state -->
+                <rect x="28" y="6" width="8" height="34" rx="2" fill="currentColor"/>
+                <path d="M2 32L18 20L26 26L42 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M32 12H42V22" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+            
+            <!-- Optional clean divider line -->
             <div class="logo-divider"></div>
-            <span class="logo-text">Guidance Point</span>
+            
+            <div class="logo-text">Guidance Point<span class="dot">.</span></div>
         </a>
 
         <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </div>
 
         <ul class="nav-links" id="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#advisor">About</a></li>
+            <li><a href="#advisor">Advisory</a></li>
             <li><a href="#services">Solutions</a></li>
-            <li><a href="#calculator">EMI Calculator</a></li>
-            <li><a href="#contact" class="btn btn-primary btn-sm">Apply Now</a></li>
+            <li><a href="#calculator">Calculator</a></li>
         </ul>
+        
+        <div class="nav-actions hide-mobile">
+            <a href="#contact" class="btn btn-apple">Apply Now</a>
+        </div>
     </nav>
 
-    <!-- Hero Section (Strictly Static HTML) -->
-    <header id="home" class="hero-section">
-        <div class="hero-bg-glow"></div>
+    <!-- Hero Section (Dark Theme, Left-Aligned, Stable Dynamic Text) -->
+    <header id="home" class="hero-section dark-theme">
         <div class="hero-content">
-            <div class="trust-badge animate-fade-in-up" style="animation-delay: 0.1s;">
-                <span class="badge-icon">✦</span>
-                <span class="badge-text">Top-Tier Advisory Firm</span>
+            <!-- Trust Badge -->
+            <div class="pill-badge animate-fade-in-up" style="animation-delay: 0.1s;">
+                <span class="pulse-dot"></span> The smarter way to finance
             </div>
-            <!-- Headline (Loads second) -->
-        <h1 class="animate-fade-in-up" style="animation-delay: 0.2s;">
-            Smart <span id="dynamic-text" class="text-gradient">Financing</span>, <br>Simplified.
-        </h1>
+            
+            <!-- Dynamic Gradient Headline (Inline and stable) -->
+            <h1 class="animate-fade-in-up" style="animation-delay: 0.2s;">
+                Smart <span id="dynamic-text" class="text-gradient">Financing</span><br>
+                Simplified.
+            </h1>
+            
+            <!-- Subtext -->
             <p class="animate-fade-in-up" style="animation-delay: 0.3s;">
-                Expert loan advisory tailored to your goals. Clear terms, competitive rates, and zero banking jargon.
+                Experience the fastest, most transparent loan advisory platform. We partner with top-tier lenders to secure your perfect rate without the traditional banking delays.
             </p>
+            
+            <!-- Call to Actions -->
             <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.4s;">
-                <a href="#contact" class="btn btn-primary">Start Your Application</a>
-                <a href="#calculator" class="btn btn-secondary">Calculate Payments</a>
+                <a href="#contact" class="btn btn-primary">Check Your Eligibility</a>
+                <a href="#services" class="btn btn-secondary">Explore Products</a>
             </div>
         </div>
     </header>
 
-    <!-- Infinite Trusted Partners Marquee -->
+   <!-- Ultra-Minimalist Floating Stats Banner -->
+    <section class="stats-section">
+        <div class="stats-container reveal simple-stats-card">
+            
+            <div class="stat-item">
+                <h3 class="stat-number">
+                    <span class="counter" data-target="1.2">0</span>
+                    <span class="symbol">B+</span>
+                </h3>
+                <p class="stat-label">Capital Secured</p>
+            </div>
+            
+            <div class="stat-divider"></div>
+            
+            <div class="stat-item">
+                <h3 class="stat-number">
+                    <span class="counter" data-target="98">0</span>
+                    <span class="symbol">%</span>
+                </h3>
+                <p class="stat-label">Approval Rate</p>
+            </div>
+            
+            <div class="stat-divider"></div>
+            
+            <div class="stat-item">
+                <h3 class="stat-number">
+                    <span class="counter" data-target="500">0</span>
+                    <span class="symbol">+</span>
+                </h3>
+                <p class="stat-label">Lending Partners</p>
+            </div>
+
+        </div>
+    </section>
+
+   <!-- Infinite Trusted Partners Marquee -->
     <div class="marquee-section">
-        <p class="marquee-label">Securing capital through our elite network of global partners</p>
+        <p class="marquee-label">Trusted by India's leading financial institutions</p>
         <div class="marquee-container">
             <div class="marquee-content">
-                <!-- Partner Names (Duplicated twice to create an infinite loop) -->
-                <span>J.P. Morgan Private Bank</span> <span class="dot">•</span>
-                <span>Goldman Sachs</span> <span class="dot">•</span>
-                <span>Morgan Stanley</span> <span class="dot">•</span>
-                <span>Citi Commercial</span> <span class="dot">•</span>
-                <span>Barclays Wealth</span> <span class="dot">•</span>
-                <span>Bank of America</span> <span class="dot">•</span>
-                
-                <!-- Exact Duplicate for seamless looping -->
-                <span>J.P. Morgan Private Bank</span> <span class="dot">•</span>
-                <span>Goldman Sachs</span> <span class="dot">•</span>
-                <span>Morgan Stanley</span> <span class="dot">•</span>
-                <span>Citi Commercial</span> <span class="dot">•</span>
-                <span>Barclays Wealth</span> <span class="dot">•</span>
-                <span>Bank of America</span> <span class="dot">•</span>
+                <!-- Group 1 -->
+                <div class="marquee-group">
+                    <span>HDFC Bank</span> <span class="dot">•</span>
+                    <span>ICICI Bank</span> <span class="dot">•</span>
+                    <span>Axis Bank</span> <span class="dot">•</span>
+                    <span>Kotak Mahindra</span> <span class="dot">•</span>
+                    <span>Bajaj Finserv</span> <span class="dot">•</span>
+                    <span>Tata Capital</span> <span class="dot">•</span>
+                </div>
+                <!-- Group 2 (Exact Duplicate for a seamless loop) -->
+                <div class="marquee-group">
+                    <span>HDFC Bank</span> <span class="dot">•</span>
+                    <span>ICICI Bank</span> <span class="dot">•</span>
+                    <span>Axis Bank</span> <span class="dot">•</span>
+                    <span>Kotak Mahindra</span> <span class="dot">•</span>
+                    <span>Bajaj Finserv</span> <span class="dot">•</span>
+                    <span>Tata Capital</span> <span class="dot">•</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Dynamic Statistics Banner -->
-    <section class="stats-section">
-        <div class="stats-container reveal">
-            <div class="stat-item">
-                <h3 class="counter" data-target="1.2">0</h3><span>B+</span>
-                <p>Capital Secured</p>
+ <!-- Premium Liquid Glassmorphism Services Section -->
+    <section id="services" class="services-section liquid-glass-section">
+        
+        <!-- Fluid Background Elements -->
+        <div class="liquid-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <!-- Enhanced Section Header -->
+        <div class="section-header reveal relative-z">
+            <span class="section-badge">Premium Offerings</span>
+            <h2>Financing designed for<br>your ambitions.</h2>
+            <p class="section-subtitle">We tailor our capital solutions to match your unique financial trajectory, offering unprecedented flexibility, transparency, and speed.</p>
+        </div>
+        
+        <div class="services-grid relative-z">
+            <!-- 01: Home Loans -->
+            <div class="service-card liquid-card reveal card-1">
+                <div class="card-top">
+                    <div class="card-icon glass-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <span class="card-index">01</span>
+                </div>
+                <div class="card-body">
+                    <h3>Home Loans</h3>
+                    <p>Market-leading rates for your dream property. Experience seamless underwriting with approvals in as little as 48 hours.</p>
+                </div>
+                <a href="#" class="card-link">
+                    <span>Learn more</span>
+                    <svg class="link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
-            <div class="stat-item">
-                <h3 class="counter" data-target="98">0</h3><span>%</span>
-                <p>Approval Rate</p>
+            
+            <!-- 02: Business Loans -->
+            <div class="service-card liquid-card reveal card-2">
+                <div class="card-top">
+                    <div class="card-icon glass-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                            <path d="M9 22v-4h6v4"></path>
+                            <path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path>
+                            <path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path>
+                            <path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path>
+                        </svg>
+                    </div>
+                    <span class="card-index">02</span>
+                </div>
+                <div class="card-body">
+                    <h3>Business Loans</h3>
+                    <p>Collateral-free working capital and highly structured term loans engineered to scale your operations rapidly.</p>
+                </div>
+                <a href="#" class="card-link">
+                    <span>Learn more</span>
+                    <svg class="link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
-            <div class="stat-item">
-                <h3 class="counter" data-target="500">0</h3><span>+</span>
-                <p>Lending Partners</p>
+            
+            <!-- 03: Loan Against Property -->
+            <div class="service-card liquid-card reveal card-3">
+                <div class="card-top">
+                    <div class="card-icon glass-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <span class="card-index">03</span>
+                </div>
+                <div class="card-body">
+                    <h3>Loan Against Property</h3>
+                    <p>Unlock the hidden equity trapped in your real estate portfolio to generate massive liquidity at exceptionally low rates.</p>
+                </div>
+                <a href="#" class="card-link">
+                    <span>Learn more</span>
+                    <svg class="link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- About Advisor Section -->
-    <section id="advisor" class="about-section">
-        <div class="about-container reveal">
-            <div class="about-text">
-                <h2>Your Dedicated Financial Strategist</h2>
-                <p>Navigating the lending market shouldn't be a solo journey. We leverage our established relationships with top-tier banks to negotiate rates that align with your wealth strategy.</p>
-                <ul class="advisor-highlights">
-                    <li><strong>Unbiased Market Analysis:</strong> We scan the whole market, not just one bank.</li>
-                    <li><strong>End-to-End Management:</strong> From application to disbursement.</li>
-                    <li><strong>Strategic Structuring:</strong> Optimizing tax efficiency and cash flow.</li>
-                </ul>
-            </div>
-            <div class="about-image">
-                <div class="glass-card image-placeholder">
-                    <span>Strategic Advisory</span>
+    <!-- Expert Advisor & Client Trust Section (Editorial Style) -->
+    <section id="advisor" class="trust-section">
+        <div class="trust-container">
+            
+            <!-- Left Column: Sticky Founder Profile -->
+            <div class="advisor-column reveal">
+                <div class="advisor-card">
+                    <!-- Premium Avatar/Monogram -->
+                    <div class="profile-image-wrapper">
+                        <div class="profile-monogram">JC</div>
+                    </div>
+                    
+                    <h2 class="advisor-name">Jishan Chauhan</h2>
+                    <p class="advisor-title">Founder & Principal Capital Architect</p>
+                    
+                    <!-- Editorial Style Quote -->
+                    <div class="advisor-bio">
+                        <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3"/></svg>
+                        <p>My philosophy is simple: Your capital strategy should accelerate your ambitions, not limit them. We bypass traditional banking friction to engineer institutional grade loan structures with absolute discretion and speed.</p>
+                    </div>
+                    
+                    <!-- High-Impact Metrics -->
+                    <div class="advisor-metrics">
+                        <div class="metric">
+                            <span class="metric-val">Top 1%</span>
+                            <span class="metric-label">Lender Network</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric">
+                            <span class="metric-val">150+</span>
+                            <span class="metric-label">Structured Deals</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric">
+                            <span class="metric-val">48hr</span>
+                            <span class="metric-label">Avg. Approvals</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+          <!-- Right Column: Flowing Verified Reviews & Case Studies -->
+            <div class="reviews-column reveal" style="transition-delay: 0.2s;">
+                <div class="reviews-header">
+                    <h3>Client Success</h3>
+                    <p>Don't just take our word for it.</p>
+                </div>
+
+                <!-- Review Card 1 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-stars">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
+                    </div>
+                    
+                    <p class="review-quote">"Jishan and his team secured a commercial facility that three major banks said was impossible. The speed, structure, and transparency were unlike anything I've experienced in 20 years of business."</p>
+                    
+                    <!-- NEW: Deal Metrics Highlight Tags -->
+                    <div class="deal-metrics">
+                        <span class="metric-tag">Facility: ₹50 Cr</span>
+                        <span class="metric-tag">Turnaround: 48 Hrs</span>
+                        <span class="metric-tag">Sector: Real Estate</span>
+                    </div>
+
+                    <!-- NEW: Reviewer Monogram & Author Block -->
+                    <div class="review-author-wrapper">
+                        <div class="reviewer-avatar avatar-blue">JR</div>
+                        <div class="review-author">
+                            <strong>Jonathan R.</strong>
+                            <span>Commercial Real Estate Developer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-stars">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
+                    </div>
+                    
+                    <p class="review-quote">"They consolidated my high-interest debt into a single, highly efficient mortgage structure. My monthly cash flow increased instantly. True professionals who look at the whole picture."</p>
+                    
+                    <!-- NEW: Deal Metrics Highlight Tags -->
+                    <div class="deal-metrics">
+                        <span class="metric-tag">Facility: ₹3.5 Cr</span>
+                        <span class="metric-tag">Rate Drop: 1.2%</span>
+                        <span class="metric-tag">Sector: Residential</span>
+                    </div>
+
+                    <!-- NEW: Reviewer Monogram & Author Block -->
+                    <div class="review-author-wrapper">
+                        <div class="reviewer-avatar avatar-gold">SM</div>
+                        <div class="review-author">
+                            <strong>Sarah & Mark T.</strong>
+                            <span>Residential Refinance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 (Will be partially faded out) -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-stars">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
+                    </div>
+                    <p class="review-quote">"The process was incredibly smooth. They negotiated a rate for my business expansion that was a full percent lower than what my primary bank offered me directly."</p>
+                </div>
+
+                <!-- NEW: Apple-Style Glass Reveal Fade -->
+                <div class="reviews-fade-mask">
+                    <a href="#" class="btn-glass-reveal">Read all 150+ Case Studies & Reviews</a>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- Interactive EMI Calculator Section -->
-    <section id="calculator" class="calculator-section">
+  <!-- Interactive EMI Calculator Section (Dark Liquid Glassmorphism) -->
+<section id="calculator" class="calculator-section liquid-glass-dark dark-theme">
+    
+    <!-- Fluid Background Elements -->
+    <div class="liquid-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="calc-wrapper relative-z">
         <div class="calc-header reveal">
-            <h2>Dynamic EMI Calculator</h2>
+            <h2>Calculate your future.</h2>
             <p>Adjust the parameters below to instantly visualize your monthly commitments.</p>
         </div>
-        <div class="calc-container glass-card reveal">
+        
+        <!-- Expanded Main Glass Container -->
+        <div class="calc-container glass-panel reveal">
+            
             <div class="calc-inputs">
                 <div class="input-group">
-                    <label>Loan Amount ($) <span id="amount-val">500,000</span></label>
-                    <input type="range" id="loan-amount" min="10000" max="2000000" step="10000" value="500000">
+                    <label>Loan Amount (₹) <span class="glass-badge" id="amount-val">50,00,000 <small id="amount-text" style="opacity:0.8; margin-left:4px;">(50 L)</small></span></label>
+                    <input type="range" class="glass-slider" id="loan-amount" min="100000" max="500000000" step="5000" value="5000000">
                 </div>
                 <div class="input-group">
-                    <label>Interest Rate (%) <span id="rate-val">5.5</span></label>
-                    <input type="range" id="interest-rate" min="1" max="15" step="0.1" value="5.5">
+                    <label>Interest Rate (%) <span class="glass-badge" id="rate-val">8.5</span></label>
+                    <input type="range" class="glass-slider" id="interest-rate" min="5" max="20" step="0.1" value="8.5">
                 </div>
                 <div class="input-group">
-                    <label>Loan Tenure (Years) <span id="tenure-val">15</span></label>
-                    <input type="range" id="loan-tenure" min="1" max="30" step="1" value="15">
+                    <label>Tenure (Years) <span class="glass-badge" id="tenure-val">15</span></label>
+                    <input type="range" class="glass-slider" id="loan-tenure" min="1" max="30" step="1" value="15">
                 </div>
             </div>
-            <div class="calc-results">
-                <div class="result-box main-result">
-                    <h4>Monthly Payment (EMI)</h4>
-                    <h2 id="emi-result">$4,085</h2>
+            
+           <div class="calc-results">
+                <!-- Accent Glass Box for Main Result -->
+                <div class="result-box glass-box-accent main-result">
+                    <h4>Monthly EMI</h4>
+                    <h2 id="emi-result">₹49,237</h2>
                 </div>
+                
                 <div class="result-row">
-                    <div class="result-box">
+                    <!-- Deep Glass Boxes for Secondary Results -->
+                    <div class="result-box glass-box secondary-result">
                         <h4>Total Interest</h4>
-                        <h3 id="interest-result">$235,377</h3>
+                        <h3 id="interest-result">₹38,62,635</h3>
                     </div>
-                    <div class="result-box">
+                    <div class="result-box glass-box secondary-result">
                         <h4>Total Amount</h4>
-                        <h3 id="total-result">$735,377</h3>
+                        <h3 id="total-result">₹88,62,635</h3>
+                    </div>
+                </div>
+
+                <!-- NEW: Aesthetic Visual Data Breakdown -->
+                <div class="visual-breakdown glass-box">
+                    <div class="breakdown-header">
+                        <span class="legend-item"><span class="dot principal-dot"></span> Principal</span>
+                        <span class="legend-item"><span class="dot interest-dot"></span> Interest</span>
+                    </div>
+                    <!-- The Progress Bar -->
+                    <div class="breakdown-bar">
+                        <div class="principal-fill" id="principal-bar" style="width: 50%;"></div>
+                        <div class="interest-fill" id="interest-bar" style="width: 50%;"></div>
+                    </div>
+                    <div class="breakdown-footer">
+                        <span id="principal-percent">50%</span>
+                        <span id="interest-percent">50%</span>
                     </div>
                 </div>
             </div>
+            
         </div>
-    </section>
-
-    <!-- Services / Loan Types -->
-    <section id="services" class="services-section">
-        <div class="section-header reveal">
-            <h2>Comprehensive Financial Solutions</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card reveal card-1">
-                <div class="card-icon green-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                </div>
-                <h3>Residential Mortgages</h3>
-                <p>Purchase or renovate your home with flexible terms and low down-payment options.</p>
-            </div>
-            <div class="service-card reveal card-2">
-                <div class="card-icon teal-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                </div>
-                <h3>Commercial Capital</h3>
-                <p>Scale your operations with term loans tailored strictly to your cash flow.</p>
-            </div>
-            <div class="service-card reveal card-3">
-                <div class="card-icon blue-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>
-                </div>
-                <h3>Debt Consolidation</h3>
-                <p>Merge high-interest liabilities into one lower-interest monthly payment.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer-section">
+    </div>
+</section>
+   <footer class="apple-footer">
         <div class="footer-container">
-            <div class="footer-col brand-col">
-                <div class="logo-text">Guidance Point</div>
-                <p>Your trusted partner in navigating complex financial landscapes globally.</p>
+            <!-- Top Grid -->
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-col brand-col">
+                    <div class="logo-text dark-logo">Guidance Point<span class="dot">.</span></div>
+                    <p class="footer-desc">Architecting intelligent capital solutions for the modern visionary. We navigate complex financial landscapes so you don't have to.</p>
+                </div>
+                
+                <!-- Solutions Column -->
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#services">Premium Mortgages</a></li>
+                        <li><a href="#services">Commercial Capital</a></li>
+                        <li><a href="#services">Debt Consolidation</a></li>
+                        <li><a href="#services">Bridge Financing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Advisory Column -->
+                <div class="footer-col">
+                    <h4>Advisory</h4>
+                    <ul>
+                        <li><a href="#advisor">Our Approach</a></li>
+                        <li><a href="#">Market Analysis</a></li>
+                        <li><a href="#calculator">EMI Calculator</a></li>
+                        <li><a href="#">Eligibility Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Column -->
+                <div class="footer-col contact-col">
+                    <h4>Contact Headquarters</h4>
+                    <ul>
+                        <li><a href="mailto:hello@guidancepoint.com" class="contact-link">hello@guidancepoint.com</a></li>
+                        <li><a href="tel:+919876543210" class="contact-link">+91 98765 43210</a></li>
+                        <li class="address">Level 43, World Trade Center<br>Financial District</li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#advisor">About Your Advisor</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
+            
+            <!-- Dividing Line -->
+            <div class="footer-divider"></div>
+            
+            <!-- Bottom Legal & Copyright Bar -->
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Guidance Point Consulting. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="#">Terms of Service</a>
+                    <span class="separator">|</span>
+                    <a href="#">Legal Disclaimer</a>
+                </div>
             </div>
-            <div class="footer-col contact-col">
-                <h4>Get in Touch</h4>
-                <ul>
-                    <li><span>hello@guidancepoint.com</span></li>
-                    <li><span>+1 (800) 555-0198</span></li>
-                </ul>
+            
+            <!-- Financial Disclaimer -->
+            <div class="footer-disclaimer">
+                <p>Guidance Point Consulting operates as an independent advisory firm and is not a direct lender. Loan approvals, interest rates, and terms are subject to the underwriting criteria of our lending partners. All calculations provided by our digital tools are estimates and do not constitute a binding financial offer.</p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span> Guidance Point Consulting. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
