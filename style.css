@@ -399,59 +399,452 @@ body.loaded #preloader { transform: translateY(-100%); opacity: 0; pointer-event
 .liquid-card:hover .link-arrow { transform: translateX(6px); }
 
 /* =========================================
-   8. EXPERT-LED ADVISOR & REVIEWS
+   8. EXPERT-LED ADVISOR & REVIEWS (Apple Premium)
    ========================================= */
-.trust-section { padding: 8rem 5%; background-color: #FAFAFC; border-top: 1px solid rgba(0,0,0,0.03); }
-.trust-container { display: grid; grid-template-columns: 4.5fr 5.5fr; gap: 6rem; max-width: 1200px; margin: 0 auto; align-items: flex-start; }
+.trust-section { 
+    padding: 8rem 5%; 
+    background-color: #F5F5F7; /* Shifted to Apple's native light gray */
+    border-top: 1px solid rgba(0,0,0,0.03); 
+}
 
-.advisor-column { position: sticky; top: 120px; }
-.advisor-card { background: transparent; padding-right: 2rem; }
+.trust-container { 
+    display: grid; 
+    grid-template-columns: 4.5fr 5.5fr; 
+    gap: 6rem; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    align-items: flex-start; 
+}
 
-.profile-image-wrapper { width: 90px; height: 90px; background: linear-gradient(135deg, var(--color-dark), #1E293B); border-radius: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.15); margin-bottom: 2rem; }
-.profile-monogram { color: var(--color-white); font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
+/* --- Left Column: Advisor Profile --- */
+/* =========================================
+   APPLE-STYLE ADVISOR PROFILE
+   ========================================= */
 
-.advisor-name { font-size: 2.8rem; color: var(--color-dark); margin-bottom: 0.3rem; letter-spacing: -0.03em; }
-.advisor-title { color: var(--color-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; margin-bottom: 2.5rem; }
+.advisor-column {
+    position: sticky;
+    top: 120px; /* Keeps it locked on the screen while reviews scroll */
+}
 
-.advisor-bio { position: relative; padding-left: 1.5rem; border-left: 3px solid var(--color-accent); margin-bottom: 3rem; }
-.quote-icon { width: 24px; height: 24px; color: rgba(16, 185, 129, 0.2); position: absolute; top: -10px; left: -12px; z-index: -1; }
-.advisor-bio p { color: var(--color-text-dark); font-size: 1.15rem; line-height: 1.7; font-style: italic; font-weight: 500; }
+/* The Main Glass Container */
+.apple-glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 32px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04), 
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
 
-.advisor-metrics { display: flex; align-items: center; gap: 1.5rem; background: #FFFFFF; padding: 1.5rem 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); }
-.metric { display: flex; flex-direction: column; }
-.metric-val { font-size: 1.5rem; font-weight: 800; color: var(--color-dark); }
-.metric-label { font-size: 0.75rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
-.metric-divider { width: 1px; height: 35px; background: rgba(0,0,0,0.08); }
+/* --- Header & Avatar --- */
+.advisor-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
 
-.reviews-column { display: flex; flex-direction: column; gap: 2.5rem; position: relative; padding-bottom: 4rem; }
+.profile-image-wrapper {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    min-width: 85px;
+    /* Rich Dark Metallic Gradient */
+    background: linear-gradient(135deg, #0B0F19, #1E293B);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 24px rgba(11, 15, 25, 0.15);
+}
+
+.profile-monogram {
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.live-status-dot {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 18px;
+    height: 18px;
+    background: #10B981;
+    border: 4px solid #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.advisor-identity {
+    display: flex;
+    flex-direction: column;
+}
+
+.advisor-name {
+    font-size: 1.8rem;
+    color: #1D1D1F;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.advisor-firm {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #10B981; /* Emerald Green Accent */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.advisor-title {
+    color: #86868B;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* --- The Quote --- */
+.advisor-bio {
+    position: relative;
+}
+
+.quote-icon {
+    width: 32px;
+    height: 32px;
+    color: rgba(16, 185, 129, 0.15);
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    z-index: -1;
+}
+
+.advisor-bio p {
+    color: #424245;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    font-weight: 500;
+    /* Keeps the text looking sharp */
+    -webkit-font-smoothing: antialiased; 
+}
+
+/* --- iOS Widget Style Metrics --- */
+.ios-widget {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 24px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02),
+                inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.metric-val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1D1D1F;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: #86868B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.metric-divider {
+    width: 1px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 900px) {
+    .advisor-column {
+        position: relative;
+        top: 0;
+    }
+    
+    .apple-glass-card {
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+/* =========================================
+   EXECUTIVE TALL CARD EXTENSIONS
+   ========================================= */
+
+/* Make the card match the vertical slider height */
+.tall-executive-card {
+    min-height: 720px; 
+    padding: 3.5rem 3rem; /* Slightly larger padding for a grander feel */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes the top content up and footer down */
+}
+
+/* Groups the top elements so they stay together */
+.advisor-content-top {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* --- The Executive Footer --- */
+.advisor-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-top: 1rem;
+}
+
+/* Digital Signature Styling */
+.signature-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.digital-signature {
+    /* Uses a system cursive font to look like a real signature */
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-size: 2.4rem;
+    color: #1D1D1F;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    opacity: 0.8;
+}
+
+.signature-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #86868B;
+    font-weight: 700;
+}
+
+/* Premium Apple-Black Contact Button */
+.btn-executive-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: #1D1D1F;
+    color: #FFFFFF;
+    padding: 1.2rem;
+    border-radius: 18px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-executive-contact svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.btn-executive-contact:hover {
+    background: #10B981; /* Emerald green on hover */
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-executive-contact:hover svg {
+    transform: translateX(6px);
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 900px) {
+    .tall-executive-card {
+        min-height: auto; /* Removes the fixed height on mobile so it doesn't look stretched */
+        padding: 2.5rem 1.5rem;
+    }
+}
+/* --- Right Column: Reviews Header --- */
+.reviews-column { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 2.5rem; 
+    position: relative; 
+    padding-bottom: 4rem; 
+}
+
 .reviews-header { margin-bottom: 0.5rem; }
-.reviews-header h3 { font-size: 2.2rem; color: var(--color-dark); }
-.reviews-header p { color: var(--color-muted); font-size: 1.1rem; }
+.reviews-header h3 { font-size: 2.2rem; color: #1D1D1F; letter-spacing: -0.02em; }
+.reviews-header p { color: #86868B; font-size: 1.1rem; }
 
-.review-card { background: #FFFFFF; border-radius: 28px; padding: 3.5rem 3rem; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.03); transition: transform 0.4s ease, box-shadow 0.4s ease; }
-.review-card:hover { transform: translateY(-5px); box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08); border-color: rgba(16, 185, 129, 0.1); }
+/* --- Upgraded Apple Glass Review Cards --- */
+.review-card {
+    background: #FFFFFF; 
+    border-radius: 28px; 
+    padding: 3.5rem 3rem; 
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.04); 
+    border: 1px solid rgba(0,0,0,0.03); 
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    
+    /* ADD THESE TWO LINES FOR SMOOTH TEXT */
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.review-card:hover { 
+    transform: translateY(-8px) scale(1.01); 
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08); 
+    background: rgba(255, 255, 255, 0.9);
+}
+
 .review-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
 .review-stars { display: flex; gap: 4px; }
 .review-stars svg { width: 20px; height: 20px; fill: #F59E0B; }
 
-.verified-badge { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: var(--color-accent); background: rgba(16, 185, 129, 0.1); padding: 0.4rem 0.8rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px; }
+.verified-badge { 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+    font-size: 0.8rem; 
+    font-weight: 700; 
+    color: var(--color-accent); 
+    background: rgba(16, 185, 129, 0.1); 
+    padding: 0.4rem 0.8rem; 
+    border-radius: 999px; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
 .verified-badge svg { width: 14px; height: 14px; }
-.review-quote { font-size: 1.25rem; color: #1D1D1F; line-height: 1.7; font-weight: 500; margin-bottom: 2.5rem; }
+
+.review-quote { 
+    font-size: 1.25rem; 
+    color: #1D1D1F; 
+    line-height: 1.7; 
+    font-weight: 500; 
+    margin-bottom: 2.5rem; 
+}
 
 .deal-metrics { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
-.metric-tag { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); color: var(--color-dark); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.metric-tag { 
+    background: rgba(255, 255, 255, 0.5); 
+    border: 1px solid rgba(0, 0, 0, 0.05); 
+    color: #424245; 
+    padding: 0.4rem 0.8rem; 
+    border-radius: 8px; 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
 
-.review-author-wrapper { display: flex; align-items: center; gap: 1.2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); }
-.reviewer-avatar { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px; }
+.review-author-wrapper { 
+    display: flex; 
+    align-items: center; 
+    gap: 1.2rem; 
+    padding-top: 1.5rem; 
+    border-top: 1px solid rgba(0,0,0,0.05); 
+}
+
+.reviewer-avatar { 
+    width: 48px; 
+    height: 48px; 
+    border-radius: 14px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: 800; 
+    font-size: 1.1rem; 
+    letter-spacing: -0.5px; 
+}
+
 .avatar-blue { background: #E0F2FE; color: #0284C7; }
 .avatar-gold { background: #FEF3C7; color: #D97706; }
+
 .review-author { display: flex; flex-direction: column; }
-.review-author strong { color: var(--color-dark); font-size: 1.1rem; margin-bottom: 0.2rem; }
+.review-author strong { color: #1D1D1F; font-size: 1.1rem; margin-bottom: 0.2rem; }
 .review-author span { color: #86868B; font-size: 0.9rem; font-weight: 500; }
 
-.reviews-fade-mask { position: absolute; bottom: 0; left: 0; width: 100%; height: 300px; background: linear-gradient(to bottom, rgba(250, 250, 252, 0) 0%, rgba(250, 250, 252, 1) 85%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2rem; z-index: 10; pointer-events: none; }
-.btn-glass-reveal { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); padding: 1.2rem 2.5rem; border-radius: 999px; font-weight: 700; font-size: 0.95rem; color: var(--color-dark); text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: auto; }
-.btn-glass-reveal:hover { background: #FFFFFF; transform: translateY(-4px); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); color: var(--color-accent); }
+.reviews-fade-mask { 
+    position: absolute; 
+    bottom: 0; left: 0; width: 100%; height: 300px; 
+    background: linear-gradient(to bottom, rgba(245, 245, 247, 0) 0%, rgba(245, 245, 247, 1) 85%); 
+    display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2rem; z-index: 10; pointer-events: none; 
+}
+
+.btn-glass-reveal { 
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(20px) saturate(180%); 
+    -webkit-backdrop-filter: blur(20px) saturate(180%); 
+    border: 1px solid rgba(255, 255, 255, 1); 
+    padding: 1.2rem 2.5rem; 
+    border-radius: 999px; 
+    font-weight: 700; 
+    font-size: 0.95rem; 
+    color: #1D1D1F; 
+    text-decoration: none; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06); 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+    pointer-events: auto; 
+}
+
+.btn-glass-reveal:hover { 
+    background: #FFFFFF; 
+    transform: translateY(-4px) scale(1.02); 
+    box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); 
+    color: var(--color-accent); 
+}
+
+/* --- Hardware Accelerated Vertical Slider --- */
+.vertical-slider-container {
+    height: 750px; 
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+    
+    /* Apple-style top and bottom fade mask for seamless entry/exit */
+    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+}
+
+.vertical-slider-track {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    
+    /* Hardware accelerated infinite vertical scroll */
+    animation: scrollVertical 40s linear infinite;
+    will-change: transform;
+}
+
+/* Pause the animation gently when a user reads a review */
+.vertical-slider-track:hover {
+    animation-play-state: paused;
+}
+
+/* translate3d forces GPU rendering for 60fps butter-smooth scrolling */
+@keyframes scrollVertical {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(0, -50%, 0); } 
+}
+
 
 /* =========================================
    9. CLAYMORPHISM FAQ (Ambient Depth)
@@ -952,6 +1345,12 @@ select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-a
 /* Desktop & Large Tablets (1024px) */
 @media (max-width: 1024px) {
     .glass-panel { grid-template-columns: 1fr; padding: 4rem 3rem; }
+     .bento-grid {
+        grid-template-columns: repeat(2, 1fr); /* Swaps to 2 columns */
+    }
+    .bento-founder { grid-column: span 2; grid-row: span 1; }
+    .bento-metric { grid-column: span 1; }
+    .bento-review { grid-column: span 2; }
 }
 
 /* Tablet & Smaller Laptops (900px) */
@@ -972,6 +1371,16 @@ select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-a
     .simple-stats-card { flex-direction: column; gap: 3rem; padding: 3rem 1rem; }
     .stat-item { width: 100%; }
     .stat-divider { width: 80px; height: 1px; }
+    .vertical-slider-container {
+        height: 600px; /* Slightly shorter on tablets and phones */
+        margin-top: 2rem;
+    }
+    
+    .vertical-slider-track {
+        gap: 1.5rem;
+        /* slightly faster on mobile */
+        animation: scrollVertical 25s linear infinite;
+    }
     
 }
 
