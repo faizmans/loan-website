@@ -120,84 +120,108 @@ document.addEventListener("DOMContentLoaded", () => {
     const interestRateInput = document.getElementById('interest-rate');
     const loanTenureInput = document.getElementById('loan-tenure');
 
-    if (loanAmountInput && interestRateInput && loanTenureInput) {
-        const amountVal = document.getElementById('amount-val');
-        const rateVal = document.getElementById('rate-val');
-        const tenureVal = document.getElementById('tenure-val');
+    const amountVal = document.getElementById('amount-val');
+    const rateVal = document.getElementById('rate-val');
+    const tenureVal = document.getElementById('tenure-val');
 
-        const emiResult = document.getElementById('emi-result');
-        const interestResult = document.getElementById('interest-result');
-        const totalResult = document.getElementById('total-result');
+    const emiResult = document.getElementById('emi-result');
+    const interestResult = document.getElementById('interest-result');
+    const totalResult = document.getElementById('total-result');
 
-        // Visual Breakdown Elements
-        const principalBar = document.getElementById('principal-bar');
-        const interestBar = document.getElementById('interest-bar');
-        const principalPercentText = document.getElementById('principal-percent');
-        const interestPercentText = document.getElementById('interest-percent');
+    const principalBar = document.getElementById('principal-bar');
+    const interestBar = document.getElementById('interest-bar');
+    const principalPercent = document.getElementById('principal-percent');
+    const interestPercent = document.getElementById('interest-percent');
 
-        const formatCurrency = (num) => {
-            return '₹' + Math.round(num).toLocaleString('en-IN');
-        };
+    // Number Formatter for Indian Rupee System (e.g., 1,00,00,000)
+    const formatCurrency = (num) => {
+        return new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+            maximumFractionDigits: 0
+        }).format(num);
+    };
 
-        const formatToIndianWords = (num) => {
-            if (num >= 10000000) return (num / 10000000).toFixed(2).replace(/\.00$/, '') + ' Cr';
-            if (num >= 100000) return (num / 100000).toFixed(2).replace(/\.00$/, '') + ' L';
-            if (num >= 1000) return (num / 1000).toFixed(2).replace(/\.00$/, '') + ' K';
-            return num.toString();
-        };
+    // Helper to format short text (Lakhs / Crores)
+    const formatShortAmount = (amount) => {
+        if (amount >= 10000000) {
+            let cr = (amount / 10000000).toFixed(2);
+            // Remove unnecessary decimals (e.g., 10.00 -> 10)
+            return parseFloat(cr) + ' Cr';
+        } else if (amount >= 100000) {
+            let lk = (amount / 100000).toFixed(2);
+            return parseFloat(lk) + ' L';
+        }
+        return amount;
+    };
 
-        const updateSliderFill = (input) => {
-            // Calculates the percentage of the slider's position for dynamic CSS filling
-            const value = (input.value - input.min) / (input.max - input.min) * 100;
-            input.style.setProperty('--slider-fill', `${value}%`);
-        };
+    // Main Calculator Function
+    function calculateEMI() {
+        const principal = parseFloat(loanAmountInput.value);
+        const annualRate = parseFloat(interestRateInput.value);
+        const tenureYears = parseFloat(loanTenureInput.value);
 
-        const calculateEMI = () => {
-            requestAnimationFrame(() => {
-                const p = parseFloat(loanAmountInput.value);
-                const r = parseFloat(interestRateInput.value) / 12 / 100;
-                const n = parseFloat(loanTenureInput.value) * 12;
+        // Update Slider UI Colors
+        updateSliderColors();
 
-                const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-                const totalPayment = emi * n;
-                const totalInterest = totalPayment - p;
+        // Update Labels
+        const formattedPrincipal = new Intl.NumberFormat('en-IN').format(principal);
+        amountVal.innerHTML = `${formattedPrincipal} <small style="opacity:0.8; margin-left:4px;">(${formatShortAmount(principal)})</small>`;
+        rateVal.innerText = annualRate + '%';
+        tenureVal.innerText = tenureYears + ' Yrs';
 
-                // Update Texts
-                amountVal.innerHTML = `${Math.round(p).toLocaleString('en-IN')} <small style="opacity:0.8; margin-left:4px;">(${formatToIndianWords(p)})</small>`;
-                rateVal.innerText = interestRateInput.value;
-                tenureVal.innerText = loanTenureInput.value;
+        // EMI Math Formula
+        const r = annualRate / 12 / 100; // Monthly Interest Rate
+        const n = tenureYears * 12;      // Total Months
 
-                emiResult.innerText = formatCurrency(emi);
-                interestResult.innerText = formatCurrency(totalInterest);
-                totalResult.innerText = formatCurrency(totalPayment);
+        let emi = 0;
+        let totalAmount = 0;
+        let totalInterest = 0;
 
-                // Update Visual Breakdown Bar
-                const principalPercentage = (p / totalPayment) * 100;
-                const interestPercentage = (totalInterest / totalPayment) * 100;
+        if (annualRate === 0) {
+            emi = principal / n;
+            totalAmount = principal;
+            totalInterest = 0;
+        } else {
+            emi = principal * r * (Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
+            totalAmount = emi * n;
+            totalInterest = totalAmount - principal;
+        }
 
-                principalBar.style.width = `${principalPercentage}%`;
-                interestBar.style.width = `${interestPercentage}%`;
+        // Output Results
+        emiResult.innerText = formatCurrency(emi);
+        interestResult.innerText = formatCurrency(totalInterest);
+        totalResult.innerText = formatCurrency(totalAmount);
 
-                principalPercentText.innerText = `${principalPercentage.toFixed(1)}%`;
-                interestPercentText.innerText = `${interestPercentage.toFixed(1)}%`;
+        // Visual Breakdown Bar Math
+        const principalPercentage = (principal / totalAmount) * 100;
+        const interestPercentage = (totalInterest / totalAmount) * 100;
 
-                // Update Slider Fills
-                updateSliderFill(loanAmountInput);
-                updateSliderFill(interestRateInput);
-                updateSliderFill(loanTenureInput);
-            });
-        };
-
-        // Add Event Listeners
-        [loanAmountInput, interestRateInput, loanTenureInput].forEach(input => {
-            input.addEventListener('input', () => {
-                calculateEMI();
-            });
-        });
-
-        // Initialize
-        calculateEMI();
+        principalBar.style.width = principalPercentage + '%';
+        interestBar.style.width = interestPercentage + '%';
+        
+        principalPercent.innerText = principalPercentage.toFixed(1) + '%';
+        interestPercent.innerText = interestPercentage.toFixed(1) + '%';
     }
+
+    // Dynamic slider fill color
+    function updateSliderColors() {
+        [loanAmountInput, interestRateInput, loanTenureInput].forEach(slider => {
+            const min = slider.min || 0;
+            const max = slider.max || 100;
+            const val = slider.value;
+            const percentage = ((val - min) / (max - min)) * 100;
+            slider.style.setProperty('--slider-fill', percentage + '%');
+        });
+    }
+
+    // Add event listeners to trigger calculation smoothly as you slide
+    loanAmountInput.addEventListener('input', calculateEMI);
+    interestRateInput.addEventListener('input', calculateEMI);
+    loanTenureInput.addEventListener('input', calculateEMI);
+
+    // Initial calculation on page load
+    calculateEMI();
 
 
     // =========================================
@@ -223,4 +247,25 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // Sync Market Ticker position with Navbar height dynamically
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.navbar');
+    const ticker = document.getElementById('market-ticker');
+
+    function updateTickerPosition() {
+        if (navbar && ticker) {
+            // Get the exact height of the navbar in real-time
+            const navHeight = navbar.offsetHeight;
+            ticker.style.top = `${navHeight}px`;
+        }
+    }
+
+    // Update on load, resize, and scroll (since nav height changes on scroll)
+    updateTickerPosition();
+    window.addEventListener('resize', updateTickerPosition);
+    window.addEventListener('scroll', updateTickerPosition);
+});
+
+
 });
