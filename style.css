@@ -83,51 +83,226 @@ body.loaded #preloader { transform: translateY(-100%); opacity: 0; pointer-event
 @keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
 
 /* =========================================
-   3. APPLE PREMIUM NAVIGATION
+   3. ULTIMATE APPLE PREMIUM NAVIGATION
    ========================================= */
+
 .navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 5%; position: fixed; width: 100%; top: 0; z-index: 1000;
-    transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    /* Apple's signature spring-like transition curve */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     border-bottom: 1px solid transparent;
+    background: transparent;
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.05); 
-    padding: 1rem 5%; 
-    box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 0.8rem 5%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-.logo-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-white); transition: color 0.4s ease; }
+/* --- Premium Logo Styling --- */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--color-white); /* Assumes you have this variable, defaults to white on dark bg */
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
 .navbar.scrolled .logo-link { color: #1D1D1F; }
+.logo-link:hover { transform: scale(1.02); }
+
 .logo-svg { width: 32px; height: 32px; min-width: 32px; }
-.logo-divider { width: 1px; height: 20px; background: currentColor; opacity: 0.3; }
-.logo-text { font-size: 1.4rem; font-weight: 800; color: inherit; }
-.logo-text .dot { color: var(--color-accent); }
+.logo-text { font-size: 1.4rem; font-weight: 800; color: inherit; white-space: nowrap; }
+.logo-text .dot { color: #10B981; /* Brand Emerald */ }
 
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.3s ease; }
-.nav-links a:hover { color: var(--color-white); }
-.navbar.scrolled .nav-links a { color: #1D1D1F; } 
-.navbar.scrolled .nav-links a:hover { color: var(--color-accent); }
-
-.btn-apple {
-    background: var(--color-white); color: var(--color-dark); padding: 0.6rem 1.4rem;
-    border-radius: 999px; font-weight: 700; font-size: 0.95rem; text-decoration: none;
-    transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* --- macOS Style Nav Links --- */
+.nav-links {
+    display: flex;
+    gap: 0.5rem; /* Tighter gap to accommodate hover pills */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
-.navbar.scrolled .btn-apple { background: #1D1D1F; color: var(--color-white); }
-.btn-apple:hover { transform: scale(1.02); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
 
-.menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; }
-.menu-toggle .bar { width: 28px; height: 2px; background: var(--color-white); transition: var(--transition); }
-.navbar.scrolled .menu-toggle .bar { background: #1D1D1F; }
-.menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background: #1D1D1F; }
-.menu-toggle.active .bar:nth-child(2) { opacity: 0; }
-.menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: #1D1D1F; }
+.nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px; /* Pill shape */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover effect on dark/transparent background */
+.nav-links a:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Hover effect when scrolled (Light mode) */
+.navbar.scrolled .nav-links a { color: #424245; }
+.navbar.scrolled .nav-links a:hover {
+    color: #1D1D1F;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* Hard-hide the old hamburger menu */
+.menu-toggle { display: none !important; }
+
+/* =========================================
+   NAVBAR INSTAGRAM PILL (Universal High-Contrast)
+   ========================================= */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-insta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.55rem 1.4rem;
+    
+    background: rgba(29, 29, 31, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    
+    color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+.nav-insta-pill svg { width: 16px; height: 16px; transition: transform 0.4s ease; }
+.nav-insta-text { font-family: var(--font-main); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+
+.nav-insta-pill:hover {
+    background: linear-gradient(135deg, #10B981, #d519db);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4);
+}
+
+.nav-insta-pill:hover svg { transform: scale(1.15) rotate(-5deg); }
+
+/* =========================================
+   ULTIMATE MOBILE RESPONSIVENESS (Always Visible)
+   ========================================= */
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 1rem 3%; 
+        gap: 0.5rem; /* Forces tight spacing so everything fits */
+    }
+    
+    .navbar.scrolled { padding: 0.75rem 3%; }
+    
+    .logo-text { font-size: 1.1rem; }
+    .logo-svg { width: 24px; height: 24px; min-width: 24px; }
+
+    /* 
+       The Magic Touch: Turns links into a horizontal swipe menu.
+       This guarantees tabs are ALWAYS visible on any device.
+    */
+    .nav-links {
+        flex: 1; 
+        overflow-x: auto; /* Enables swiping */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        /* Adds elegant fade masks to the left/right edges */
+        mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    }
+
+    /* Hides the ugly scrollbar across browsers */
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links { scrollbar-width: none; }
+
+    .nav-links a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        white-space: nowrap; /* Stops text from dropping to a second line */
+    }
+
+    /* Compacts the Insta Pill to just the glowing icon */
+    .nav-insta-pill {
+        padding: 0.5rem;
+        border-radius: 50%;
+    }
+    
+    .nav-insta-text { display: none; }
+    .nav-insta-pill svg { width: 18px; height: 18px; }
+    
+    /* Reveal the hidden nav-actions container if you previously hid it on mobile */
+    .nav-actions.hide-mobile {
+        display: flex !important; 
+    }
+}
+
+
+
+/* =========================================
+   INSURANCE SECTION: BLUE THEME OVERRIDE
+   ========================================= */
+
+/* Section Badge */
+.insurance-theme .section-badge { 
+    color: #2563EB; /* Royal Blue */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+/* Card Hover State: Blue Glow instead of Green */
+.insurance-theme .liquid-card:hover { 
+    box-shadow: 0 30px 60px rgba(37, 99, 235, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.25); 
+}
+
+/* Icon Hover Color */
+.insurance-theme .liquid-card:hover .glass-icon { 
+    color: #2563EB; 
+}
+
+/* Large Number Index Hover Color */
+.insurance-theme .liquid-card:hover .card-index { 
+    color: #2563EB; 
+}
+
+/* Learn More Link Color */
+.insurance-theme .card-link { 
+    color: #2563EB; 
+}
+
+.insurance-theme .card-link:hover { 
+    color: #1E3A8A; /* Deep Navy on hover */
+}
+
+/* Spotlight Effect Override (Keeps the non-hovered cards looking clean) */
+/* Spotlight Effect Override (Blur Removed) */
+.insurance-theme .services-grid:hover .liquid-card:not(:hover) {
+    opacity: 0.6;
+    transform: scale(0.96);
+    /* Blur line removed here too! */
+}
+
 
 /* =========================================
    4. HERO SECTION (Locked & Bulletproof)
@@ -674,6 +849,19 @@ body.loaded #preloader { transform: translateY(-100%); opacity: 0; pointer-event
     transform: translateX(6px);
 }
 
+/* =========================================
+   CLICKABLE MAP LINK
+   ========================================= */
+.map-link {
+    color: inherit; /* Keeps your original text color */
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.map-link:hover {
+    color: #10B981; /* Brand emerald green */
+    text-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
 /* --- Mobile Adjustments --- */
 @media (max-width: 900px) {
     .tall-executive-card {
