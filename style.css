@@ -1644,3 +1644,249 @@ select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-a
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .headline-top-line { gap: 0.25em; } /* Tightens hero text on very small screens */
 }
+
+/* =========================================
+   INSTAGRAM REELS CAROUSEL (Optimized & Responsive)
+   ========================================= */
+
+.reels-section {
+    padding: 8rem 0 6rem;
+    background-color: #FAFAFC;
+    overflow: hidden;
+    position: relative;
+}
+
+.reels-section .section-header {
+    padding: 0 5%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* --- Financial Background Atmosphere --- */
+.capital-grid {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.reels-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 4rem;
+    z-index: 10;
+}
+
+/* --- The Swipe Track --- */
+.reels-track {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 5%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+}
+.reels-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+/* --- The Reel Glass Card --- */
+.reel-card {
+    position: relative;
+    flex: 0 0 300px; /* Fixed Base Width */
+    aspect-ratio: 9/16;
+    border-radius: 32px;
+    overflow: hidden;
+    text-decoration: none;
+    background: #000;
+    scroll-snap-align: center;
+    transform: translate3d(0,0,0); 
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255,255,255,0.4);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+}
+
+/* --- Apple TV 3D Hover & Sheen --- */
+.glass-sheen {
+    position: absolute;
+    top: 0; left: -150%; 
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    z-index: 20;
+    transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+}
+
+.reel-card:hover {
+    transform: scale(1.04) translateY(-12px);
+    box-shadow: 0 40px 80px -10px rgba(16, 185, 129, 0.3), inset 0 0 0 2px rgba(255, 255, 255, 1);
+    z-index: 5;
+}
+
+.reel-card:hover .glass-sheen { left: 200%; }
+
+/* --- Interactive Video & Overlays --- */
+.reel-video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+.reel-card:hover .reel-video {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.reel-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%);
+    transition: background 0.4s ease;
+}
+
+.reel-card:hover .reel-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+}
+
+.play-btn-glass {
+    width: 65px; height: 65px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #FFFFFF;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.play-btn-glass svg { width: 30px; height: 30px; margin-left: 4px; }
+
+.reel-card:hover .play-btn-glass {
+    opacity: 0; transform: scale(0.8);
+}
+
+/* Sound Wave */
+.sound-wave {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    display: flex; align-items: center; gap: 3px;
+    opacity: 0; transition: opacity 0.4s ease;
+}
+.reel-card:hover .sound-wave { opacity: 1; }
+
+.sound-wave .bar {
+    width: 3px; height: 12px;
+    background: #10B981; border-radius: 999px;
+    animation: soundBounce 0.8s infinite ease-in-out alternate;
+}
+.sound-wave .bar:nth-child(1) { animation-delay: 0s; }
+.sound-wave .bar:nth-child(2) { height: 18px; animation-delay: 0.2s; }
+.sound-wave .bar:nth-child(3) { animation-delay: 0.4s; }
+
+/* =========================================
+   FIRM-RELATED BACKGROUND ANIMATIONS
+   ========================================= */
+
+/* 1. The Animated Market Trendline */
+.growth-trendline {
+    position: absolute;
+    bottom: -10%; left: 0;
+    width: 100%; height: 60%;
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.growth-trendline path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: drawTrend 8s linear infinite;
+}
+
+@keyframes drawTrend {
+    0% { stroke-dashoffset: 2000; }
+    50% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -2000; }
+}
+
+/* 2. The Live "Recording" Pulse in Header */
+.live-pulse {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background-color: #EF4444; /* Alert Red */
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: pulseRed 2s infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes pulseRed {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+@keyframes soundBounce { 0% { transform: scaleY(0.5); } 100% { transform: scaleY(1.2); } }
+
+/* Bottom Text */
+.reel-info {
+    position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+    background: rgba(20, 20, 22, 0.6);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px; padding: 1rem;
+}
+
+.reel-views {
+    display: flex; align-items: center; gap: 6px;
+    color: #10B981; font-size: 0.75rem; font-weight: 800; margin-bottom: 6px;
+}
+.reel-info p { color: #FFFFFF; font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin: 0; }
+
+/* =========================================
+   UNIVERSAL RESPONSIVENESS (The Magic Math)
+   ========================================= */
+
+/* 1. LARGE DESKTOP (Perfectly Centered, No Scroll) */
+@media (min-width: 1350px) {
+    .reels-track {
+        justify-content: center;
+        padding-right: 5%; /* Resets asymmetrical padding */
+        overflow-x: visible; /* Disables scroll */
+    }
+}
+
+/* 2. LAPTOP & TABLET (Horizontal Swipe) */
+@media (max-width: 1349px) {
+    .reels-track {
+        padding-right: 15vw; /* Leaves room at end of scroll */
+    }
+}
+
+/* 3. MOBILE (Scale cards to fit perfectly) */
+@media (max-width: 768px) {
+    .reels-section { padding: 5rem 0 4rem; }
+    .reels-track { gap: 1rem; padding: 1rem 5%; padding-right: 10vw; }
+    
+    .reel-card {
+        flex: 0 0 75vw; /* Card takes 75% of screen, showing next card naturally */
+        border-radius: 24px;
+    }
+    
+    /* Disables heavy hover effects on touch devices for performance */
+    .reel-card:hover { transform: none; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); }
+    .glass-sheen { display: none; }
+}
