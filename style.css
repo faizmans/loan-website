@@ -303,55 +303,221 @@ body.loaded #preloader { transform: translateY(-100%); opacity: 0; pointer-event
     /* Blur line removed here too! */
 }
 
-
 /* =========================================
-   4. HERO SECTION (Locked & Bulletproof)
+   4. HERO SECTION (Ultimate Precision)
    ========================================= */
-.dark-theme { background-color: var(--color-dark); color: var(--color-text-light); }
 
-.hero-section {
-    position: relative; min-height: 100vh; display: flex; flex-direction: column; 
-    justify-content: center; padding: 10rem 5% 12rem; overflow: hidden;
+.dark-theme { background-color: #0B0F19; color: #F5F5F7; }
+
+/* Core Section Setup */
+.hero-section.enhanced-theme {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 5% 80px; 
 }
 
-.hero-content { max-width: 800px; z-index: 2; position: relative; }
+/* --- Background Atmosphere --- */
+.hero-background-effects {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+}
+.bg-grid-overlay {
+    position: absolute; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+}
+.blur-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.15; }
+.orb-primary { width: 600px; height: 600px; background: #10B981; top: -10%; right: -5%; }
+.orb-secondary { width: 500px; height: 500px; background: #3B82F6; bottom: -10%; left: -5%; }
+
+/* Flex Container */
+.hero-container {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; max-width: 1400px; z-index: 10; gap: 5rem;
+}
+
+/* =========================================
+   SIDE 1: TEXT SIDE
+   ========================================= */
+.hero-text-side {
+    flex: 1.1;
+    display: flex; flex-direction: column; align-items: flex-start;
+}
 
 .pill-badge {
     display: inline-flex; align-items: center; gap: 0.75rem; 
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
-    padding: 0.5rem 1.25rem; border-radius: var(--radius-pill); 
-    font-size: 0.9rem; font-weight: 600; margin-bottom: 2.5rem; backdrop-filter: blur(10px);
+    padding: 0.5rem 1.25rem; border-radius: 999px; 
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    margin-bottom: 2rem; backdrop-filter: blur(10px); color: rgba(255,255,255,0.9);
 }
-.pulse-dot { width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; box-shadow: 0 0 12px var(--color-accent); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+.pulse-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 12px #10B981; animation: pulse 2s infinite; }
 
-.hero-content h1 { font-size: clamp(3.5rem, 7vw, 6.5rem); margin-bottom: 1.5rem; line-height: 1.15; letter-spacing: -0.04em; }
-
-/* Flexbox lock prevents word overlapping */
-.headline-top-line {
+/* Typography */
+.hero-text-side h1 {
+    font-size: clamp(3rem, 5.5vw, 5.5rem); 
+    line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -0.03em;
+}
+.headline-top-line { 
     display: inline-flex; align-items: baseline; gap: 0.35em; flex-wrap: nowrap; 
 }
-.comma { margin-left: -0.25em; }
 
-.dynamic-wrapper { position: relative; display: inline-block; }
-.placeholder { visibility: hidden; display: inline-block; pointer-events: none; padding-bottom: 0.15em; margin-bottom: -0.15em; }
-#dynamic-text { position: absolute; top: 0; left: 0; width: 100%; text-align: left; white-space: nowrap; transition: opacity 0.4s ease, transform 0.4s ease; }
-.text-fade-out { opacity: 0; transform: translateY(15px); }
-
-.text-gradient {
-    background: linear-gradient(135deg, var(--color-accent), #06B6D4, #3B82F6);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    display: inline-block; padding-bottom: 0.15em; margin-bottom: -0.15em; 
+.dynamic-wrapper { 
+    position: relative; display: inline-block; color: transparent; 
+}
+.placeholder { 
+    visibility: hidden; pointer-events: none; display: inline-block;
+    padding-bottom: 0.2em; margin-bottom: -0.2em;
+}
+#dynamic-text { 
+    position: absolute; top: 0; left: 0; width: 100%; color: white; 
+    white-space: nowrap; text-align: left;
+    transition: opacity 0.4s ease, transform 0.4s ease; 
 }
 
-.hero-content p { font-size: clamp(1.1rem, 2vw, 1.3rem); color: rgba(255,255,255,0.7); max-width: 600px; margin-bottom: 3.5rem; font-weight: 500; line-height: 1.6;}
+.text-gradient {
+    background: linear-gradient(135deg, #10B981, #06B6D4, #3B82F6);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding-bottom: 0.2em; margin-bottom: -0.2em;
+}
 
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn { display: inline-flex; justify-content: center; align-items: center; padding: 1.2rem 2.5rem; border-radius: var(--radius-pill); text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: var(--transition); cursor: pointer; border: none; }
-.btn-primary { background: var(--color-accent); color: var(--color-white); }
-.btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); }
-.btn-secondary { background: rgba(255,255,255,0.1); color: var(--color-white); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-.btn-secondary:hover { background: rgba(255,255,255,0.2); }
+.text-fade-out { 
+    opacity: 0; 
+    transform: translateY(15px); 
+}
+
+.hero-text-side p {
+    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 580px; margin-bottom: 3rem; line-height: 1.6; font-weight: 500;
+}
+
+/* Actions */
+.hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.btn { 
+    display: inline-flex; justify-content: center; align-items: center; 
+    padding: 1.1rem 2.2rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem; 
+    text-decoration: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: none; 
+}
+.btn-primary { background: #10B981; color: #FFFFFF; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); background: #059669; }
+.btn-secondary { background: rgba(255,255,255,0.05); color: #FFFFFF; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+.btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+
+.hero-social-proof {
+    font-size: 0.85rem; color: rgba(255,255,255,0.5); font-weight: 600;
+}
+
+/* =========================================
+   SIDE 2: VISUAL (Glass Frame)
+   ========================================= */
+.hero-image-side {
+    flex: 0.9;
+    display: flex; justify-content: center; align-items: center; position: relative;
+}
+
+/* The Apple-style frosted frame holding the image */
+.glass-image-frame {
+    position: relative;
+    width: 100%; max-width: 450px; aspect-ratio: 4/5;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    padding: 1rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.hero-visual-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    filter: contrast(1.1) saturate(1.1);
+}
+
+.glass-inner-shadow {
+    position: absolute; top: 1rem; left: 1rem; right: 1rem; bottom: 1rem;
+    border-radius: 20px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+/* Floating Widgets */
+.floating-widget {
+    position: absolute;
+    background: rgba(20, 20, 22, 0.7);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1rem 1.2rem; border-radius: 20px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    z-index: 5;
+}
+
+.widget-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(16, 185, 129, 0.2); color: #10B981;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: bold;
+}
+
+.widget-text { display: flex; flex-direction: column; }
+.widget-text strong { color: #FFF; font-size: 1.1rem; letter-spacing: -0.02em; }
+.widget-text span { color: rgba(255,255,255,0.6); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
+
+/* Positioning the widgets */
+.widget-speed { top: 10%; right: -15%; animation: float 6s ease-in-out infinite; }
+.widget-scale { bottom: 15%; left: -20%; animation: float 7s ease-in-out infinite reverse; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* =========================================
+   RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .hero-container { flex-direction: column; gap: 3rem; text-align: center; }
+    .hero-text-side { align-items: center; padding-right: 0; flex: auto; }
+    .hero-text-side p { margin-inline: auto; }
+    .hero-actions { justify-content: center; }
+    
+    .hero-image-side { flex: auto; width: 100%; max-width: 400px; margin-top: 2rem; }
+    .widget-speed { right: -5%; }
+    .widget-scale { left: -5%; }
+}
+
+@media (max-width: 767px) {
+    .hero-section.enhanced-theme { padding: 120px 5% 60px; min-height: auto; }
+    .hero-container { flex-direction: column-reverse; gap: 4rem; } /* Image on top on mobile */
+    
+    .hero-text-side h1 { font-size: 2.5rem; }
+    .hero-actions { width: 100%; flex-direction: column; }
+    .hero-actions .btn { width: 100%; }
+    
+    .glass-image-frame { max-width: 320px; }
+    /* Hide floating widgets on very small screens to prevent overflow */
+    .floating-widget { transform: scale(0.85); }
+    .widget-speed { top: -5%; right: -10%; }
+    .widget-scale { bottom: -5%; left: -10%; }
+}
+
+/* Entry Animations */
+@keyframes animateFadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fade-in-up { animation: animateFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes animateFadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+.animate-fade-in-right { animation: animateFadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 /* =========================================
    5. MINIMALIST FLOATING STATS
@@ -370,26 +536,144 @@ body.loaded #preloader { transform: translateY(-100%); opacity: 0; pointer-event
 .stat-divider { width: 1px; height: 70px; background-color: rgba(0, 0, 0, 0.06); }
 
 /* =========================================
-   6. SMOOTH HARDWARE MARQUEE
+   6. SMOOTH HARDWARE MARQUEE (Ultra-HD Pills)
    ========================================= */
-.marquee-section { padding: 5rem 0 4rem; background: linear-gradient(180deg, var(--color-light) 0%, #FFFFFF 100%); border-top: 1px solid rgba(0, 0, 0, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.05); overflow: hidden; position: relative; }
-.marquee-label { text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--color-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 3rem; }
-.marquee-container { display: flex; overflow: hidden; position: relative; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
-.marquee-content { display: flex; width: max-content; will-change: transform; animation: scrollMarquee 35s linear infinite; }
-.marquee-group { display: flex; align-items: center; gap: 4rem; padding-right: 4rem; }
-.marquee-content:hover { animation-play-state: paused; }
-.marquee-group span { font-size: 1.8rem; font-weight: 800; color: var(--color-dark); opacity: 0.6; transition: opacity 0.3s ease, color 0.3s ease; white-space: nowrap; }
-.marquee-group span:not(.dot):hover { opacity: 1; color: var(--color-accent); cursor: default; }
 
-/* Perfectly Centered Dot Fix */
-.marquee-group .dot { 
-    color: var(--color-silver); font-size: 1.5rem; opacity: 0.4;
-    display: inline-flex; align-items: center; justify-content: center;
-    line-height: 1; transform: translateY(-1px); 
+.marquee-section { 
+    padding: 5rem 0 4rem; 
+    background: linear-gradient(180deg, var(--color-light) 0%, #FFFFFF 100%); 
+    border-top: 1px solid rgba(0, 0, 0, 0.05); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+    overflow-x: hidden; 
+    position: relative; 
+    width: 100%;
 }
 
-@keyframes scrollMarquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+.marquee-label { 
+    text-align: center; 
+    font-size: 0.95rem; 
+    font-weight: 700; 
+    color: var(--color-muted); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin-bottom: 3rem; 
+    padding: 0 1rem;
+}
 
+/* The Container with Fade Edges */
+.marquee-container { 
+    display: flex; 
+    overflow: hidden; 
+    position: relative; 
+    max-width: 1600px; 
+    margin: 0 auto; 
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); 
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); 
+}
+
+/* The Track that moves */
+.marquee-content { 
+    display: flex; 
+    width: max-content; 
+    will-change: transform; /* Hardware acceleration hint */
+    animation: scrollMarquee 35s linear infinite; 
+}
+
+/* Pause animation when user hovers */
+.marquee-content:hover { 
+    animation-play-state: paused; 
+}
+
+/* Groups of Pills */
+.marquee-group { 
+    display: flex; 
+    align-items: center; 
+    gap: 2rem; 
+    padding-right: 2rem; /* Matches the gap so the loop is mathematically perfect */
+}
+
+/* Hardware Accelerated Loop: Moves exactly half the total width of the track */
+@keyframes scrollMarquee { 
+    0% { transform: translate3d(0, 0, 0); } 
+    100% { transform: translate3d(-50%, 0, 0); } 
+}
+
+/* --- Premium Partner Pills (Icon + Text) --- */
+.partner-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    background: rgba(0, 0, 0, 0.03); /* Subtle light theme pill */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    
+    padding: 0.6rem 1.4rem 0.6rem 0.6rem; /* Less padding on the left to hug the circular icon */
+    border-radius: 999px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+}
+
+.partner-pill:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15); /* Soft emerald glow */
+}
+
+/* The HD Icon Styling */
+.partner-logo {
+    width: 32px; 
+    height: 32px;
+    border-radius: 50%;
+    
+    /* Using contain and white background ensures the logo sits perfectly */
+    object-fit: contain;
+    background: #FFFFFF; 
+    padding: 4px; /* Gives the logo breathing room inside its white circle */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* TruHome SVG Placeholder styling */
+.custom-logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent, #10B981); 
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0; /* No padding needed for the raw SVG */
+}
+
+.partner-pill span {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--color-dark, #1D1D1F); /* Ensure text is dark and visible */
+    white-space: nowrap;
+}
+
+/* =========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================= */
+
+@media (max-width: 768px) {
+    .marquee-section { padding: 4rem 0 3rem; }
+    
+    /* Shrink the gap on mobile so more banks fit on screen */
+    .marquee-group { gap: 1.5rem; padding-right: 1.5rem; }
+    
+    /* Slightly smaller pills */
+    .partner-pill {
+        padding: 0.5rem 1.2rem 0.5rem 0.5rem;
+    }
+    
+    /* Slightly smaller logos and text */
+    .partner-logo {
+        width: 28px; height: 28px; padding: 3px;
+    }
+    .partner-pill span { 
+        font-size: 0.85rem; 
+    }
+}
 /* =========================================
    7. PREMIUM SERVICES (Apple Glassmorphism)
    ========================================= */
@@ -595,6 +879,43 @@ body.loaded #preloader { transform: translateY(-100%); opacity: 0; pointer-event
 /* =========================================
    APPLE-STYLE ADVISOR PROFILE
    ========================================= */
+
+   /* =========================================
+   ADVISOR AVATAR IMAGE
+   ========================================= */
+.profile-image-wrapper {
+    position: relative;
+    width: 65px; 
+    height: 65px;
+    flex-shrink: 0;
+    /* Forces the removal of any old black monogram backgrounds */
+    background: transparent !important; 
+    border-radius: 50%;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Perfectly crops the image to a circle without stretching */
+    display: block; /* Removes weird browser spacing around images */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the live status dot sits perfectly on the border */
+.live-status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background-color: #10B981;
+    border: 2px solid #1D1D1F; /* Matches the dark background for a cutout effect */
+    border-radius: 50%;
+    z-index: 2;
+}
+
 
 .advisor-column {
     position: sticky;
@@ -1000,37 +1321,170 @@ body.loaded #preloader { transform: translateY(-100%); opacity: 0; pointer-event
     color: var(--color-accent); 
 }
 
-/* --- Hardware Accelerated Vertical Slider --- */
+/* =========================================
+   VERTICAL INFINITE GOOGLE REVIEWS
+   ========================================= */
+
+/* The Outer Container */
 .vertical-slider-container {
-    height: 750px; 
+    width: 100%;
+    /* Responsive height: limits how much of the screen the reviews take up */
+    height: 700px; 
+    max-height: 80vh; 
     overflow: hidden;
     position: relative;
-    padding: 1rem 0;
-    
-    /* Apple-style top and bottom fade mask for seamless entry/exit */
-    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    /* Fades out the top and bottom edges smoothly */
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }
 
+/* The Track that moves */
 .vertical-slider-track {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-    
-    /* Hardware accelerated infinite vertical scroll */
-    animation: scrollVertical 40s linear infinite;
+    gap: 1.5rem; /* Space between cards */
     will-change: transform;
+    animation: scrollVerticalMarquee 40s linear infinite;
+    padding: 1rem 5px; /* Slight horizontal padding so shadows aren't cut off */
 }
 
-/* Pause the animation gently when a user reads a review */
-.vertical-slider-track:hover {
+/* Pause the scroll when a user hovers over a review to read it */
+.vertical-slider-container:hover .vertical-slider-track {
     animation-play-state: paused;
 }
 
-/* translate3d forces GPU rendering for 60fps butter-smooth scrolling */
-@keyframes scrollVertical {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(0, -50%, 0); } 
+/* Vertical Loop Math: Move exactly 50% up */
+@keyframes scrollVerticalMarquee {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); } /* Half the total height (Group 1 + Group 2) */
+}
+
+/* --- The Google Review Card Styling --- */
+.google-review-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.google-review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Header Layout */
+.g-review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Colorful Avatars */
+.g-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* Author Info */
+.g-author-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.g-author-name {
+    font-size: 0.95rem;
+    color: #202124; /* Google's specific dark grey */
+    font-weight: 600;
+}
+
+.g-author-meta {
+    font-size: 0.8rem;
+    color: #70757A; /* Google's specific light grey */
+    line-height: 1.2;
+}
+
+/* The Google G Icon */
+.g-icon {
+    flex-shrink: 0;
+}
+
+/* Stars and Time */
+.g-review-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: #FBBC04; /* Google Star Yellow */
+    font-size: 1.1rem;
+}
+
+.g-time-posted {
+    margin-left: 8px;
+    font-size: 0.8rem;
+    color: #70757A;
+}
+
+/* Review Text */
+.g-review-text {
+    font-size: 0.95rem;
+    color: #3C4043;
+    line-height: 1.5;
+    margin: 0;
+    /* Optional: Clamp text if it gets too long */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Custom Deal Tags */
+.g-deal-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.g-tag {
+    background: #F1F3F4; /* Light grey pill */
+    color: #5F6368;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .vertical-slider-container {
+        height: 550px; /* Slightly shorter on mobile */
+    }
+    
+    .google-review-card {
+        padding: 1.2rem;
+    }
+    
+    .g-author-name { font-size: 0.9rem; }
+    .g-review-text { font-size: 0.9rem; }
+    
+    .g-tag {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
 }
 
 
@@ -1644,51 +2098,34 @@ select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-a
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .headline-top-line { gap: 0.25em; } /* Tightens hero text on very small screens */
 }
-
 /* =========================================
-   INSTAGRAM REELS CAROUSEL (Optimized & Responsive)
+   ENHANCED INSTAGRAM REELS (IFRAME VERSION)
    ========================================= */
 
 .reels-section {
-    padding: 8rem 0 6rem;
-    background-color: #FAFAFC;
-    overflow: hidden;
     position: relative;
-}
-
-.reels-section .section-header {
-    padding: 0 5%;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* --- Financial Background Atmosphere --- */
-.capital-grid {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    padding: 8rem 0 6rem;
+    background-color: #FAFAFC; /* Premium light-grey background */
+    overflow: hidden;
+    z-index: 1;
 }
 
 .reels-carousel-wrapper {
     position: relative;
     width: 100%;
-    margin-top: 4rem;
-    z-index: 10;
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 /* --- The Swipe Track --- */
 .reels-track {
     display: flex;
-    gap: 2rem;
-    padding: 2rem 5%;
+    gap: 2.5rem;
+    padding: 2rem 5vw 3rem 5vw; /* Padding allows shadows to not be cut off */
+    width: 100%;
+    max-width: 1600px;
+    
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -1697,103 +2134,103 @@ select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-a
 }
 .reels-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
-/* --- The Reel Glass Card --- */
+/* --- Premium Iframe "Device Bezel" Card --- */
 .reel-card {
     position: relative;
-    flex: 0 0 300px; /* Fixed Base Width */
-    aspect-ratio: 9/16;
-    border-radius: 32px;
-    overflow: hidden;
-    text-decoration: none;
-    background: #000;
+    flex: 0 0 340px; /* Fixed width for desktop */
+    height: 580px;   /* Perfect height for IG embeds to avoid internal scrolling */
+    
+    background: #FFFFFF;
+    border-radius: 24px;
     scroll-snap-align: center;
-    transform: translate3d(0,0,0); 
-    -webkit-backface-visibility: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255,255,255,0.4);
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    
+    /* Apple-style floating shadow & subtle border */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12), 
+                0 0 0 1px rgba(0, 0, 0, 0.04);
+    
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    
+    /* Hardware acceleration */
+    transform: translateZ(0); 
+    overflow: hidden;
 }
 
-/* --- Apple TV 3D Hover & Sheen --- */
-.glass-sheen {
-    position: absolute;
-    top: 0; left: -150%; 
-    width: 50%; height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-    transform: skewX(-25deg);
-    z-index: 20;
-    transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-    pointer-events: none;
-}
-
+/* Subtle lift effect on hover (Works best on desktop) */
 .reel-card:hover {
-    transform: scale(1.04) translateY(-12px);
-    box-shadow: 0 40px 80px -10px rgba(16, 185, 129, 0.3), inset 0 0 0 2px rgba(255, 255, 255, 1);
+    transform: translateY(-8px);
+    box-shadow: 0 35px 60px -15px rgba(16, 185, 129, 0.2), /* Emerald glow */
+                0 0 0 1px rgba(16, 185, 129, 0.1);
     z-index: 5;
 }
 
-.reel-card:hover .glass-sheen { left: 200%; }
-
-/* --- Interactive Video & Overlays --- */
-.reel-video {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    opacity: 0.9;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+/* --- Iframe Resizing --- */
+.instagram-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* Scales the iframe slightly to hide Instagram's ugly default borders */
+    transform: scale(1.02); 
+    border-radius: 24px;
 }
 
-.reel-card:hover .reel-video {
-    transform: scale(1.05);
-    opacity: 1;
-}
-
-.reel-overlay {
+/* --- Smooth Fade Edges (Desktop Only) --- */
+.carousel-fade-left,
+.carousel-fade-right {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%);
-    transition: background 0.4s ease;
+    top: 0; bottom: 0;
+    width: 8vw;
+    pointer-events: none;
+    z-index: 10;
+}
+.carousel-fade-left { 
+    left: 0; 
+    background: linear-gradient(to right, #FAFAFC 10%, transparent); 
+}
+.carousel-fade-right { 
+    right: 0; 
+    background: linear-gradient(to left, #FAFAFC 10%, transparent); 
 }
 
-.reel-card:hover .reel-overlay {
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+/* =========================================
+   UNIVERSAL RESPONSIVENESS (Mobile & Tablet)
+   ========================================= */
+
+@media (min-width: 1400px) {
+    /* Center the track perfectly on massive monitors */
+    .reels-track { justify-content: center; }
+    .carousel-fade-left, .carousel-fade-right { display: none; }
 }
 
-.play-btn-glass {
-    width: 65px; height: 65px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: #FFFFFF;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.play-btn-glass svg { width: 30px; height: 30px; margin-left: 4px; }
-
-.reel-card:hover .play-btn-glass {
-    opacity: 0; transform: scale(0.8);
+@media (max-width: 1024px) {
+    .reels-track { gap: 1.5rem; }
+    .reel-card { flex: 0 0 320px; height: 560px; }
 }
 
-/* Sound Wave */
-.sound-wave {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    display: flex; align-items: center; gap: 3px;
-    opacity: 0; transition: opacity 0.4s ease;
+@media (max-width: 768px) {
+    .reels-section { padding: 5rem 0 4rem; }
+    
+    /* Turn off side fades on mobile to give more screen real estate */
+    .carousel-fade-left, .carousel-fade-right { display: none; }
+    
+    .reels-track {
+        gap: 1rem;
+        padding: 1rem 5vw 2rem;
+    }
+    
+    .reel-card {
+        flex: 0 0 85vw; /* Card takes 85% of screen width, teasing the next card */
+        max-width: 340px; 
+        height: 540px;
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Lighter shadow for mobile performance */
+    }
+    
+    /* Disable hover lift on touch devices */
+    .reel-card:hover {
+        transform: none;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
 }
-.reel-card:hover .sound-wave { opacity: 1; }
-
-.sound-wave .bar {
-    width: 3px; height: 12px;
-    background: #10B981; border-radius: 999px;
-    animation: soundBounce 0.8s infinite ease-in-out alternate;
-}
-.sound-wave .bar:nth-child(1) { animation-delay: 0s; }
-.sound-wave .bar:nth-child(2) { height: 18px; animation-delay: 0.2s; }
-.sound-wave .bar:nth-child(3) { animation-delay: 0.4s; }
 
 /* =========================================
    FIRM-RELATED BACKGROUND ANIMATIONS

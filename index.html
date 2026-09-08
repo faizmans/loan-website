@@ -72,39 +72,97 @@
 
 
 
-    <!-- Hero Section (Dark Theme, Left-Aligned, Stable Dynamic Text) -->
-    <header id="home" class="hero-section dark-theme">
-        <div class="hero-content">
-            <!-- Trust Badge -->
-            <div class="pill-badge animate-fade-in-up" style="animation-delay: 0.1s;">
-                <span class="pulse-dot"></span> The smarter way to finance
-            </div>
+   <!-- Ultimate Two-Column Enhanced Hero Header (Dark Theme) -->
+    <header id="home" class="hero-section enhanced-theme dark-theme">
+        
+        <!-- Subtle Ambient Background Effect (Mesh Gradient) -->
+        <div class="hero-background-effects">
+            <div class="blur-orb orb-primary"></div>
+            <div class="blur-orb orb-secondary"></div>
+            <!-- Adds a subtle grid overlay for a 'fintech' feel -->
+            <div class="bg-grid-overlay"></div>
+        </div>
+
+        <div class="hero-container">
             
-            <!-- Dynamic Gradient Headline (Inline and stable) -->
-          <!-- Dynamic Gradient Headline (Flexbox Locked) -->
-            <h1 class="animate-fade-in-up" style="animation-delay: 0.2s;">
-                <span class="headline-top-line">
-                    <span>Smart</span>
-                    <span class="dynamic-wrapper">
-                        <!-- Invisible placeholder reserves exact space -->
-                        <span class="placeholder">Mortgages,</span>
-                        <!-- Visible rotating text -->
-                        <span id="dynamic-text" class="text-gradient">Financing</span>
+            <!-- Side 1: Text & Actions -->
+            <div class="hero-text-side hero-content">
+                <!-- Trust Badge -->
+                <div class="pill-badge animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="pulse-dot"></span> Premier Capital Advisory in Gujarat
+                </div>
+                
+                <!-- Dynamic Gradient Headline -->
+                <h1 class="animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <span class="headline-top-line">
+                        <span>Smart</span>
+                        <span class="dynamic-wrapper">
+                            <span class="placeholder">Mortgages,</span>
+                            <span id="dynamic-text" class="text-gradient">Financing</span>
+                        </span>
                     </span>
-                </span>
-                <br>
-                Simplified.
-            </h1>
-            <!-- Subtext -->
-            <p class="animate-fade-in-up" style="animation-delay: 0.3s;">
-                Experience the fastest, most transparent loan advisory platform. We partner with top-tier lenders to secure your perfect rate without the traditional banking delays.
-            </p>
-            
-            <!-- Call to Actions -->
-            <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.4s;">
-                <a href="#contact" class="btn btn-primary">Check Your Eligibility</a>
-                <a href="#services" class="btn btn-secondary">Explore Products</a>
+                    <br>
+                    Simplified.
+                </h1>
+
+                <!-- Subtext -->
+                <p class="animate-fade-in-up" style="animation-delay: 0.3s;">
+                    Experience India's most transparent loan advisory platform. We partner with 40+ top-tier lenders to engineer institutional-grade structures for enterprises and HNIs, bypassing traditional banking friction.
+                </p>
+                
+                <!-- Call to Actions -->
+                <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <a href="#contact" class="btn btn-primary">
+                        Discuss Your Portfolio
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#services" class="btn btn-secondary">Explore Products</a>
+                </div>
+                
+                <!-- Mini Social Proof below buttons -->
+                <div class="hero-social-proof animate-fade-in-up" style="animation-delay: 0.5s;">
+                    <span>Trusted by 150+ Businesses in Ahmedabad</span>
+                </div>
             </div>
+
+            <!-- Side 2: Visual (Glass Frame & Floating Widgets) -->
+            <div class="hero-image-side animate-fade-in-right" style="animation-delay: 0.3s;">
+                <div class="glass-image-frame">
+                    
+                    <!-- The Main Visual -->
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQGBCpVxdJaraQ/profile-displayphoto-scale_400_400/B4DaAY5xF4J0Ag-/0/1787124191964?e=1790208000&v=beta&t=b-92p3DoMToF0uJx-BDXKwFvLMARg6SP6auBAMS-jsM" 
+                         alt="Jishan Chauhan - Guidance Point Consulting" 
+                         class="hero-visual-img">
+                    
+                    <!-- Inner glow to blend the image into the glass -->
+                    <div class="glass-inner-shadow"></div>
+
+                    <!-- Floating Widget 1: Speed -->
+                    <!-- Floating Widget 1: Speed -->
+                    <div class="floating-widget widget-speed">
+                        <div class="widget-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="rgba(16, 185, 129, 0.2)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px rgba(16,185,129,0.4));">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <div class="widget-text">
+                            <strong>48 Hour</strong>
+                            <span>Avg. Approval</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Widget 2: Scale -->
+                    <div class="floating-widget widget-scale">
+                        <div class="widget-icon">₹</div>
+                        <div class="widget-text">
+                            <strong>500Cr+</strong>
+                            <span>Capital Deployed</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </header>
 
@@ -143,42 +201,102 @@
         </div>
     </section>
 
-   <!-- Infinite Trusted Partners Marquee -->
+   <!-- Infinite Trusted Partners Marquee (Ultra-HD Icons + Text) -->
     <div class="marquee-section">
         <p class="marquee-label">Trusted by India's leading financial institutions</p>
+        
         <div class="marquee-container">
             <div class="marquee-content">
+                
                 <!-- Group 1 -->
                 <div class="marquee-group">
-                    <span>HDFC Bank</span> <span class="dot">•</span>
-                    <span>ICICI Bank</span> <span class="dot">•</span>
-                    <span>Axis Bank</span> <span class="dot">•</span>
-                    <span>Kotak Mahindra</span> <span class="dot">•</span>
-                    <span>Bajaj Finserv</span> <span class="dot">•</span>
-                    <span>Tata Capital</span> <span class="dot">•</span>
-                    <span>Jio credit Limited</span> <span class="dot">•</span>
-                    <span>TruHome Finance Limited </span> <span class="dot">•</span>
-                    <span>IDFC First Bank</span> <span class="dot">•</span>
-
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=hdfcbank.com&sz=256" alt="HDFC" class="partner-logo">
+                        <span>HDFC Bank</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=icicibank.com&sz=256" alt="ICICI" class="partner-logo">
+                        <span>ICICI Bank</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=axisbank.com&sz=256" alt="Axis" class="partner-logo">
+                        <span>Axis Bank</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=kotak.com&sz=256" alt="Kotak" class="partner-logo">
+                        <span>Kotak Mahindra</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=bajajfinserv.in&sz=256" alt="Bajaj" class="partner-logo">
+                        <span>Bajaj Finserv</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=tatacapital.com&sz=256" alt="Tata" class="partner-logo">
+                        <span>Tata Capital</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=jio.com&sz=256" alt="Jio" class="partner-logo">
+                        <span>Jio Credit</span>
+                    </div>
+                    <div class="partner-pill">
+                        <!-- Custom high-quality SVG icon for TruHome -->
+                        <div class="partner-logo custom-logo-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                        <span>TruHome Finance</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=idfcfirstbank.com&sz=256" alt="IDFC" class="partner-logo">
+                        <span>IDFC First Bank</span>
+                    </div>
                 </div>
-                <!-- Group 2 (Exact Duplicate for a seamless loop) -->
+
+                <!-- Group 2 (Exact Duplicate for seamless loop) -->
                 <div class="marquee-group">
-                    <span>HDFC Bank</span> <span class="dot">•</span>
-                    <span>ICICI Bank</span> <span class="dot">•</span>
-                    <span>Axis Bank</span> <span class="dot">•</span>
-                    <span>Kotak Mahindra</span> <span class="dot">•</span>
-                    <span>Bajaj Finserv</span> <span class="dot">•</span>
-                    <span>Tata Capital</span> <span class="dot">•</span>
-                    <span>Jio credit Limited</span> <span class="dot">•</span>
-                    <span>TruHome Finance Limited</span> <span class="dot">•</span>
-                    <<span>IDFC First Bank</span> <span class="dot">•</span>
-
-
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=hdfcbank.com&sz=256" alt="HDFC" class="partner-logo">
+                        <span>HDFC Bank</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=icicibank.com&sz=256" alt="ICICI" class="partner-logo">
+                        <span>ICICI Bank</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=axisbank.com&sz=256" alt="Axis" class="partner-logo">
+                        <span>Axis Bank</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=kotak.com&sz=256" alt="Kotak" class="partner-logo">
+                        <span>Kotak Mahindra</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=bajajfinserv.in&sz=256" alt="Bajaj" class="partner-logo">
+                        <span>Bajaj Finserv</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=tatacapital.com&sz=256" alt="Tata" class="partner-logo">
+                        <span>Tata Capital</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=jio.com&sz=256" alt="Jio" class="partner-logo">
+                        <span>Jio Credit</span>
+                    </div>
+                    <div class="partner-pill">
+                        <div class="partner-logo custom-logo-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                        <span>TruHome Finance</span>
+                    </div>
+                    <div class="partner-pill">
+                        <img src="https://www.google.com/s2/favicons?domain=idfcfirstbank.com&sz=256" alt="IDFC" class="partner-logo">
+                        <span>IDFC First Bank</span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
-    </section>
+
 
 <!-- Premium Liquid Glassmorphism Services Section -->
     <section id="services" class="services-section liquid-glass-section">
@@ -503,9 +621,10 @@
                     
                     <div class="advisor-content-top">
                         <!-- Premium Header Layout -->
-                        <div class="advisor-header">
+                       <div class="advisor-header">
                             <div class="profile-image-wrapper">
-                                <div class="profile-monogram">JC</div>
+                                <!-- Replaced monogram with actual image -->
+                                <img src="https://scontent-bom2-3.cdninstagram.com/v/t51.82787-19/731049166_18360083899211996_5017724596132916482_n.jpg?_nc_cat=103&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=0yWNOT106-YQ7kNvwHBL20Q&_nc_oc=AdqTpGwr4Qaj4T_KpRf8AntMDqP8TpgQeJdyeBUQRWQnVpcCLl0oz-Q8DyPiUstDrc8&_nc_zt=24&_nc_ht=scontent-bom2-3.cdninstagram.com&_nc_gid=YENH-UTGc6OcCy2Ihe1BFw&_nc_ss=796a8&oh=00_AQLQPmc1VvlkUnCC1SHuGHqwf3edeP38FQpF0422z2Mw_g&oe=6AA56790" alt="Jishan Chauhan" class="profile-avatar">
                                 <div class="live-status-dot"></div>
                             </div>
                             <div class="advisor-identity">
@@ -565,228 +684,190 @@
                 </div>
 
                 <!-- NEW: Premium Auto-Scrolling Vertical Track -->
-                <div class="vertical-slider-container">
+               <div class="vertical-slider-container">
                     <div class="vertical-slider-track">
                         
                         <!-- ================= GROUP 1 ================= -->
                         
                         <!-- Card 1: Real Estate -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #4285F4;">R</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Rajesh M.</strong>
+                                    <span class="g-author-meta">Managing Director, Infrastructure</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
-                            </div>
-                            <p class="review-quote">"Jishan and his team secured a commercial facility that three major banks said was impossible. The speed, structure, and transparency were unlike anything I've experienced in 20 years of business."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹50 Cr</span>
-                                <span class="metric-tag">Turnaround: 5 Days</span>
-                                <span class="metric-tag">Sector: Real Estate</span>
-                            </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-blue">RM</div>
-                                <div class="review-author">
-                                    <strong>Rajesh M.</strong>
-                                    <span>Managing Director, Infrastructure</span>
+                                <div class="g-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
                                 </div>
+                            </div>
+                            <div class="g-review-stars">
+                                <!-- 5 Google Yellow Stars -->
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">2 weeks ago</span>
+                            </div>
+                            <p class="g-review-text">"Jishan and his team secured a commercial facility that three major banks said was impossible. The speed, structure, and transparency were unlike anything I've experienced in 20 years of business."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹50 Cr</span>
+                                <span class="g-tag">Turnaround: 5 Days</span>
                             </div>
                         </div>
 
                         <!-- Card 2: HNI Residential -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #0F9D58;">V</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Vivek & Ananya S.</strong>
+                                    <span class="g-author-meta">HNI Portfolio Refinance</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
-                            </div>
-                            <p class="review-quote">"They consolidated my high-interest liabilities into a single, highly efficient mortgage structure. My monthly cash flow increased instantly. True professionals who look at the whole picture."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹3.5 Cr</span>
-                                <span class="metric-tag">Rate Drop: 1.25%</span>
-                                <span class="metric-tag">Product: Home Loan BT</span>
-                            </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-gold">VS</div>
-                                <div class="review-author">
-                                    <strong>Vivek & Ananya S.</strong>
-                                    <span>HNI Portfolio Refinance</span>
+                                <div class="g-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
                                 </div>
+                            </div>
+                            <div class="g-review-stars">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">1 month ago</span>
+                            </div>
+                            <p class="g-review-text">"They consolidated my high-interest liabilities into a single, highly efficient mortgage structure. My monthly cash flow increased instantly. True professionals who look at the whole picture."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹3.5 Cr</span>
+                                <span class="g-tag">Rate Drop: 1.25%</span>
                             </div>
                         </div>
 
                         <!-- Card 3: Manufacturing/Textiles -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #F4B400;">V</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Vikram D.</strong>
+                                    <span class="g-author-meta">Founder, Manufacturing Exports</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
-                            </div>
-                            <p class="review-quote">"When we needed immediate working capital to fulfill a massive export order, Guidance Point delivered. They structured an overdraft limit that matched our exact production cycle."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹12 Cr</span>
-                                <span class="metric-tag">Product: Working Capital</span>
-                                <span class="metric-tag">Sector: Textiles Export</span>
-                            </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-blue" style="background:#E0E7FF; color:#4338CA;">VD</div>
-                                <div class="review-author">
-                                    <strong>Vikram D.</strong>
-                                    <span>Founder, Manufacturing Exports</span>
+                                <div class="g-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
                                 </div>
+                            </div>
+                            <div class="g-review-stars">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">3 months ago</span>
+                            </div>
+                            <p class="g-review-text">"When we needed immediate working capital to fulfill a massive export order, Guidance Point delivered. They structured an overdraft limit that matched our exact production cycle."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹12 Cr</span>
+                                <span class="g-tag">Product: Working Capital</span>
                             </div>
                         </div>
 
                         <!-- Card 4: Healthcare/Equipment -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #DB4437;">M</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Dr. Meera K.</strong>
+                                    <span class="g-author-meta">Director, Multi-Specialty Hospital</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
-                            </div>
-                            <p class="review-quote">"Upgrading our hospital's radiology department required heavy capital without depleting our cash reserves. They negotiated the equipment finance seamlessly with zero collateral."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹8 Cr</span>
-                                <span class="metric-tag">Product: Machinery Loan</span>
-                                <span class="metric-tag">Sector: Healthcare</span>
-                            </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-gold" style="background:#ECFDF5; color:#047857;">MK</div>
-                                <div class="review-author">
-                                    <strong>Dr. Meera K.</strong>
-                                    <span>Director, Multi-Specialty Hospital</span>
+                                <div class="g-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
                                 </div>
+                            </div>
+                            <div class="g-review-stars">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">4 months ago</span>
+                            </div>
+                            <p class="g-review-text">"Upgrading our hospital's radiology department required heavy capital without depleting our cash reserves. They negotiated the equipment finance seamlessly with zero collateral."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹8 Cr</span>
+                                <span class="g-tag">Product: Machinery Loan</span>
                             </div>
                         </div>
 
                         <!-- ================= GROUP 2 (Exact Duplicate for Infinite Scroll) ================= -->
-                        <!-- Card 1: Real Estate -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        
+                        <!-- Card 1 (Duplicate) -->
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #4285F4;">R</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Rajesh M.</strong>
+                                    <span class="g-author-meta">Managing Director, Infrastructure</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
+                                <div class="g-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></div>
                             </div>
-                            <p class="review-quote">"Jishan and his team secured a commercial facility that three major banks said was impossible. The speed, structure, and transparency were unlike anything I've experienced in 20 years of business."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹50 Cr</span>
-                                <span class="metric-tag">Turnaround: 5 Days</span>
-                                <span class="metric-tag">Sector: Real Estate</span>
+                            <div class="g-review-stars">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">2 weeks ago</span>
                             </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-blue">RM</div>
-                                <div class="review-author">
-                                    <strong>Rajesh M.</strong>
-                                    <span>Managing Director, Infrastructure</span>
-                                </div>
+                            <p class="g-review-text">"Jishan and his team secured a commercial facility that three major banks said was impossible. The speed, structure, and transparency were unlike anything I've experienced in 20 years of business."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹50 Cr</span>
+                                <span class="g-tag">Turnaround: 5 Days</span>
                             </div>
                         </div>
 
-                        <!-- Card 2: HNI Residential -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <!-- Card 2 (Duplicate) -->
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #0F9D58;">V</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Vivek & Ananya S.</strong>
+                                    <span class="g-author-meta">HNI Portfolio Refinance</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
+                                <div class="g-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></div>
                             </div>
-                            <p class="review-quote">"They consolidated my high-interest liabilities into a single, highly efficient mortgage structure. My monthly cash flow increased instantly. True professionals who look at the whole picture."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹3.5 Cr</span>
-                                <span class="metric-tag">Rate Drop: 1.25%</span>
-                                <span class="metric-tag">Product: Home Loan BT</span>
+                            <div class="g-review-stars">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">1 month ago</span>
                             </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-gold">VS</div>
-                                <div class="review-author">
-                                    <strong>Vivek & Ananya S.</strong>
-                                    <span>HNI Portfolio Refinance</span>
-                                </div>
+                            <p class="g-review-text">"They consolidated my high-interest liabilities into a single, highly efficient mortgage structure. My monthly cash flow increased instantly. True professionals who look at the whole picture."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹3.5 Cr</span>
+                                <span class="g-tag">Rate Drop: 1.25%</span>
                             </div>
                         </div>
 
-                        <!-- Card 3: Manufacturing/Textiles -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <!-- Card 3 (Duplicate) -->
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #F4B400;">V</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Vikram D.</strong>
+                                    <span class="g-author-meta">Founder, Manufacturing Exports</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
+                                <div class="g-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></div>
                             </div>
-                            <p class="review-quote">"When we needed immediate working capital to fulfill a massive export order, Guidance Point delivered. They structured an overdraft limit that matched our exact production cycle."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹12 Cr</span>
-                                <span class="metric-tag">Product: Working Capital</span>
-                                <span class="metric-tag">Sector: Textiles Export</span>
+                            <div class="g-review-stars">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">3 months ago</span>
                             </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-blue" style="background:#E0E7FF; color:#4338CA;">VD</div>
-                                <div class="review-author">
-                                    <strong>Vikram D.</strong>
-                                    <span>Founder, Manufacturing Exports</span>
-                                </div>
+                            <p class="g-review-text">"When we needed immediate working capital to fulfill a massive export order, Guidance Point delivered. They structured an overdraft limit that matched our exact production cycle."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹12 Cr</span>
+                                <span class="g-tag">Product: Working Capital</span>
                             </div>
                         </div>
 
-                        <!-- Card 4: Healthcare/Equipment -->
-                        <div class="review-card">
-                            <div class="review-top">
-                                <div class="review-stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <!-- Card 4 (Duplicate) -->
+                        <div class="google-review-card">
+                            <div class="g-review-header">
+                                <div class="g-avatar" style="background-color: #DB4437;">M</div>
+                                <div class="g-author-info">
+                                    <strong class="g-author-name">Dr. Meera K.</strong>
+                                    <span class="g-author-meta">Director, Multi-Specialty Hospital</span>
                                 </div>
-                                <span class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verified Client</span>
+                                <div class="g-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></div>
                             </div>
-                            <p class="review-quote">"Upgrading our hospital's radiology department required heavy capital without depleting our cash reserves. They negotiated the equipment finance seamlessly with zero collateral."</p>
-                            <div class="deal-metrics">
-                                <span class="metric-tag">Facility: ₹8 Cr</span>
-                                <span class="metric-tag">Product: Machinery Loan</span>
-                                <span class="metric-tag">Sector: Healthcare</span>
+                            <div class="g-review-stars">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span class="g-time-posted">4 months ago</span>
                             </div>
-                            <div class="review-author-wrapper">
-                                <div class="reviewer-avatar avatar-gold" style="background:#ECFDF5; color:#047857;">MK</div>
-                                <div class="review-author">
-                                    <strong>Dr. Meera K.</strong>
-                                    <span>Director, Multi-Specialty Hospital</span>
-                                </div>
+                            <p class="g-review-text">"Upgrading our hospital's radiology department required heavy capital without depleting our cash reserves. They negotiated the equipment finance seamlessly with zero collateral."</p>
+                            <div class="g-deal-tags">
+                                <span class="g-tag">Facility: ₹8 Cr</span>
+                                <span class="g-tag">Product: Machinery Loan</span>
                             </div>
                         </div>
-
+                        
                     </div>
                 </div>
 
@@ -1073,6 +1154,101 @@
         </div>
     </section>
 
+    <!-- Apple-Style Instagram Reels Carousel -->
+    <!-- Apple-Style Instagram Reels Carousel -->
+    <section id="insights" class="reels-section">
+        
+        <!-- NEW: Firm-Related Background Animations -->
+        <div class="financial-atmosphere">
+            <div class="capital-grid"></div>
+            
+            <!-- Animated SVG Trendline -->
+            <svg class="growth-trendline" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path fill="none" stroke="rgba(16, 185, 129, 0.15)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                d="M0,250 C150,220 300,300 450,200 C600,100 750,280 900,150 C1050,20 1200,180 1440,100"></path>
+            </svg>
+        </div>
+
+        <div class="section-header reveal relative-z">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 1.5rem;">
+                <div class="live-pulse"></div>
+                <span class="section-badge" style="color: #10B981; margin-bottom: 0; box-shadow: none; border: none;">Live Market Updates</span>
+            </div>
+            <h2>Financial insights,<br>delivered in 60 seconds.</h2>
+            <p class="section-subtitle">Stay ahead of the curve with our latest rate analyses, portfolio strategies, and economic breakdowns directly from our advisory desk.</p>
+        </div>
+
+        <div class="reels-carousel-wrapper reveal">
+            <!-- Fade masks for smooth scrolling edges -->
+            <div class="carousel-fade-left"></div>
+            <div class="carousel-fade-right"></div>
+
+
+<div class="reels-track" id="reels-track">
+                
+                <!-- Reel 1 Embed -->
+                <div class="reel-card">
+                    <iframe 
+                        src="https://www.instagram.com/reel/DcnvFDtpvlz/embed" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        allowtransparency="true" 
+                        allow="encrypted-media"
+                        class="instagram-iframe">
+                    </iframe>
+                </div>
+
+                <!-- Reel 2 Embed -->
+                <div class="reel-card">
+                    <iframe 
+                        src="https://www.instagram.com/reel/Dc_SLcmJkue/embed" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        allowtransparency="true" 
+                        allow="encrypted-media"
+                        class="instagram-iframe">
+                    </iframe>
+                </div>
+
+                <!-- Reel 3 Embed -->
+                <div class="reel-card">
+                    <iframe 
+                        src="https://www.instagram.com/reel/DbciuQxEbzF/embed" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        allowtransparency="true" 
+                        allow="encrypted-media"
+                        class="instagram-iframe">
+                    </iframe>
+                </div>
+
+                <!-- Reel 4 Embed (Replace the link below with your actual 4th reel) -->
+                <div class="reel-card">
+                    <iframe 
+                        src="https://www.instagram.com/reel/YOUR_LINK_4/embed" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        allowtransparency="true" 
+                        allow="encrypted-media"
+                        class="instagram-iframe">
+                    </iframe>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+
     
 <!-- Ultimate Premium Contact Section (Apple Glassmorphism) -->
     <section id="contact" class="contact-section apple-glass-section">
@@ -1194,127 +1370,7 @@
         </div>
     </section>
 
-<!-- Apple-Style Instagram Reels Carousel -->
-    <!-- Apple-Style Instagram Reels Carousel -->
-    <section id="insights" class="reels-section">
-        
-        <!-- NEW: Firm-Related Background Animations -->
-        <div class="financial-atmosphere">
-            <div class="capital-grid"></div>
-            
-            <!-- Animated SVG Trendline -->
-            <svg class="growth-trendline" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path fill="none" stroke="rgba(16, 185, 129, 0.15)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-                d="M0,250 C150,220 300,300 450,200 C600,100 750,280 900,150 C1050,20 1200,180 1440,100"></path>
-            </svg>
-        </div>
 
-        <div class="section-header reveal relative-z">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 1.5rem;">
-                <div class="live-pulse"></div>
-                <span class="section-badge" style="color: #10B981; margin-bottom: 0; box-shadow: none; border: none;">Live Market Updates</span>
-            </div>
-            <h2>Financial insights,<br>delivered in 60 seconds.</h2>
-            <p class="section-subtitle">Stay ahead of the curve with our latest rate analyses, portfolio strategies, and economic breakdowns directly from our advisory desk.</p>
-        </div>
-
-        <div class="reels-carousel-wrapper reveal">
-            <!-- Fade masks for smooth scrolling edges -->
-            <div class="carousel-fade-left"></div>
-            <div class="carousel-fade-right"></div>
-
-            <div class="reels-track" id="reels-track">
-                
-                <!-- Reel 1 -->
-                <a href="https://www.instagram.com/reel/DcnvFDtpvlz/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" class="reel-card interactive-reel">
-                    <div class="glass-sheen"></div>
-                    <video src="your-video-1.mp4" loop playsinline preload="metadata" class="reel-video"></video>
-                    
-                    <div class="reel-overlay">
-                        <div class="play-btn-glass">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        
-                        <div class="sound-wave">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
-                        
-                        <div class="reel-info">
-                            <span class="reel-views">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                                12.4K
-                            </span>
-                            <p>RBI Repo Rate Update & Impact on Mortgages</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Reel 2 -->
-                <a href="https://instagram.com/reel/YOUR_LINK_2" target="_blank" rel="noopener noreferrer" class="reel-card interactive-reel">
-                    <div class="glass-sheen"></div>
-                    <video src="your-video-2.mp4" loop playsinline preload="metadata" class="reel-video"></video>
-                    <div class="reel-overlay">
-                        <div class="play-btn-glass">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="sound-wave">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
-                        <div class="reel-info">
-                            <span class="reel-views">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                                8.2K
-                            </span>
-                            <p>How to leverage Commercial Real Estate Equity</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Reel 3 -->
-                <a href="https://instagram.com/reel/YOUR_LINK_3" target="_blank" rel="noopener noreferrer" class="reel-card interactive-reel">
-                    <div class="glass-sheen"></div>
-                    <video src="your-video-3.mp4" loop playsinline preload="metadata" class="reel-video"></video>
-                    <div class="reel-overlay">
-                        <div class="play-btn-glass">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="sound-wave">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
-                        <div class="reel-info">
-                            <span class="reel-views">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                                15.1K
-                            </span>
-                            <p>3 Mistakes HNIs make with Debt Consolidation</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Reel 4 -->
-                <a href="https://instagram.com/reel/YOUR_LINK_4" target="_blank" rel="noopener noreferrer" class="reel-card interactive-reel">
-                    <div class="glass-sheen"></div>
-                    <video src="your-video-4.mp4" loop playsinline preload="metadata" class="reel-video"></video>
-                    <div class="reel-overlay">
-                        <div class="play-btn-glass">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="sound-wave">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
-                        <div class="reel-info">
-                            <span class="reel-views">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                                9.5K
-                            </span>
-                            <p>Inside our 48-Hour Approval Process</p>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </section>
     
    <footer class="apple-footer">
         <div class="footer-container">

@@ -267,5 +267,50 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateTickerPosition);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all the interactive reel cards and all the videos
+    const reels = document.querySelectorAll('.interactive-reel');
+    const allVideos = document.querySelectorAll('.reel-video');
+
+    // 1. Ensure all videos are playing silently on page load
+    allVideos.forEach(video => {
+        video.muted = true;
+        video.play().catch(err => console.log("Autoplay blocked by browser until user interacts."));
+    });
+
+    // 2. Add hover logic to each card
+    reels.forEach(card => {
+        const hoveredVideo = card.querySelector('.reel-video');
+
+        card.addEventListener('mouseenter', () => {
+            // Step A: Pause and mute ALL videos first
+            allVideos.forEach(v => {
+                if (v !== hoveredVideo) {
+                    v.pause();
+                    v.muted = true;
+                }
+            });
+
+            // Step B: Unmute and play the ONE video being hovered
+            hoveredVideo.muted = false;
+            hoveredVideo.volume = 0.8; // Set a comfortable volume (0.0 to 1.0)
+            
+            // Browsers might still block audio if the user hasn't clicked anywhere on the site yet
+            hoveredVideo.play().catch(error => {
+                console.log("Audio blocked by browser policy. Falling back to silent play.");
+                hoveredVideo.muted = true;
+                hoveredVideo.play();
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Step C: When the mouse leaves, mute everything and play them all again
+            allVideos.forEach(v => {
+                v.muted = true;
+                v.play().catch(err => console.log("Resume play blocked."));
+            });
+        });
+    });
+});
 
 });
