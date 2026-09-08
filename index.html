@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            <!-- Side 2: Visual (Glass Frame & Floating Widgets) -->
+           <!-- Side 2: Visual (Dynamic Glass Frame & Floating Widgets) -->
             <div class="hero-image-side animate-fade-in-right" style="animation-delay: 0.3s;">
                 <div class="glass-image-frame">
                     
@@ -137,7 +137,6 @@
                     <!-- Inner glow to blend the image into the glass -->
                     <div class="glass-inner-shadow"></div>
 
-                    <!-- Floating Widget 1: Speed -->
                     <!-- Floating Widget 1: Speed -->
                     <div class="floating-widget widget-speed">
                         <div class="widget-icon">
@@ -151,11 +150,16 @@
                         </div>
                     </div>
 
-                    <!-- Floating Widget 2: Scale -->
+                    <!-- Floating Widget 2: Scale (Upgraded to Financial Trend SVG) -->
                     <div class="floating-widget widget-scale">
-                        <div class="widget-icon">₹</div>
+                        <div class="widget-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px rgba(16,185,129,0.4));">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                                <polyline points="16 7 22 7 22 13"></polyline>
+                            </svg>
+                        </div>
                         <div class="widget-text">
-                            <strong>500Cr+</strong>
+                            <strong>₹500Cr+</strong>
                             <span>Capital Deployed</span>
                         </div>
                     </div>
@@ -297,6 +301,7 @@
         </div>
     </div>
 
+    
 
 <!-- Premium Liquid Glassmorphism Services Section -->
     <section id="services" class="services-section liquid-glass-section">
@@ -1465,6 +1470,41 @@
         </div>
         
     </a>
+
+<!-- =========================================
+         VIP CONCIERGE EXIT NOTIFICATION
+         ========================================= -->
+    <div id="vip-exit-overlay" class="exit-overlay" aria-hidden="true">
+        <div class="concierge-notification">
+            
+            <!-- Close Button -->
+            <button id="close-concierge" class="close-notification" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <div class="concierge-content">
+                <!-- Avatar with Live Dot -->
+                <div class="profile-image-wrapper exit-avatar">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQGBCpVxdJaraQ/profile-displayphoto-scale_400_400/B4DaAY5xF4J0Ag-/0/1787124191964?e=1790208000&v=beta&t=b-92p3DoMToF0uJx-BDXKwFvLMARg6SP6auBAMS-jsM" alt="Jishan Chauhan" class="profile-avatar">
+                    <div class="live-status-dot"></div>
+                </div>
+                
+                <!-- Message -->
+                <div class="concierge-text">
+                    <h3>Jishan Chauhan</h3>
+                    <p>Not ready to commit? Let’s just talk numbers. Skip the waitlist and text me directly on WhatsApp.</p>
+                </div>
+                
+                <!-- Glowing Action Button -->
+                <!-- Replace '919876543210' with your actual WhatsApp number including country code -->
+                <a href="https://wa.me/+919978797002" target="_blank" rel="noopener" class="btn-whatsapp-glow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                    Open WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
+    
 </body>
 </html>
