@@ -10,18 +10,36 @@
 </head>
   <body>
     
-    <!-- Cinematic Detailed SVG Preloader (Retained from previous step) -->
+  <!-- =========================================
+         PREMIUM CINEMATIC PRELOADER
+         ========================================= -->
     <div id="preloader">
+        <!-- Deep premium background with a soft radial glow -->
+        <div class="preloader-glow-bg"></div>
+        
         <div class="preloader-content">
-            <svg class="preloader-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-                <rect class="preloader-bar bar-1" x="4" y="26" width="8" height="14" rx="2" fill="#10B981"/>
-                <rect class="preloader-bar bar-2" x="16" y="16" width="8" height="24" rx="2" fill="#06B6D4"/>
-                <rect class="preloader-bar bar-3" x="28" y="6" width="8" height="34" rx="2" fill="#FFFFFF"/>
-                <path class="preloader-arrow draw-arrow-body" d="M2 32L18 20L26 26L42 12" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path class="preloader-arrow draw-arrow-head" d="M32 12H42V22" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <div class="preloader-text" style="color: #FFF;">Guidance Point</div>
-            <div class="preloader-progress"><div class="progress-bar"></div></div>
+            <div class="preloader-logo-wrapper">
+                <svg class="preloader-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+                    <!-- Chart Bars -->
+                    <rect class="preloader-bar bar-1" x="4" y="26" width="8" height="14" rx="2" fill="#10B981"/>
+                    <rect class="preloader-bar bar-2" x="16" y="16" width="8" height="24" rx="2" fill="#06B6D4"/>
+                    <rect class="preloader-bar bar-3" x="28" y="6" width="8" height="34" rx="2" fill="#FFFFFF"/>
+                    
+                    <!-- Trendline (Changed to Emerald Green for emphasis) -->
+                    <path class="preloader-arrow draw-arrow-body" d="M2 32L18 20L26 26L42 12" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px rgba(16,185,129,0.5));"/>
+                    <path class="preloader-arrow draw-arrow-head" d="M32 12H42V22" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px rgba(16,185,129,0.5));"/>
+                </svg>
+            </div>
+            
+            <div class="preloader-text-wrapper">
+                <div class="preloader-text">Guidance Point<span class="preloader-dot">.</span></div>
+                <div class="preloader-subtext">Capital Architects</div>
+            </div>
+
+            <!-- Sleek Loading Bar -->
+            <div class="preloader-progress-bar">
+                <div class="preloader-progress-fill"></div>
+            </div>
         </div>
     </div>
 
