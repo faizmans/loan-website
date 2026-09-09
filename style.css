@@ -1065,10 +1065,12 @@ body.loaded #preloader {
 /* =========================================
    8. EXPERT-LED ADVISOR & REVIEWS (Apple Premium)
    ========================================= */
+
 .trust-section { 
     padding: 8rem 5%; 
-    background-color: #F5F5F7; /* Shifted to Apple's native light gray */
+    background-color: #F5F5F7; /* Apple's native light gray */
     border-top: 1px solid rgba(0,0,0,0.03); 
+    overflow: hidden; /* Prevents horizontal scroll glitches */
 }
 
 .trust-container { 
@@ -1080,63 +1082,32 @@ body.loaded #preloader {
     align-items: flex-start; 
 }
 
-/* --- Left Column: Advisor Profile --- */
 /* =========================================
-   APPLE-STYLE ADVISOR PROFILE
+   LEFT COLUMN: ADVISOR PROFILE
    ========================================= */
-
-   /* =========================================
-   ADVISOR AVATAR IMAGE
-   ========================================= */
-.profile-image-wrapper {
-    position: relative;
-    width: 65px; 
-    height: 65px;
-    flex-shrink: 0;
-    /* Forces the removal of any old black monogram backgrounds */
-    background: transparent !important; 
-    border-radius: 50%;
-}
-
-.profile-avatar {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover; /* Perfectly crops the image to a circle without stretching */
-    display: block; /* Removes weird browser spacing around images */
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensure the live status dot sits perfectly on the border */
-.live-status-dot {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 14px;
-    height: 14px;
-    background-color: #10B981;
-    border: 2px solid #1D1D1F; /* Matches the dark background for a cutout effect */
-    border-radius: 50%;
-    z-index: 2;
-}
-
 
 .advisor-column {
     position: sticky;
-    top: 120px; /* Keeps it locked on the screen while reviews scroll */
+    top: 120px; /* Locks it on the screen while reviews scroll on desktop */
 }
 
 /* The Main Glass Container */
-.apple-glass-card {
+.apple-glass-card, .tall-executive-card {
     background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(40px) saturate(200%);
     -webkit-backdrop-filter: blur(40px) saturate(200%);
     border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 32px;
-    padding: 3rem 2.5rem;
+    padding: 3.5rem 3rem;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04), 
                 inset 0 1px 0 rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 720px; /* Aligns visually with the scrolling reviews */
+}
+
+.advisor-content-top {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -1154,31 +1125,31 @@ body.loaded #preloader {
     width: 85px;
     height: 85px;
     min-width: 85px;
-    /* Rich Dark Metallic Gradient */
-    background: linear-gradient(135deg, #0B0F19, #1E293B);
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 12px 24px rgba(11, 15, 25, 0.15);
+    flex-shrink: 0;
+    background: transparent !important; 
+    border-radius: 50%;
 }
 
-.profile-monogram {
-    color: #FFFFFF;
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: -1px;
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; 
+    display: block; 
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(11, 15, 25, 0.15);
 }
 
 .live-status-dot {
     position: absolute;
-    bottom: -4px;
-    right: -4px;
-    width: 18px;
-    height: 18px;
-    background: #10B981;
-    border: 4px solid #FFFFFF;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #10B981;
+    border: 3px solid #F5F5F7; /* Matches the background */
     border-radius: 50%;
+    z-index: 2;
     box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
 }
 
@@ -1193,12 +1164,13 @@ body.loaded #preloader {
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 4px;
+    font-weight: 800;
 }
 
 .advisor-firm {
     font-size: 0.9rem;
     font-weight: 800;
-    color: #10B981; /* Emerald Green Accent */
+    color: #10B981; 
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 2px;
@@ -1230,7 +1202,6 @@ body.loaded #preloader {
     font-size: 1.15rem;
     line-height: 1.7;
     font-weight: 500;
-    /* Keeps the text looking sharp */
     -webkit-font-smoothing: antialiased; 
 }
 
@@ -1276,38 +1247,6 @@ body.loaded #preloader {
     background: rgba(0, 0, 0, 0.06);
 }
 
-/* --- Mobile Fixes --- */
-@media (max-width: 900px) {
-    .advisor-column {
-        position: relative;
-        top: 0;
-    }
-    
-    .apple-glass-card {
-        padding: 2.5rem 1.5rem;
-    }
-}
-
-/* =========================================
-   EXECUTIVE TALL CARD EXTENSIONS
-   ========================================= */
-
-/* Make the card match the vertical slider height */
-.tall-executive-card {
-    min-height: 720px; 
-    padding: 3.5rem 3rem; /* Slightly larger padding for a grander feel */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes the top content up and footer down */
-}
-
-/* Groups the top elements so they stay together */
-.advisor-content-top {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-}
-
 /* --- The Executive Footer --- */
 .advisor-footer {
     display: flex;
@@ -1318,14 +1257,8 @@ body.loaded #preloader {
     margin-top: 1rem;
 }
 
-/* Digital Signature Styling */
-.signature-block {
-    display: flex;
-    flex-direction: column;
-}
-
+.signature-block { display: flex; flex-direction: column; }
 .digital-signature {
-    /* Uses a system cursive font to look like a real signature */
     font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
     font-size: 2.4rem;
     color: #1D1D1F;
@@ -1333,7 +1266,6 @@ body.loaded #preloader {
     margin-bottom: 0.3rem;
     opacity: 0.8;
 }
-
 .signature-label {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1342,395 +1274,469 @@ body.loaded #preloader {
     font-weight: 700;
 }
 
-/* Premium Apple-Black Contact Button */
 .btn-executive-contact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background: #1D1D1F;
-    color: #FFFFFF;
-    padding: 1.2rem;
-    border-radius: 18px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    text-decoration: none;
+    display: flex; justify-content: center; align-items: center; gap: 10px;
+    background: #1D1D1F; color: #FFFFFF;
+    padding: 1.2rem; border-radius: 18px;
+    font-size: 1.05rem; font-weight: 700; text-decoration: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
-
-.btn-executive-contact svg {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-}
-
+.btn-executive-contact svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
 .btn-executive-contact:hover {
-    background: #10B981; /* Emerald green on hover */
+    background: #10B981; 
     box-shadow: 0 15px 30px rgba(16, 185, 129, 0.25);
     transform: translateY(-2px);
 }
+.btn-executive-contact:hover svg { transform: translateX(6px); }
 
-.btn-executive-contact:hover svg {
-    transform: translateX(6px);
-}
-
-/* =========================================
-   CLICKABLE MAP LINK
-   ========================================= */
+/* Clickable Map Link */
 .map-link {
-    color: inherit; /* Keeps your original text color */
-    text-decoration: none;
+    color: inherit; text-decoration: none;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
-
 .map-link:hover {
-    color: #10B981; /* Brand emerald green */
+    color: #10B981; 
     text-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
 }
-/* --- Mobile Adjustments --- */
-@media (max-width: 900px) {
-    .tall-executive-card {
-        min-height: auto; /* Removes the fixed height on mobile so it doesn't look stretched */
-        padding: 2.5rem 1.5rem;
-    }
-}
-/* --- Right Column: Reviews Header --- */
+
+
+/* =========================================
+   RIGHT COLUMN: PREMIUM NATIVE CAROUSEL
+   ========================================= */
+
 .reviews-column { 
     display: flex; 
     flex-direction: column; 
-    gap: 2.5rem; 
     position: relative; 
-    padding-bottom: 4rem; 
-}
-
-.reviews-header { margin-bottom: 0.5rem; }
-.reviews-header h3 { font-size: 2.2rem; color: #1D1D1F; letter-spacing: -0.02em; }
-.reviews-header p { color: #86868B; font-size: 1.1rem; }
-
-/* --- Upgraded Apple Glass Review Cards --- */
-.review-card {
-    background: #FFFFFF; 
-    border-radius: 28px; 
-    padding: 3.5rem 3rem; 
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.04); 
-    border: 1px solid rgba(0,0,0,0.03); 
-    transition: transform 0.4s ease, box-shadow 0.4s ease; 
-    
-    /* ADD THESE TWO LINES FOR SMOOTH TEXT */
-    -webkit-font-smoothing: subpixel-antialiased;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.review-card:hover { 
-    transform: translateY(-8px) scale(1.01); 
-    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08); 
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.review-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-.review-stars { display: flex; gap: 4px; }
-.review-stars svg { width: 20px; height: 20px; fill: #F59E0B; }
-
-.verified-badge { 
-    display: flex; 
-    align-items: center; 
-    gap: 6px; 
-    font-size: 0.8rem; 
-    font-weight: 700; 
-    color: var(--color-accent); 
-    background: rgba(16, 185, 129, 0.1); 
-    padding: 0.4rem 0.8rem; 
-    border-radius: 999px; 
-    text-transform: uppercase; 
-    letter-spacing: 0.5px; 
-}
-.verified-badge svg { width: 14px; height: 14px; }
-
-.review-quote { 
-    font-size: 1.25rem; 
-    color: #1D1D1F; 
-    line-height: 1.7; 
-    font-weight: 500; 
-    margin-bottom: 2.5rem; 
-}
-
-.deal-metrics { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
-.metric-tag { 
-    background: rgba(255, 255, 255, 0.5); 
-    border: 1px solid rgba(0, 0, 0, 0.05); 
-    color: #424245; 
-    padding: 0.4rem 0.8rem; 
-    border-radius: 8px; 
-    font-size: 0.75rem; 
-    font-weight: 700; 
-    text-transform: uppercase; 
-    letter-spacing: 0.5px; 
-}
-
-.review-author-wrapper { 
-    display: flex; 
-    align-items: center; 
-    gap: 1.2rem; 
-    padding-top: 1.5rem; 
-    border-top: 1px solid rgba(0,0,0,0.05); 
-}
-
-.reviewer-avatar { 
-    width: 48px; 
-    height: 48px; 
-    border-radius: 14px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-weight: 800; 
-    font-size: 1.1rem; 
-    letter-spacing: -0.5px; 
-}
-
-.avatar-blue { background: #E0F2FE; color: #0284C7; }
-.avatar-gold { background: #FEF3C7; color: #D97706; }
-
-.review-author { display: flex; flex-direction: column; }
-.review-author strong { color: #1D1D1F; font-size: 1.1rem; margin-bottom: 0.2rem; }
-.review-author span { color: #86868B; font-size: 0.9rem; font-weight: 500; }
-
-.reviews-fade-mask { 
-    position: absolute; 
-    bottom: 0; left: 0; width: 100%; height: 300px; 
-    background: linear-gradient(to bottom, rgba(245, 245, 247, 0) 0%, rgba(245, 245, 247, 1) 85%); 
-    display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2rem; z-index: 10; pointer-events: none; 
-}
-
-.btn-glass-reveal { 
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(20px) saturate(180%); 
-    -webkit-backdrop-filter: blur(20px) saturate(180%); 
-    border: 1px solid rgba(255, 255, 255, 1); 
-    padding: 1.2rem 2.5rem; 
-    border-radius: 999px; 
-    font-weight: 700; 
-    font-size: 0.95rem; 
-    color: #1D1D1F; 
-    text-decoration: none; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06); 
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
-    pointer-events: auto; 
-}
-
-.btn-glass-reveal:hover { 
-    background: #FFFFFF; 
-    transform: translateY(-4px) scale(1.02); 
-    box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); 
-    color: var(--color-accent); 
-}
-
-/* =========================================
-   VERTICAL INFINITE GOOGLE REVIEWS
-   ========================================= */
-
-/* The Outer Container */
-.vertical-slider-container {
     width: 100%;
-    /* Responsive height: limits how much of the screen the reviews take up */
-    height: 700px; 
-    max-height: 80vh; 
-    overflow: hidden;
+    min-width: 0; 
+    z-index: 1; /* Establishes a stacking context */
+}
+
+/* --- Ambient Cinematic Lighting --- */
+.ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1; /* Sits completely behind the glass cards */
+    opacity: 0.4;
+    pointer-events: none;
+}
+.glow-emerald {
+    top: 20%; left: 10%;
+    width: 250px; height: 250px;
+    background: #10B981;
+}
+.glow-blue {
+    bottom: 10%; right: 10%;
+    width: 300px; height: 300px;
+    background: #3B82F6;
+}
+
+/* --- Header & Swipe Hint --- */
+.reviews-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.reviews-header { text-align: left; }
+.reviews-header h3 { 
+    font-size: 2.4rem; 
+    color: #1D1D1F; 
+    letter-spacing: -0.02em; 
+    font-weight: 800; 
+    margin-bottom: 0.4rem;
+}
+.reviews-header p { color: #86868B; font-size: 1.15rem; }
+
+.swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #10B981;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+    animation: pulseSwipe 2s infinite ease-in-out;
+}
+
+@keyframes pulseSwipe {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(5px); opacity: 1; }
+}
+
+/* --- Carousel Wrapper & Fades --- */
+.carousel-wrapper {
     position: relative;
-    /* Fades out the top and bottom edges smoothly */
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    width: 100%;
 }
 
-/* The Track that moves */
-.vertical-slider-track {
+.fade-left, .fade-right {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 60px;
+    pointer-events: none;
+    z-index: 10;
+}
+.fade-left { 
+    left: -10px; 
+    background: linear-gradient(to right, #F5F5F7 10%, transparent 100%); 
+}
+.fade-right { 
+    right: -10px; 
+    background: linear-gradient(to left, #F5F5F7 10%, transparent 100%); 
+}
+
+/* --- The Native Snapping Carousel --- */
+.horizontal-review-carousel {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem; /* Space between cards */
-    will-change: transform;
-    animation: scrollVerticalMarquee 40s linear infinite;
-    padding: 1rem 5px; /* Slight horizontal padding so shadows aren't cut off */
+    gap: 2rem;
+    padding: 1rem 1rem 3rem 1rem; /* Extra bottom padding for deep shadows */
+    margin: 0 -1rem; /* Pulls it out so edges bleed perfectly */
+    
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; 
 }
+.horizontal-review-carousel::-webkit-scrollbar { display: none; }
 
-/* Pause the scroll when a user hovers over a review to read it */
-.vertical-slider-container:hover .vertical-slider-track {
-    animation-play-state: paused;
-}
-
-/* Vertical Loop Math: Move exactly 50% up */
-@keyframes scrollVerticalMarquee {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); } /* Half the total height (Group 1 + Group 2) */
-}
-
-/* --- The Google Review Card Styling --- */
+/* --- Ultra-Premium Glass Card Styling --- */
 .google-review-card {
-    background: #FFFFFF;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    /* Subtle gradient to simulate curved glass lighting */
+    background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    
+    border-radius: 32px;
+    padding: 2.5rem;
+    
+    /* Elegant layered shadow for incredible depth */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 
+                inset 0 1px 0 rgba(255, 255, 255, 1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.4); /* Inner glass rim */
+    
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    text-align: left;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    justify-content: space-between;
+    gap: 20px;
+    
+    scroll-snap-align: center;
+    flex: 0 0 85%; 
+    max-width: 440px;
+    
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
 .google-review-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 
+                inset 0 1px 0 rgba(255, 255, 255, 1),
+                inset 0 0 0 1px rgba(16, 185, 129, 0.2); /* Soft emerald glow on the rim */
 }
 
 /* Header Layout */
-.g-review-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.g-review-header { display: flex; align-items: center; gap: 14px; }
+.g-avatar { width: 52px; height: 52px; border-radius: 50%; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; flex-shrink: 0; }
+.g-author-info { display: flex; flex-direction: column; flex-grow: 1; }
+.g-author-name { font-size: 1.15rem; color: #1D1D1F; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 2px;}
+.g-author-meta { font-size: 0.9rem; color: #86868B; line-height: 1.2; font-weight: 600;}
+.g-icon { flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+
+/* Stars and Time */
+.g-review-stars { display: flex; align-items: center; gap: 3px; color: #FBBC04; font-size: 1.3rem; filter: drop-shadow(0 2px 4px rgba(251, 188, 4, 0.3)); }
+.g-time-posted { margin-left: 12px; font-size: 0.9rem; color: #86868B; font-weight: 600;}
+
+/* Review Text */
+.g-review-text { font-size: 1.1rem; color: #424245; line-height: 1.7; font-weight: 500; margin: 0; }
+
+/* Custom Deal Tags */
+.g-deal-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 15px;}
+.g-tag { 
+    background: rgba(16, 185, 129, 0.08); 
+    color: #047857; 
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    font-size: 0.8rem; 
+    font-weight: 700; 
+    padding: 8px 14px; 
+    border-radius: 12px; 
 }
 
-/* Colorful Avatars */
-.g-avatar {
-    width: 40px;
-    height: 40px;
+/* =========================================
+   UNIVERSAL MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .trust-container { gap: 3rem; }
+}
+
+@media (max-width: 900px) {
+    .trust-section { padding: 5rem 5%; }
+    .trust-container { grid-template-columns: 1fr; gap: 3rem; }
+
+    .reviews-header-wrapper { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;}
+    .reviews-header h3 { font-size: 2rem; }
+    
+    /* On mobile, cards snap to the left edge rather than center */
+    .google-review-card {
+        scroll-snap-align: start;
+        flex: 0 0 88%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .google-review-card { padding: 1.8rem 1.5rem; border-radius: 24px;}
+    .g-review-text { font-size: 1rem; }
+    .g-tag { padding: 6px 12px; font-size: 0.75rem;}
+    
+    /* Smaller ambient lights on mobile */
+    .glow-emerald { width: 150px; height: 150px; }
+    .glow-blue { width: 150px; height: 150px; }
+    
+    /* Remove fade edges on small phones to maximize screen space */
+    .fade-left, .fade-right { display: none; }
+}
+/* =========================================
+   9. PREMIUM FAQ ACCORDION (Apple Style)
+   ========================================= */
+
+.faq-section {
+    position: relative;
+    padding: 8rem 5%;
+    background-color: #FAFAFC; /* Premium light grey */
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* --- Cinematic Ambient Lighting --- */
+.faq-ambient-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.faq-glow {
+    position: absolute;
     border-radius: 50%;
-    color: #FFFFFF;
+    filter: blur(100px);
+    opacity: 0.3;
+}
+
+.faq-glow-emerald {
+    top: -10%; right: -5%;
+    width: 600px; height: 600px;
+    background: #10B981;
+}
+
+.faq-glow-dark {
+    bottom: -20%; left: -10%;
+    width: 700px; height: 700px;
+    background: #1D1D1F;
+    opacity: 0.05;
+}
+
+/* --- Layout & Typography --- */
+.faq-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.faq-badge {
+    display: inline-block;
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.faq-header h2 {
+    font-size: 3rem;
+    color: #1D1D1F;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.faq-header p {
+    font-size: 1.25rem;
+    color: #86868B;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- The Accordion Container --- */
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* --- Individual Glass Item --- */
+.apple-accordion {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateZ(0); /* Hardware acceleration */
+}
+
+.apple-accordion:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.apple-accordion.active {
+    background: #FFFFFF;
+    border-color: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 20px 50px rgba(16, 185, 129, 0.08);
+}
+
+/* --- The Interactive Button --- */
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 1.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D1D1F;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+/* --- Animated iOS Cross Icon --- */
+.faq-icon-wrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #F5F5F7;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 600;
     flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Author Info */
-.g-author-info {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+.faq-icon-cross {
+    position: relative;
+    width: 14px;
+    height: 14px;
 }
 
-.g-author-name {
-    font-size: 0.95rem;
-    color: #202124; /* Google's specific dark grey */
-    font-weight: 600;
+.faq-icon-cross::before, .faq-icon-cross::after {
+    content: '';
+    position: absolute;
+    background-color: #1D1D1F;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 2px;
 }
 
-.g-author-meta {
-    font-size: 0.8rem;
-    color: #70757A; /* Google's specific light grey */
-    line-height: 1.2;
+.faq-icon-cross::before {
+    top: 6px; left: 0;
+    width: 14px; height: 2px;
 }
 
-/* The Google G Icon */
-.g-icon {
-    flex-shrink: 0;
+.faq-icon-cross::after {
+    top: 0; left: 6px;
+    width: 2px; height: 14px;
 }
 
-/* Stars and Time */
-.g-review-stars {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    color: #FBBC04; /* Google Star Yellow */
-    font-size: 1.1rem;
+/* Active State Icon Animations */
+.apple-accordion.active .faq-question { color: #10B981; }
+.apple-accordion.active .faq-icon-wrapper { 
+    background: #10B981; 
+    transform: rotate(180deg);
+}
+.apple-accordion.active .faq-icon-cross::before { background-color: #FFFFFF; }
+.apple-accordion.active .faq-icon-cross::after { 
+    background-color: #FFFFFF; 
+    transform: rotate(90deg); /* Turns the Plus into a Minus */
 }
 
-.g-time-posted {
-    margin-left: 8px;
-    font-size: 0.8rem;
-    color: #70757A;
+/* --- Smooth Height Expansion Engine --- */
+.faq-answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr; /* CSS Grid trick for perfect height transitions */
+    transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Review Text */
-.g-review-text {
-    font-size: 0.95rem;
-    color: #3C4043;
-    line-height: 1.5;
-    margin: 0;
-    /* Optional: Clamp text if it gets too long */
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
+.apple-accordion.active .faq-answer-wrapper {
+    grid-template-rows: 1fr;
+}
+
+.faq-answer-content {
     overflow: hidden;
+    padding: 0 2rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, padding 0.4s ease;
 }
 
-/* Custom Deal Tags */
-.g-deal-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 4px;
+.apple-accordion.active .faq-answer-content {
+    padding: 0 2rem 2rem 2rem; /* Adds bottom padding only when open */
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.g-tag {
-    background: #F1F3F4; /* Light grey pill */
-    color: #5F6368;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 999px;
-}
-
-/* --- Mobile Responsiveness --- */
-@media (max-width: 768px) {
-    .vertical-slider-container {
-        height: 550px; /* Slightly shorter on mobile */
-    }
-    
-    .google-review-card {
-        padding: 1.2rem;
-    }
-    
-    .g-author-name { font-size: 0.9rem; }
-    .g-review-text { font-size: 0.9rem; }
-    
-    .g-tag {
-        font-size: 0.7rem;
-        padding: 3px 8px;
-    }
+.faq-answer-content p {
+    color: #515154;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
 }
 
 
 /* =========================================
-   9. CLAYMORPHISM FAQ (Ambient Depth)
+   MOBILE RESPONSIVENESS
    ========================================= */
-.faq-section.clay-bg { padding: 8rem 5%; background-color: #E2E8F0; position: relative; overflow: hidden; z-index: 1; }
-.faq-ambient-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 0; }
-.faq-blob { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.5; animation: ambientDrift 25s infinite alternate ease-in-out; }
-.faq-blob-1 { width: 700px; height: 700px; background: rgba(16, 185, 129, 0.25); top: -20%; right: -10%; }
-.faq-blob-2 { width: 600px; height: 600px; background: rgba(6, 182, 212, 0.2); bottom: -20%; left: -15%; animation-delay: -5s; }
 
-@keyframes ambientDrift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-80px, 60px) scale(1.1); } }
-
-.faq-wrapper { max-width: 850px; margin: 0 auto; }
-.faq-header { text-align: center; margin-bottom: 4rem; }
-.faq-header h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--color-dark); margin-bottom: 1rem; letter-spacing: -0.02em; }
-.faq-header p { color: var(--color-muted); font-size: 1.15rem; font-weight: 500; }
-.faq-accordion { display: flex; flex-direction: column; gap: 1.5rem; }
-
-.clay-faq-item { background-color: #E2E8F0; border-radius: 28px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 10px 10px 20px rgba(148, 163, 184, 0.45), -10px -10px 20px #FFFFFF, inset 4px 4px 10px #FFFFFF, inset -4px -4px 10px rgba(148, 163, 184, 0.2); border: 1px solid rgba(255, 255, 255, 0.5); }
-.clay-faq-item:hover { transform: translateY(-3px); box-shadow: 12px 12px 24px rgba(148, 163, 184, 0.55), -12px -12px 24px #FFFFFF, inset 4px 4px 10px #FFFFFF, inset -4px -4px 10px rgba(148, 163, 184, 0.2); }
-.clay-faq-item.active { transform: scale(1.02); box-shadow: 15px 15px 30px rgba(148, 163, 184, 0.4), -15px -15px 30px #FFFFFF, inset 6px 6px 15px #FFFFFF, inset -6px -6px 15px rgba(148, 163, 184, 0.15); }
-
-.faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 2.5rem; background: transparent; border: none; cursor: pointer; font-family: var(--font-main); text-align: left; outline: none; }
-.faq-question span { font-size: 1.2rem; font-weight: 700; color: var(--color-dark); line-height: 1.4; transition: color 0.3s ease; padding-right: 2rem; }
-.faq-question:hover span, .clay-faq-item.active .faq-question span { color: var(--color-accent); }
-
-.clay-icon { position: relative; width: 44px; height: 44px; min-width: 44px; border-radius: 50%; background: #E2E8F0; box-shadow: inset 5px 5px 10px rgba(148, 163, 184, 0.6), inset -5px -5px 10px #FFFFFF; display: flex; align-items: center; justify-content: center; }
-.clay-icon .horizontal, .clay-icon .vertical { position: absolute; background-color: var(--color-muted); border-radius: 99px; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease; }
-.clay-icon .horizontal { width: 18px; height: 3px; }
-.clay-icon .vertical { width: 3px; height: 18px; }
-.clay-faq-item.active .clay-icon .vertical { transform: rotate(90deg) scale(0.5); opacity: 0; }
-.clay-faq-item.active .clay-icon .horizontal { background-color: var(--color-accent); width: 20px; }
-
-.faq-answer-wrapper { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-.clay-faq-item.active .faq-answer-wrapper { grid-template-rows: 1fr; }
-.faq-answer-content { overflow: hidden; }
-.faq-answer-content p { padding: 0 2.5rem 2rem 2.5rem; color: #475569; font-size: 1.05rem; line-height: 1.7; font-weight: 500; opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; }
-.clay-faq-item.active .faq-answer-content p { opacity: 1; transform: translateY(0); }
-
+@media (max-width: 768px) {
+    .faq-section { padding: 5rem 5%; }
+    .faq-header h2 { font-size: 2.2rem; }
+    .faq-header p { font-size: 1.1rem; }
+    
+    .faq-question {
+        padding: 1.5rem;
+        font-size: 1.1rem;
+        gap: 1rem;
+    }
+    
+    .faq-answer-content { padding: 0 1.5rem; }
+    .apple-accordion.active .faq-answer-content { padding: 0 1.5rem 1.5rem 1.5rem; }
+    .faq-answer-content p { font-size: 1rem; }
+    
+    .faq-glow-emerald { width: 300px; height: 300px; }
+}
 /* =========================================
    10. CALCULATOR (Dark Liquid Glass)
    ========================================= */
