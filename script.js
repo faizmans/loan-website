@@ -84,37 +84,55 @@ document.addEventListener("DOMContentLoaded", () => {
         revealElements.forEach(el => revealObserver.observe(el));
     }
 
-    // =========================================
-    // 6. DYNAMIC STATISTICS COUNTER
+// =========================================
+    // LIVE STATS COUNTER ANIMATION (FIXED)
     // =========================================
     const counters = document.querySelectorAll('.counter');
-    if (counters.length > 0) {
-        const counterObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const targetAttr = entry.target.getAttribute('data-target');
-                    const target = parseFloat(targetAttr);
-                    let count = 0;
-                    
-                    const isFloat = targetAttr.includes('.');
-                    const increment = target / 60; // Smoothness speed
+    
+    // Set up the Intersection Observer
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                
+                counters.forEach(counter => {
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    // Use a total duration of roughly 2 seconds (120 frames)
+                    const frames = 120; 
+                    const inc = target / frames;
+                    let currentCount = 0;
 
                     const updateCount = () => {
-                        count += increment;
-                        if (count < target) {
-                            entry.target.innerText = isFloat ? count.toFixed(1) : Math.ceil(count);
+                        currentCount += inc;
+                        
+                        if (currentCount < target) {
+                            if (target % 1 !== 0) {
+                                // For decimals like 1.2
+                                counter.innerText = currentCount.toFixed(1);
+                            } else {
+                                // For whole numbers like 98 or 40
+                                counter.innerText = Math.ceil(currentCount);
+                            }
                             requestAnimationFrame(updateCount);
                         } else {
-                            entry.target.innerText = target;
+                            // Ensure it finishes on the exact target number
+                            counter.innerText = target;
                         }
                     };
+                    
                     updateCount();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
+                });
+                
+                // Stop observing once it has animated
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.2 // Triggers earlier so it doesn't get missed on mobile
+    });
 
-        counters.forEach(counter => counterObserver.observe(counter));
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
     }
 
     // =========================================
@@ -317,8 +335,124 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
+// =========================================
+    // 12. FOOTER BACK-TO-TOP BUTTON
+    // =========================================
+    const backToTopBtn = document.getElementById('back-to-top');
     
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Stops any default button jumping
+            
+            // Smoothly scroll to the absolute top of the page
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+   // =========================================
+    // INSIGHTS SECTION: BULLETPROOF SVG ANIMATION
+    // =========================================
+    const trendlinePath = document.querySelector('.animated-path');
+    const insightsSection = document.getElementById('insights');
+
+    if (trendlinePath && insightsSection) {
+        // 1. Get the exact length of the curve dynamically
+        const pathLength = trendlinePath.getTotalLength();
+
+        // 2. Hide the line completely on page load
+        trendlinePath.style.strokeDasharray = pathLength;
+        trendlinePath.style.strokeDashoffset = pathLength;
+        
+        // 3. Set up the Apple-style easing transition
+        trendlinePath.style.transition = 'stroke-dashoffset 4s cubic-bezier(0.25, 1, 0.5, 1)';
+
+        // 4. Trigger the draw when scrolled into view
+        const insightsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Delay slightly for dramatic effect, then draw the line
+                    setTimeout(() => {
+                        trendlinePath.style.strokeDashoffset = '0';
+                    }, 300); 
+                    
+                    insightsObserver.unobserve(entry.target); // Only play once
+                }
+            });
+        }, { 
+            threshold: 0.2 // Triggers when 20% of the section is visible
+        });
+
+        insightsObserver.observe(insightsSection);
+    }
+    
+    // =========================================
+    // SECURE FORM SUBMISSION & RESET
+    // =========================================
+    const inquiryForm = document.getElementById('inquiry-form');
+
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop default form redirect
+
+            const submitBtn = inquiryForm.querySelector('.btn-apple-submit');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Change button state to show it's working
+            submitBtn.innerHTML = '<span>Sending Securely...</span>';
+            submitBtn.style.pointerEvents = 'none';
+            submitBtn.style.opacity = '0.7';
+
+            // Gather form data
+            const formData = new FormData(inquiryForm);
+
+            // Send data using Fetch API
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // SUCCESS: Clear the form instantly
+                    inquiryForm.reset();
+                    
+                    // Show success message on button
+                    submitBtn.innerHTML = '<span>Request Received</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                    submitBtn.style.background = '#10B981'; // Turn button green
+                    
+                    // Reset button back to normal after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.background = ''; // Reverts to CSS default
+                        submitBtn.style.pointerEvents = 'auto';
+                        submitBtn.style.opacity = '1';
+                    }, 3000);
+
+                } else {
+                    console.log(response);
+                    submitBtn.innerHTML = '<span>Error - Try Again</span>';
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                submitBtn.innerHTML = '<span>Network Error</span>';
+            })
+            .finally(() => {
+                // Ensure button is clickable again if there's an error
+                if(submitBtn.innerHTML.includes('Error')) {
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.pointerEvents = 'auto';
+                        submitBtn.style.opacity = '1';
+                    }, 3000);
+                }
+            });
+        });
+    }
     // =========================================
     // [FUTURE UPDATES GO HERE]
     // =========================================

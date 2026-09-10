@@ -725,20 +725,165 @@ body.loaded #preloader {
 .animate-fade-in-right { animation: animateFadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 /* =========================================
-   5. MINIMALIST FLOATING STATS
+   3D OVERLAPPING STATS SECTION
    ========================================= */
-.stats-section { position: relative; z-index: 10; margin-top: -80px; padding: 0 5%; }
-.simple-stats-card {
-    background: var(--color-white); border-radius: 24px; display: flex; justify-content: space-evenly; align-items: center; 
-    padding: 3.5rem 2rem; max-width: 1050px; margin: 0 auto;
-    box-shadow: 0 20px 40px rgba(11, 15, 25, 0.06); border: 1px solid rgba(0, 0, 0, 0.02);
+
+.stats-section {
+    position: relative;
+    /* Remove background color so it's fully transparent between sections */
+    background: transparent; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* CRITICAL: Negative margin pulls it UP into the hero section */
+    margin-top: -100px; 
+    
+    /* Pushes it below the hero but above the next section */
+    margin-bottom: 4rem; 
+    z-index: 50; 
+    padding: 0 5%;
 }
 
-.stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; width: 30%; }
-.stat-number { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; color: var(--color-dark); line-height: 1; margin-bottom: 0.5rem; font-variant-numeric: tabular-nums; display: flex; align-items: baseline; justify-content: center; }
-.stat-number .symbol { font-size: clamp(1.5rem, 3vw, 2.5rem); color: var(--color-accent); margin-left: 4px; font-weight: 700; }
-.stat-label { color: var(--color-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; }
-.stat-divider { width: 1px; height: 70px; background-color: rgba(0, 0, 0, 0.06); }
+.stats-container {
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+}
+
+/* --- The 3D Glass Pill --- */
+.stats-glass-pill {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border-radius: 999px;
+    padding: 3rem 5rem;
+    
+    /* THE 3D EFFECT: Layered shadows for depth and a bright top edge for lighting */
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.08),       /* Massive soft shadow below */
+        0 15px 35px rgba(0, 0, 0, 0.03),       /* Mid shadow */
+        inset 0 2px 0 rgba(255, 255, 255, 1),  /* Bright highlight on top rim */
+        inset 0 -2px 10px rgba(0, 0, 0, 0.02); /* Soft shadow on inner bottom rim */
+    
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    
+    /* Hardware acceleration for smooth hover */
+    transform: translateZ(0); 
+}
+
+.stats-glass-pill:hover {
+    transform: translateY(-8px) translateZ(0);
+    box-shadow: 
+        0 50px 100px rgba(0, 0, 0, 0.12), 
+        0 20px 40px rgba(0, 0, 0, 0.04),
+        inset 0 2px 0 rgba(255, 255, 255, 1),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* --- Individual Stat Items --- */
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.08); /* Pops the number up on hover */
+}
+
+/* --- Metallic Text Gradient --- */
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.2rem;
+    line-height: 1;
+    
+    /* Dark emerald metallic gradient */
+    background: linear-gradient(135deg, #1D1D1F 0%, #047857 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.stat-number .symbol {
+    font-size: 2.2rem;
+    margin-left: 2px;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: #86868B;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+
+/* =========================================
+   UNIVERSAL MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 900px) {
+    .stats-glass-pill { padding: 2.5rem 3rem; }
+    .stat-number { font-size: 2.8rem; }
+    .stat-number .symbol { font-size: 1.8rem; }
+}
+
+@media (max-width: 768px) {
+    .stats-section {
+        margin-top: -60px; /* Less dramatic overlap on mobile */
+        margin-bottom: 2rem;
+    }
+    
+    .stats-glass-pill {
+        flex-direction: column;
+        border-radius: 32px;
+        padding: 1.5rem;
+        gap: 1.2rem;
+        
+        /* Remove the overall pill background on mobile to stack cards */
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+
+    .stat-item {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(40px) saturate(200%);
+        -webkit-backdrop-filter: blur(40px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: 24px;
+        padding: 2.5rem 1.5rem;
+        width: 100%;
+        
+        /* Apply 3D shadow to individual cards on mobile */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 
+                    inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+    
+    .stat-divider { display: none; }
+}
 
 /* =========================================
    6. SMOOTH HARDWARE MARQUEE (Ultra-HD Pills)
@@ -1068,15 +1213,18 @@ body.loaded #preloader {
 
 .trust-section { 
     padding: 8rem 5%; 
-    background-color: #F5F5F7; /* Apple's native light gray */
+    background-color: #F5F5F7; 
     border-top: 1px solid rgba(0,0,0,0.03); 
-    overflow: hidden; /* Prevents horizontal scroll glitches */
+    
+    /* Critical: Prevents horizontal scrolling bugs caused by the carousel */
+    overflow: hidden; 
+    position: relative;
 }
 
 .trust-container { 
     display: grid; 
     grid-template-columns: 4.5fr 5.5fr; 
-    gap: 6rem; 
+    gap: 5rem; 
     max-width: 1200px; 
     margin: 0 auto; 
     align-items: flex-start; 
@@ -1088,10 +1236,10 @@ body.loaded #preloader {
 
 .advisor-column {
     position: sticky;
-    top: 120px; /* Locks it on the screen while reviews scroll on desktop */
+    top: 120px; 
+    width: 100%;
 }
 
-/* The Main Glass Container */
 .apple-glass-card, .tall-executive-card {
     background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(40px) saturate(200%);
@@ -1104,201 +1252,45 @@ body.loaded #preloader {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 720px; /* Aligns visually with the scrolling reviews */
-}
-
-.advisor-content-top {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-}
-
-/* --- Header & Avatar --- */
-.advisor-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.profile-image-wrapper {
-    position: relative;
-    width: 85px;
-    height: 85px;
-    min-width: 85px;
-    flex-shrink: 0;
-    background: transparent !important; 
-    border-radius: 50%;
-}
-
-.profile-avatar {
     width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover; 
-    display: block; 
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 24px rgba(11, 15, 25, 0.15);
+    box-sizing: border-box;
 }
 
-.live-status-dot {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 16px;
-    height: 16px;
-    background-color: #10B981;
-    border: 3px solid #F5F5F7; /* Matches the background */
-    border-radius: 50%;
-    z-index: 2;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
-}
+.advisor-content-top { display: flex; flex-direction: column; gap: 2.5rem; }
 
-.advisor-identity {
-    display: flex;
-    flex-direction: column;
-}
+/* Header & Avatar */
+.advisor-header { display: flex; align-items: center; gap: 1.5rem; }
+.profile-image-wrapper { position: relative; width: 85px; height: 85px; min-width: 85px; flex-shrink: 0; border-radius: 50%; }
+.profile-avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 24px rgba(11, 15, 25, 0.15); }
+.live-status-dot { position: absolute; bottom: 2px; right: 2px; width: 16px; height: 16px; background-color: #10B981; border: 3px solid #F5F5F7; border-radius: 50%; z-index: 2; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
 
-.advisor-name {
-    font-size: 1.8rem;
-    color: #1D1D1F;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 4px;
-    font-weight: 800;
-}
+.advisor-identity { display: flex; flex-direction: column; }
+.advisor-name { font-size: 1.8rem; color: #1D1D1F; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 4px; font-weight: 800; }
+.advisor-firm { font-size: 0.9rem; font-weight: 800; color: #10B981; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+.advisor-title { color: #86868B; font-weight: 600; font-size: 0.95rem; }
 
-.advisor-firm {
-    font-size: 0.9rem;
-    font-weight: 800;
-    color: #10B981; 
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 2px;
-}
+/* The Quote */
+.advisor-bio { position: relative; }
+.quote-icon { width: 32px; height: 32px; color: rgba(16, 185, 129, 0.15); position: absolute; top: -15px; left: -15px; z-index: -1; }
+.advisor-bio p { color: #424245; font-size: 1.15rem; line-height: 1.7; font-weight: 500; -webkit-font-smoothing: antialiased; }
 
-.advisor-title {
-    color: #86868B;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
+/* iOS Widget Style Metrics */
+.ios-widget { background: rgba(255, 255, 255, 0.85); border-radius: 24px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02), inset 0 0 0 1px rgba(0, 0, 0, 0.03); width: 100%; box-sizing: border-box; }
+.metric { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; }
+.metric-val { font-size: 1.4rem; font-weight: 800; color: #1D1D1F; letter-spacing: -0.02em; margin-bottom: 2px; }
+.metric-label { font-size: 0.75rem; color: #86868B; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+.metric-divider { width: 1px; height: 35px; background: rgba(0, 0, 0, 0.06); }
 
-/* --- The Quote --- */
-.advisor-bio {
-    position: relative;
-}
-
-.quote-icon {
-    width: 32px;
-    height: 32px;
-    color: rgba(16, 185, 129, 0.15);
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    z-index: -1;
-}
-
-.advisor-bio p {
-    color: #424245;
-    font-size: 1.15rem;
-    line-height: 1.7;
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased; 
-}
-
-/* --- iOS Widget Style Metrics --- */
-.ios-widget {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 24px;
-    padding: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02),
-                inset 0 0 0 1px rgba(0, 0, 0, 0.03);
-}
-
-.metric {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 1;
-}
-
-.metric-val {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #1D1D1F;
-    letter-spacing: -0.02em;
-    margin-bottom: 2px;
-}
-
-.metric-label {
-    font-size: 0.75rem;
-    color: #86868B;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 700;
-}
-
-.metric-divider {
-    width: 1px;
-    height: 35px;
-    background: rgba(0, 0, 0, 0.06);
-}
-
-/* --- The Executive Footer --- */
-.advisor-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding-top: 2.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    margin-top: 1rem;
-}
-
+/* The Executive Footer */
+.advisor-footer { display: flex; flex-direction: column; gap: 2rem; padding-top: 2.5rem; border-top: 1px solid rgba(0, 0, 0, 0.08); margin-top: 1rem; }
 .signature-block { display: flex; flex-direction: column; }
-.digital-signature {
-    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
-    font-size: 2.4rem;
-    color: #1D1D1F;
-    line-height: 1;
-    margin-bottom: 0.3rem;
-    opacity: 0.8;
-}
-.signature-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #86868B;
-    font-weight: 700;
-}
+.digital-signature { font-family: 'Brush Script MT', 'Lucida Handwriting', cursive; font-size: 2.4rem; color: #1D1D1F; line-height: 1; margin-bottom: 0.3rem; opacity: 0.8; }
+.signature-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #86868B; font-weight: 700; }
 
-.btn-executive-contact {
-    display: flex; justify-content: center; align-items: center; gap: 10px;
-    background: #1D1D1F; color: #FFFFFF;
-    padding: 1.2rem; border-radius: 18px;
-    font-size: 1.05rem; font-weight: 700; text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
+.btn-executive-contact { display: flex; justify-content: center; align-items: center; gap: 10px; background: #1D1D1F; color: #FFFFFF; padding: 1.2rem; border-radius: 18px; font-size: 1.05rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); width: 100%; box-sizing: border-box; }
 .btn-executive-contact svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
-.btn-executive-contact:hover {
-    background: #10B981; 
-    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.25);
-    transform: translateY(-2px);
-}
+.btn-executive-contact:hover { background: #10B981; box-shadow: 0 15px 30px rgba(16, 185, 129, 0.25); transform: translateY(-2px); }
 .btn-executive-contact:hover svg { transform: translateX(6px); }
-
-/* Clickable Map Link */
-.map-link {
-    color: inherit; text-decoration: none;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.map-link:hover {
-    color: #10B981; 
-    text-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
-}
 
 
 /* =========================================
@@ -1309,199 +1301,197 @@ body.loaded #preloader {
     display: flex; 
     flex-direction: column; 
     position: relative; 
+    
+    /* Critical constraint to prevent blowing out the grid */
     width: 100%;
     min-width: 0; 
-    z-index: 1; /* Establishes a stacking context */
+    max-width: 100%;
+    z-index: 1; 
 }
 
-/* --- Ambient Cinematic Lighting --- */
-.ambient-glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    z-index: -1; /* Sits completely behind the glass cards */
-    opacity: 0.4;
-    pointer-events: none;
-}
-.glow-emerald {
-    top: 20%; left: 10%;
-    width: 250px; height: 250px;
-    background: #10B981;
-}
-.glow-blue {
-    bottom: 10%; right: 10%;
-    width: 300px; height: 300px;
-    background: #3B82F6;
-}
+/* Ambient Cinematic Lighting */
+.ambient-glow { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.4; pointer-events: none; }
+.glow-emerald { top: 20%; left: 10%; width: 250px; height: 250px; background: #10B981; }
+.glow-blue { bottom: 10%; right: 10%; width: 300px; height: 300px; background: #3B82F6; }
 
-/* --- Header & Swipe Hint --- */
-.reviews-header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 2.5rem;
-}
-
+/* Header & Swipe Hint */
+.reviews-header-wrapper { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
 .reviews-header { text-align: left; }
-.reviews-header h3 { 
-    font-size: 2.4rem; 
-    color: #1D1D1F; 
-    letter-spacing: -0.02em; 
-    font-weight: 800; 
-    margin-bottom: 0.4rem;
-}
+.reviews-header h3 { font-size: 2.4rem; color: #1D1D1F; letter-spacing: -0.02em; font-weight: 800; margin-bottom: 0.4rem; }
 .reviews-header p { color: #86868B; font-size: 1.15rem; }
 
-.swipe-hint {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #10B981;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.5rem;
-    opacity: 0.8;
-    animation: pulseSwipe 2s infinite ease-in-out;
-}
+.swipe-hint { display: flex; align-items: center; gap: 6px; color: #10B981; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; opacity: 0.8; animation: pulseSwipe 2s infinite ease-in-out; }
+@keyframes pulseSwipe { 0%, 100% { transform: translateX(0); opacity: 0.6; } 50% { transform: translateX(5px); opacity: 1; } }
 
-@keyframes pulseSwipe {
-    0%, 100% { transform: translateX(0); opacity: 0.6; }
-    50% { transform: translateX(5px); opacity: 1; }
-}
+/* Carousel Wrapper & Fades */
+.carousel-wrapper { position: relative; width: 100%; max-width: 100%; }
+.fade-left, .fade-right { position: absolute; top: 0; bottom: 0; width: 60px; pointer-events: none; z-index: 10; }
+.fade-left { left: -5px; background: linear-gradient(to right, #F5F5F7 10%, transparent 100%); }
+.fade-right { right: -5px; background: linear-gradient(to left, #F5F5F7 10%, transparent 100%); }
 
-/* --- Carousel Wrapper & Fades --- */
-.carousel-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.fade-left, .fade-right {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 60px;
-    pointer-events: none;
-    z-index: 10;
-}
-.fade-left { 
-    left: -10px; 
-    background: linear-gradient(to right, #F5F5F7 10%, transparent 100%); 
-}
-.fade-right { 
-    right: -10px; 
-    background: linear-gradient(to left, #F5F5F7 10%, transparent 100%); 
-}
-
-/* --- The Native Snapping Carousel --- */
+/* The Native Snapping Carousel */
 .horizontal-review-carousel {
     display: flex;
     gap: 2rem;
-    padding: 1rem 1rem 3rem 1rem; /* Extra bottom padding for deep shadows */
-    margin: 0 -1rem; /* Pulls it out so edges bleed perfectly */
+    padding: 1rem 1rem 3rem 1rem; 
+    margin: 0; /* Removed negative margins to stop horizontal overflow */
     
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; 
     scroll-snap-type: x mandatory;
     scrollbar-width: none; 
+    
+    /* Ensures the track stays inside the bounds */
+    width: 100%;
+    box-sizing: border-box;
 }
 .horizontal-review-carousel::-webkit-scrollbar { display: none; }
 
-/* --- Ultra-Premium Glass Card Styling --- */
+/* Ultra-Premium Glass Card Styling */
 .google-review-card {
-    /* Subtle gradient to simulate curved glass lighting */
     background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
     backdrop-filter: blur(40px) saturate(200%);
     -webkit-backdrop-filter: blur(40px) saturate(200%);
-    
     border-radius: 32px;
     padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 0 1px rgba(255, 255, 255, 0.4); 
     
-    /* Elegant layered shadow for incredible depth */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 
-                inset 0 1px 0 rgba(255, 255, 255, 1),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.4); /* Inner glass rim */
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 20px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
     
     scroll-snap-align: center;
+    
+    /* Critical constraint to fit the cards nicely inside the view */
     flex: 0 0 85%; 
+    min-width: 320px; 
     max-width: 440px;
     
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
+.google-review-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 0 1px rgba(16, 185, 129, 0.2); }
 
-.google-review-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 
-                inset 0 1px 0 rgba(255, 255, 255, 1),
-                inset 0 0 0 1px rgba(16, 185, 129, 0.2); /* Soft emerald glow on the rim */
-}
-
-/* Header Layout */
+/* Review Inner Content */
 .g-review-header { display: flex; align-items: center; gap: 14px; }
 .g-avatar { width: 52px; height: 52px; border-radius: 50%; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; flex-shrink: 0; }
 .g-author-info { display: flex; flex-direction: column; flex-grow: 1; }
-.g-author-name { font-size: 1.15rem; color: #1D1D1F; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 2px;}
+.g-author-name { font-size: 1.15rem; color: #1D1D1F; font-weight: 800; margin-bottom: 2px;}
 .g-author-meta { font-size: 0.9rem; color: #86868B; line-height: 1.2; font-weight: 600;}
 .g-icon { flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
 
-/* Stars and Time */
-.g-review-stars { display: flex; align-items: center; gap: 3px; color: #FBBC04; font-size: 1.3rem; filter: drop-shadow(0 2px 4px rgba(251, 188, 4, 0.3)); }
+.g-review-stars { display: flex; align-items: center; gap: 3px; color: #FBBC04; font-size: 1.3rem; }
 .g-time-posted { margin-left: 12px; font-size: 0.9rem; color: #86868B; font-weight: 600;}
-
-/* Review Text */
 .g-review-text { font-size: 1.1rem; color: #424245; line-height: 1.7; font-weight: 500; margin: 0; }
 
-/* Custom Deal Tags */
 .g-deal-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 15px;}
-.g-tag { 
-    background: rgba(16, 185, 129, 0.08); 
-    color: #047857; 
-    border: 1px solid rgba(16, 185, 129, 0.15);
-    font-size: 0.8rem; 
-    font-weight: 700; 
-    padding: 8px 14px; 
-    border-radius: 12px; 
+.g-tag { background: rgba(16, 185, 129, 0.08); color: #047857; border: 1px solid rgba(16, 185, 129, 0.15); font-size: 0.8rem; font-weight: 700; padding: 8px 14px; border-radius: 12px; }
+
+
+/* =========================================
+   CRITICAL BUG FIX: PREVENT MOBILE SHIFTING
+   ========================================= */
+
+/* 1. Lock the entire page from sliding horizontally */
+html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    position: relative;
+}
+
+/* 2. Lock the Trust Section and container boundaries */
+.trust-section {
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+}
+
+.trust-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* 3. Ensure the Glass Card perfectly respects the screen size */
+.apple-glass-card, .tall-executive-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 /* =========================================
-   UNIVERSAL MOBILE RESPONSIVENESS
+   MOBILE CENTERING & ALIGNMENT (Max 900px)
    ========================================= */
-
-@media (max-width: 1024px) {
-    .trust-container { gap: 3rem; }
-}
-
 @media (max-width: 900px) {
-    .trust-section { padding: 5rem 5%; }
-    .trust-container { grid-template-columns: 1fr; gap: 3rem; }
-
-    .reviews-header-wrapper { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;}
-    .reviews-header h3 { font-size: 2rem; }
-    
-    /* On mobile, cards snap to the left edge rather than center */
-    .google-review-card {
-        scroll-snap-align: start;
-        flex: 0 0 88%; 
+    /* Restore safe padding around the card */
+    .trust-section { 
+        padding: 5rem 5% !important; 
     }
-}
+    
+    .apple-glass-card {
+        padding: 2.5rem 1.5rem !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
 
-@media (max-width: 480px) {
-    .google-review-card { padding: 1.8rem 1.5rem; border-radius: 24px;}
-    .g-review-text { font-size: 1rem; }
-    .g-tag { padding: 6px 12px; font-size: 0.75rem;}
+    /* Force the Avatar and Name into the center */
+    .advisor-header { 
+        flex-direction: column !important; 
+        align-items: center !important; 
+        justify-content: center !important;
+        width: 100%;
+        gap: 1rem; 
+    }
+
+    .advisor-identity {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    /* Fix the Quote Icon so it doesn't fly off to the left */
+    .advisor-bio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .quote-icon {
+        position: static !important; 
+        display: block;
+        margin: 0 auto 1rem auto !important; 
+    }
+
+    /* Center the Metrics Grid */
+    .ios-widget {
+        justify-content: center !important;
+        gap: 0.5rem;
+    }
+
+    /* Center the Signature and Button */
+    .advisor-footer {
+        align-items: center !important;
+        width: 100%;
+    }
     
-    /* Smaller ambient lights on mobile */
-    .glow-emerald { width: 150px; height: 150px; }
-    .glow-blue { width: 150px; height: 150px; }
+    .signature-block {
+        align-items: center !important;
+        text-align: center;
+    }
+
+    /* Fix the Carousel so it stops stretching the page */
+    .horizontal-review-carousel {
+        margin: 0 !important; /* Removes negative margins on mobile */
+        width: 100%;
+        box-sizing: border-box;
+    }
     
-    /* Remove fade edges on small phones to maximize screen space */
-    .fade-left, .fade-right { display: none; }
+    /* Ensure ambient glows don't break the screen width */
+    .glow-emerald, .glow-blue {
+        max-width: 100vw;
+        overflow: hidden;
+    }
 }
 /* =========================================
    9. PREMIUM FAQ ACCORDION (Apple Style)
@@ -1737,6 +1727,245 @@ body.loaded #preloader {
     
     .faq-glow-emerald { width: 300px; height: 300px; }
 }
+
+/* =========================================
+   14. DYNAMIC ISLAND MARKET DASHBOARD
+   ========================================= */
+
+.market-dashboard-section {
+    padding: 3rem 5% 5rem 5%;
+    background-color: #F5F5F7;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    overflow: hidden; /* Strict viewport lock */
+}
+
+/* --- The Main Container --- */
+.market-pill-container {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 999px; /* Perfect pill shape */
+    padding: 12px 12px 12px 24px;
+    
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    
+    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box; 
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+                
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* --- Dynamic Island Badge --- */
+.dynamic-island-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures content is always centered */
+    gap: 10px;
+    background: #1D1D1F; 
+    padding: 10px 20px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Bulletproof Centered Green Dot */
+.live-ring {
+    width: 8px;
+    height: 8px;
+    min-width: 8px; /* Prevents flex from squishing the dot */
+    background-color: #10B981;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* Bulletproof Centered Radar Ping */
+.live-ring::after {
+    content: '';
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    width: 20px; 
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #10B981;
+    /* translate(-50%, -50%) forces mathematical dead-center */
+    animation: radarPing 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes radarPing {
+    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+}
+
+.live-text {
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+/* --- Infinite Scrolling Window --- */
+.rates-scroll-window {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    min-width: 0; /* CRITICAL FIX: Stops track from breaking flexbox width */
+    
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.rates-track {
+    display: flex;
+    width: max-content;
+    animation: infiniteScroll 25s linear infinite;
+}
+
+.rates-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes infiniteScroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.rate-group {
+    display: flex;
+    align-items: center;
+}
+
+/* --- Individual Rate Cards --- */
+.market-rate-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 16px;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.market-rate-card:hover {
+    background: rgba(0, 0, 0, 0.03);
+    transform: scale(1.02);
+}
+
+.rate-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rate-name {
+    font-size: 0.75rem;
+    color: #86868B;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rate-number {
+    font-size: 1.2rem;
+    color: #1D1D1F;
+    font-weight: 800;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+
+/* --- Trend Badges --- */
+.trend-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trend-badge svg { width: 14px; height: 14px; }
+.trend-good { background: rgba(16, 185, 129, 0.1); color: #10B981; }
+.trend-neutral { background: rgba(134, 134, 139, 0.1); color: #86868B; }
+
+.rate-spacer {
+    width: 1px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.08);
+    margin: 0 15px;
+}
+
+
+/* =========================================
+   UNIVERSAL MOBILE RESPONSIVENESS (FIXED)
+   ========================================= */
+
+@media (max-width: 768px) {
+    .market-dashboard-section { 
+        padding: 2rem 5% 4rem 5%; 
+    }
+    
+    .market-pill-container {
+        flex-direction: row; 
+        padding: 8px 8px 8px 12px;
+        gap: 12px;
+    }
+    
+    .dynamic-island-badge {
+        /* Collapses badge to a perfect black circle */
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        padding: 0;
+        gap: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Locks the green dot in the center */
+        overflow: hidden;
+    }
+    
+    .live-text { 
+        display: none; 
+    }
+    
+    .rates-scroll-window {
+        flex: 1;
+        min-width: 0;
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+    
+    .market-rate-card { 
+        padding: 4px 10px; 
+        gap: 10px; 
+    }
+    
+    .rate-name { font-size: 0.65rem; }
+    .rate-number { font-size: 1rem; }
+    
+    .trend-badge { width: 24px; height: 24px; }
+    .trend-badge svg { width: 12px; height: 12px; }
+    
+    .rate-spacer { margin: 0 10px; }
+}
+
 /* =========================================
    10. CALCULATOR (Dark Liquid Glass)
    ========================================= */
@@ -1783,67 +2012,638 @@ body.loaded #preloader {
 .interest-fill { height: 100%; background-color: var(--color-accent); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 
 /* =========================================
-   11. CONTACT FORM (Apple Glassmorphism)
+   11. PREMIUM CONTACT SECTION (Apple Style)
    ========================================= */
-.apple-glass-section { position: relative; padding: 8rem 5%; background-color: #F5F5F7; border-top: 1px solid rgba(0, 0, 0, 0.05); overflow: hidden; }
-.contact-bg-glow { position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; z-index: 1; }
-.glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.6; animation: drift 20s infinite alternate ease-in-out; }
-.orb-1 { width: 600px; height: 600px; background: var(--color-accent); top: -10%; left: -10%; }
-.orb-2 { width: 500px; height: 500px; background: #06B6D4; bottom: -20%; right: 10%; animation-delay: -5s; }
 
-.contact-container { max-width: 1100px; margin: 0 auto; }
-.apple-header { text-align: center; margin-bottom: 5rem; }
-.apple-header h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--color-dark); margin-bottom: 1rem; letter-spacing: -0.02em; }
-.apple-header p { color: var(--color-muted); font-size: 1.15rem; font-weight: 500; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+.contact-section {
+    position: relative;
+    padding: 8rem 5%;
+    background-color: #FAFAFC;
+    overflow: hidden;
+    z-index: 1;
+}
 
-.apple-grid { display: grid; grid-template-columns: 3.5fr 6.5fr; gap: 3rem; }
-.glass-card { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border: 1px solid rgba(255, 255, 255, 1); border-radius: 32px; padding: 3.5rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05); }
+/* --- Abstract Glowing Background --- */
+.contact-bg-glow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
 
-.info-card { display: flex; flex-direction: column; justify-content: center; }
-.info-details { display: flex; flex-direction: column; gap: 3rem; }
-.info-item { display: flex; align-items: center; gap: 1.5rem; }
-.glass-icon-wrapper { width: 56px; height: 56px; border-radius: 16px; background: #FFFFFF; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06); display: flex; align-items: center; justify-content: center; color: var(--color-accent); }
-.glass-icon-wrapper svg { width: 24px; height: 24px; }
-.info-text strong { display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted); font-weight: 700; margin-bottom: 0.3rem; }
-.info-text span { font-size: 1.15rem; font-weight: 800; color: var(--color-dark); }
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+}
 
-.apple-form { display: flex; flex-direction: column; gap: 1.8rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
-.input-group-glass { position: relative; }
-.glass-input { width: 100%; padding: 1.8rem 1.2rem 0.7rem 1.2rem; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 16px; font-family: var(--font-main); font-size: 1.1rem; font-weight: 600; color: var(--color-dark); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); outline: none; }
-.glass-input:focus { background: #FFFFFF; border-color: var(--color-accent); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); }
-select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-appearance: none; }
+.orb-1 {
+    top: -10%; left: -5%;
+    width: 600px; height: 600px;
+    background: #3B82F6; /* Soft Apple Blue */
+}
 
-.input-group-glass label { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--color-muted); font-size: 1.05rem; font-weight: 500; pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-.glass-input:focus ~ label, .glass-input:not(:placeholder-shown) ~ label { top: 1.1rem; font-size: 0.75rem; font-weight: 800; color: var(--color-accent); letter-spacing: 0.5px; text-transform: uppercase; }
+.orb-2 {
+    bottom: -10%; right: -5%;
+    width: 700px; height: 700px;
+    background: #10B981; /* Emerald */
+    opacity: 0.2;
+}
 
-.btn-apple-submit { display: inline-flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background: var(--color-dark); color: var(--color-white); padding: 1.2rem; border: none; border-radius: 16px; font-size: 1.15rem; font-weight: 700; font-family: var(--font-main); cursor: pointer; margin-top: 1rem; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+/* --- Layout & Typography --- */
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.apple-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.contact-badge {
+    display: inline-block;
+    color: #3B82F6;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.apple-header h2 {
+    font-size: 3rem;
+    color: #1D1D1F;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.apple-header p {
+    font-size: 1.25rem;
+    color: #86868B;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- The Grid --- */
+.apple-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr; /* Right side gets more space */
+    gap: 2.5rem;
+    align-items: stretch;
+}
+
+/* --- Glass Cards --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 32px;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* --- Left Side: Info Card --- */
+.info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-intro h3 {
+    font-size: 1.8rem;
+    color: #1D1D1F;
+    margin-bottom: 0.5rem;
+}
+
+.info-intro p {
+    color: #515154;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.glass-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    color: #10B981;
+}
+
+.glass-icon-wrapper svg { width: 20px; height: 20px; }
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-text strong {
+    font-size: 0.9rem;
+    color: #86868B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-text a, .info-text span {
+    font-size: 1.15rem;
+    color: #1D1D1F;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.info-text a:hover { color: #10B981; }
+
+/* Trust Graphics */
+.contact-trust-graphic {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.trust-pill {
+    background: rgba(29, 29, 31, 0.04);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1D1D1F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #10B981;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* --- Right Side: The Form --- */
+.apple-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Stops inputs from breaking grid */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.input-group-glass {
+    position: relative;
+    width: 100%;
+}
+
+/* Premium Inputs */
+.glass-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: 1.2rem 1rem;
+    font-size: 1.05rem;
+    color: #1D1D1F;
+    box-sizing: border-box; /* CRITICAL for mobile */
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+}
+
+.glass-input:focus {
+    outline: none;
+    background: #FFFFFF;
+    border-color: #10B981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+/* Floating Labels Magic */
+.input-group-glass label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #86868B;
+    font-size: 1.05rem;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Float logic */
+.glass-input:focus ~ label,
+.glass-input:not(:placeholder-shown) ~ label {
+    top: -10px;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #10B981;
+    background: #FAFAFC;
+    padding: 0 8px;
+    border-radius: 4px;
+}
+
+/* Custom Select styling to hide original text */
+.custom-select {
+    color: #86868B;
+}
+.custom-select:focus, .custom-select:valid {
+    color: #1D1D1F;
+}
+
+/* The Submit Button */
+.btn-apple-submit {
+    display: flex; justify-content: center; align-items: center; gap: 10px;
+    background: #1D1D1F; color: #FFFFFF;
+    padding: 1.3rem; border-radius: 16px;
+    font-size: 1.1rem; font-weight: 700; border: none; cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: 0.5rem;
+}
 .btn-apple-submit svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
-.btn-apple-submit:hover { background: var(--color-accent); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.25); transform: translateY(-2px); }
+.btn-apple-submit:hover { background: #10B981; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.25); }
 .btn-apple-submit:hover svg { transform: translateX(6px); }
-.form-disclaimer { text-align: center; font-size: 0.85rem; color: var(--color-muted); margin-top: 0.5rem; font-weight: 500; }
+
+/* Form Footer */
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+    color: #10B981;
+}
+
+.form-disclaimer {
+    color: #86868B;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+}
+
 
 /* =========================================
-   12. APPLE PREMIUM FOOTER
+   UNIVERSAL MOBILE RESPONSIVENESS FIX
    ========================================= */
-.apple-footer { background-color: #F5F5F7; color: #1D1D1F; padding: 5rem 5% 2rem; font-family: var(--font-main); }
-.footer-container { max-width: 1200px; margin: 0 auto; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
-.footer-col .dark-logo { color: #1D1D1F; margin-bottom: 1rem; }
-.footer-desc { color: #86868B; font-size: 0.9rem; line-height: 1.6; max-width: 320px; }
-.footer-col h4 { font-size: 0.85rem; font-weight: 700; color: #1D1D1F; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.footer-col ul { list-style: none; padding: 0; }
-.footer-col ul li { margin-bottom: 0.75rem; }
-.footer-col ul li a, .footer-col ul li .contact-link { color: #86868B; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
-.footer-col ul li a:hover { color: #1D1D1F; text-decoration: underline; }
-.footer-col .address { color: #86868B; font-size: 0.9rem; line-height: 1.5; margin-top: 1.5rem; }
-.footer-divider { height: 1px; background-color: #D2D2D7; margin: 2rem 0; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #86868B; font-size: 0.8rem; margin-bottom: 1.5rem; }
-.legal-links { display: flex; gap: 0.5rem; align-items: center; }
-.legal-links a { color: #86868B; text-decoration: none; transition: color 0.2s ease; }
+
+@media (max-width: 1024px) {
+    .apple-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+    .contact-section { padding: 5rem 5%; }
+    .apple-header h2 { font-size: 2.2rem; }
+    
+    /* Safely stack the form rows on mobile */
+    .form-row { grid-template-columns: 1fr; gap: 1.5rem;}
+    
+    /* Mobile padding for cards */
+    .glass-card { padding: 2rem 1.5rem; }
+    
+    .info-intro h3 { font-size: 1.5rem; }
+    .info-intro p { font-size: 0.95rem; margin-bottom: 2rem; }
+    
+    .orb-1, .orb-2 { width: 300px; height: 300px; }
+}
+
+   /* =========================================
+   11. PREMIUM APPLE-STYLE FOOTER (LIGHT THEME)
+   ========================================= */
+
+.apple-footer-light {
+    background-color: #F5F5F7; /* Apple's signature light gray */
+    color: #1D1D1F;
+    padding: 6rem 5% 4rem 5%;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, 0.04); /* Crisp, subtle border */
+    -webkit-font-smoothing: antialiased;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* --- Top Grid Layout --- */
+.footer-grid {
+    display: grid;
+    /* Flawless desktop proportion */
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+/* --- Column 1: Brand --- */
+.brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1D1D1F;
+    letter-spacing: -0.02em;
+}
+.footer-logo .dot { color: #10B981; }
+
+.footer-desc {
+    color: #515154;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 95%;
+}
+
+/* --- Social Links (Perfect Centering Fix) --- */
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap; 
+}
+
+@media (max-width: 768px) {
+    .footer-social {
+        justify-content: center;
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+}
+
+.footer-social a {
+    display: grid !important;
+    place-items: center !important;
+    
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    
+    padding: 0 !important; 
+    line-height: 0;
+    
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+    color: #1D1D1F;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.3s ease, 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: #10B981 !important;
+    border-color: #10B981 !important;
+    -webkit-transform: translateY(-4px) translateZ(0);
+    transform: translateY(-4px) translateZ(0);
+    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.25);
+}
+
+.footer-social a:hover svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+.footer-social svg { 
+    width: 18px !important; 
+    height: 18px !important; 
+    display: block !important;
+    margin: 0 !important; 
+    padding: 0 !important;
+    position: static !important;
+    transition: stroke 0.3s ease, color 0.3s ease;
+}
+
+/* --- Columns 2, 3 & 4: Links --- */
+.footer-col h4 {
+    color: #1D1D1F;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    opacity: 0.9;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.footer-col a {
+    color: #515154;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-col a:hover {
+    color: #10B981;
+    transform: translateX(4px); /* Apple-style subtle nudge */
+}
+
+/* Contact Links specifically */
+.contact-link, .map-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.contact-link svg, .map-link svg {
+    margin-top: 3px;
+    flex-shrink: 0;
+    color: #10B981;
+}
+
+.map-link span { line-height: 1.5; }
+
+/* --- Dividers & Bottom Area --- */
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08); /* Dark divider for light theme */
+    margin-bottom: 2rem;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.copyright {
+    color: #86868B;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.legal-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.legal-links a {
+    color: #86868B;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
 .legal-links a:hover { color: #1D1D1F; }
-.legal-links .separator { color: #D2D2D7; }
-.footer-disclaimer { color: #A1A1A6; font-size: 0.75rem; line-height: 1.5; text-align: left; }
+
+/* Back to Top Button */
+.back-to-top {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #1D1D1F;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-to-top:hover {
+    background: #10B981;
+    border-color: #10B981;
+    color: #FFFFFF;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+}
+
+/* --- Premium Light Glass Disclaimer --- */
+.footer-disclaimer {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.footer-disclaimer p {
+    color: #86868B;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   UNIVERSAL MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 1024px) {
+    /* 2x2 Grid for Tablets */
+    .footer-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Safely clear any floating WhatsApp widgets on mobile */
+    .apple-footer-light { 
+        padding: 4rem 5% 8rem 5%; 
+    }
+    
+    /* Perfect single column stack */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+    
+    .brand-col { align-items: flex-start; text-align: left; }
+    .footer-desc { max-width: 100%; font-size: 1rem;}
+    
+   .footer-bottom {
+        position: relative;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+    }
+    
+    /* 2. Prevent copyright text from running into the button */
+    .copyright { 
+        max-width: 80%; 
+        padding-right: 1rem;
+    }
+    
+    /* 3. Lock the button to the top-right of this specific container */
+    .back-to-top {
+        position: absolute;
+        top: -5px; /* Aligns perfectly with the first line of text */
+        right: 0;
+        margin: 0;
+    }
+    
+    .footer-disclaimer { text-align: left; padding: 1.5rem; }
+}
 
 /* =========================================
    15. VIP DIRECT WHATSAPP CHANNEL
@@ -2006,190 +2806,6 @@ select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-a
 }
 
 
-/* =========================================
-   APPLE-STYLE MARKET DASHBOARD
-   ========================================= */
-
-.market-dashboard-section {
-    padding: 6rem 5% 4rem;
-    background-color: var(--color-light); 
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 15;
-}
-
-/* The true Apple Frosted Glass Pill */
-.market-pill-container {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(40px) saturate(200%);
-    -webkit-backdrop-filter: blur(40px) saturate(200%);
-    
-    /* Complex layered borders and shadows for physical depth */
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.04), 
-        inset 0 1px 0 rgba(255,255,255,1);
-        
-    border-radius: 999px;
-    padding: 0.5rem;
-    max-width: 1150px;
-    width: 100%;
-    overflow: hidden;
-}
-
-/* --- Dynamic Island-style Live Badge --- */
-.dynamic-island-badge {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    
-    /* Rich, translucent dark mode look */
-    background: rgba(20, 20, 22, 0.85); 
-    backdrop-filter: blur(20px);
-    
-    padding: 0.9rem 1.8rem;
-    border-radius: 999px;
-    z-index: 2;
-    
-    /* Subtle inner highlight to make it look like carved glass */
-    box-shadow: inset 0 1px 1px rgba(255,255,255,0.15), 0 4px 15px rgba(0,0,0,0.1); 
-    margin-right: 0.5rem;
-}
-
-.live-ring {
-    width: 8px;
-    height: 8px;
-    background-color: #34D399; /* Apple's brighter system green */
-    border-radius: 50%;
-    position: relative;
-    box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
-}
-
-.live-ring::before {
-    content: '';
-    position: absolute;
-    top: -4px; left: -4px;
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background-color: rgba(52, 211, 153, 0.3);
-    animation: radarPulse 2s infinite cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.live-text {
-    color: #FFFFFF;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-/* --- Hardware-Accelerated Scrolling Window --- */
-.rates-scroll-window {
-    flex-grow: 1;
-    overflow: hidden;
-    position: relative;
-    /* Flawless edge fading */
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-
-.rates-track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    animation: autoScrollRates 30s linear infinite;
-    padding-right: 2rem;
-    /* Forces the GPU to handle the animation for zero lag */
-    will-change: transform; 
-}
-
-.rates-track:hover {
-    animation-play-state: paused;
-}
-
-@keyframes autoScrollRates {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
-}
-
-/* --- Apple-style Spring Hover Cards --- */
-.market-rate-card {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 0.6rem 1.8rem;
-    border-radius: 999px;
-    text-decoration: none;
-    
-    /* Apple's signature spring curve */
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    cursor: pointer;
-}
-
-.market-rate-card:hover {
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-    transform: scale(1.03) translateY(-2px);
-}
-
-.rate-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.rate-name {
-    font-size: 0.75rem;
-    color: #86868B; /* Exact Apple gray */
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
-}
-
-.rate-number {
-    font-size: 1.25rem;
-    color: #1D1D1F;
-    font-weight: 800;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.02em; /* Tighter numbers look more premium */
-}
-
-/* --- Refined Badges --- */
-.trend-badge {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.trend-badge svg { width: 14px; height: 14px; }
-
-.trend-good { background: rgba(52, 211, 153, 0.15); color: #10B981; }
-.trend-neutral { background: rgba(134, 134, 139, 0.15); color: #86868B; }
-
-.rate-spacer {
-    width: 1px;
-    height: 30px;
-    background: rgba(0,0,0,0.06);
-    margin: 0 0.5rem;
-}
-
-
-
-/* =========================================
-   13. GLOBAL ANIMATIONS
-   ========================================= */
-.animate-fade-in-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-.reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
-.reveal.active { opacity: 1; transform: translateY(0); }
-.card-1 { transition-delay: 0.1s; } .card-2 { transition-delay: 0.2s; } .card-3 { transition-delay: 0.3s; }
 
 /* =========================================
    14. COMPREHENSIVE RESPONSIVE SYSTEM
@@ -2310,235 +2926,341 @@ select.glass-input { padding: 1.2rem 1.2rem; color: var(--color-dark); -webkit-a
     .headline-top-line { gap: 0.25em; } /* Tightens hero text on very small screens */
 }
 /* =========================================
-   ENHANCED INSTAGRAM REELS (IFRAME VERSION)
+   13. REELS & INSIGHTS (Firm Animated Theme)
    ========================================= */
 
 .reels-section {
     position: relative;
-    padding: 8rem 0 6rem;
-    background-color: #FAFAFC; /* Premium light-grey background */
+    padding: 8rem 5%;
+    background-color: #F5F5F7; /* Solid Apple light grey base */
     overflow: hidden;
-    z-index: 1;
+    z-index: 1; /* Establishes local stacking context */
 }
 
+/* --- Animated Financial Atmosphere (The Background) --- */
+.financial-atmosphere {
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    z-index: 0; /* Strictly traps animations behind the content */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Moving Blueprint Data Grid (Hidden for a cleaner look) */
+.capital-grid {
+    display: none; 
+}
+@keyframes panGrid {
+    0% { transform: translateX(0) translateZ(0); }
+    100% { transform: translateX(-50%) translateZ(0); }
+}
+
+/* Live Drawing SVG Trendline */
+.growth-trendline {
+    position: absolute;
+    bottom: -5%; 
+    left: 0;
+    width: 100%;
+    height: 65%; 
+    min-height: 300px;
+    opacity: 0.85;
+    filter: drop-shadow(0 15px 25px rgba(16, 185, 129, 0.2));
+    
+    /* The main organic breathing animation */
+    animation: floatAsymmetric 14s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+/* Target the shadow path specifically for decoupled 3D depth */
+.growth-trendline path:nth-child(2) {
+    animation: floatShadow 9s ease-in-out infinite;
+    transform-origin: center;
+}
+/* Asymmetrical keyframes for the entire SVG */
+@keyframes floatAsymmetric {
+    0%, 100% { 
+        transform: translateY(0) scale(1) rotate(0deg); 
+    }
+    33% { 
+        transform: translateY(-15px) scale(1.02) rotate(0.5deg); 
+    }
+    66% { 
+        transform: translateY(10px) scale(0.98) rotate(-0.5deg); 
+    }
+}
+
+/* Simultaneous, offset keyframes for the background shadow line */
+@keyframes floatShadow {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(18px) translateX(10px); 
+        opacity: 0.4; 
+    }
+}
+
+@keyframes drawTrendline {
+    to { stroke-dashoffset: 0; }
+}
+
+/* --- Section Header & Live Pulse --- */
+.section-header { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2; /* Forces text above the background animations */
+}
+
+.section-header h2 { 
+    font-size: 3rem; 
+    color: #1D1D1F; 
+    font-weight: 800; 
+    letter-spacing: -0.03em; 
+    margin-bottom: 1rem; 
+}
+
+.section-subtitle { 
+    font-size: 1.25rem; 
+    color: #86868B; 
+    max-width: 650px; 
+    margin: 0 auto; 
+}
+
+/* Unified Pill with Internal Pulse */
+.live-indicator-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    padding: 8px 18px;
+    border-radius: 999px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.08);
+    margin-bottom: 1.5rem;
+}
+
+.live-pulse {
+    width: 8px;
+    height: 8px;
+    background-color: #10B981;
+    border-radius: 50%;
+    animation: pulseEmerald 2s infinite;
+}
+
+@keyframes pulseEmerald {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.indicator-text {
+    color: #10B981;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Carousel Wrapper & Native Track --- */
 .reels-carousel-wrapper {
     position: relative;
     width: 100%;
-    margin-top: 3.5rem;
-    display: flex;
-    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 2; /* Forces cards above the background animations */
 }
 
-/* --- The Swipe Track --- */
+/* Fade masks for smooth swiping edges */
+.carousel-fade-left, .carousel-fade-right {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 10;
+}
+.carousel-fade-left { left: -5px; background: linear-gradient(to right, #F5F5F7 10%, transparent 100%); }
+.carousel-fade-right { right: -5px; background: linear-gradient(to left, #F5F5F7 10%, transparent 100%); }
+
 .reels-track {
     display: flex;
     gap: 2.5rem;
-    padding: 2rem 5vw 3rem 5vw; /* Padding allows shadows to not be cut off */
-    width: 100%;
-    max-width: 1600px;
+    padding: 1rem 1rem 3rem 1rem;
+    margin: 0 -1rem; /* Allows scrolling edge-to-edge cleanly */
     
     overflow-x: auto;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; 
     scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; 
 }
-.reels-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+.reels-track::-webkit-scrollbar { display: none; }
 
-/* --- Premium Iframe "Device Bezel" Card --- */
-.reel-card {
-    position: relative;
-    flex: 0 0 340px; /* Fixed width for desktop */
-    height: 580px;   /* Perfect height for IG embeds to avoid internal scrolling */
-    
+/* --- Premium Glassmorphic Cards --- */
+.apple-reel-card {
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 32px;
+    padding: 14px;
+    
+    /* Apple's signature soft, diffuse shadow layering */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 
+                0 1px 3px rgba(0, 0, 0, 0.02);
+    
+    display: flex;
+    flex-direction: column;
     scroll-snap-align: center;
+    flex-shrink: 0;
     
-    /* Apple-style floating shadow & subtle border */
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12), 
-                0 0 0 1px rgba(0, 0, 0, 0.04);
+    width: 340px; 
+    box-sizing: border-box;
     
+    /* Silky cubic-bezier transition for physical feel */
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     
-    /* Hardware acceleration */
-    transform: translateZ(0); 
+    /* Hardware acceleration to prevent jitter on scroll/hover */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.apple-reel-card:hover {
+    transform: translateY(-10px) translateZ(0);
+    /* Dramatically deepens the shadow to make it "float" off the page */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 
+                0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Firm Header */
+.reel-terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.5rem 1rem 0.5rem;
+}
+.reel-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.6rem 0.8rem 1.2rem 0.8rem;
+}
+
+.card-status-dot {
+    width: 6px;
+    height: 6px;
+    background: #10B981;
+    border-radius: 50%;
+}
+
+.firm-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1D1D1F; /* Deep Apple Black */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Clean Iframe Restraints */
+.reel-iframe-wrapper {
+    width: 100%;
+    height: 580px;
+    border-radius: 20px;
     overflow: hidden;
+    background: #F5F5F7; /* Neutral background while loading */
+    
+    /* Very subtle inner shadow to inset the video slightly */
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.02);
 }
 
-/* Subtle lift effect on hover (Works best on desktop) */
-.reel-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 35px 60px -15px rgba(16, 185, 129, 0.2), /* Emerald glow */
-                0 0 0 1px rgba(16, 185, 129, 0.1);
-    z-index: 5;
-}
-
-/* --- Iframe Resizing --- */
 .instagram-iframe {
     width: 100%;
     height: 100%;
     border: none;
-    /* Scales the iframe slightly to hide Instagram's ugly default borders */
-    transform: scale(1.02); 
-    border-radius: 24px;
+    transform: scale(1.01); 
 }
 
-/* --- Smooth Fade Edges (Desktop Only) --- */
-.carousel-fade-left,
-.carousel-fade-right {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 8vw;
-    pointer-events: none;
-    z-index: 10;
+.terminal-dots { display: flex; gap: 6px; }
+.terminal-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(0,0,0,0.12); }
+.terminal-dots span:nth-child(1) { background: #FF5F56; } 
+.terminal-dots span:nth-child(2) { background: #FFBD2E; } 
+.terminal-dots span:nth-child(3) { background: #27C93F; } 
+
+.firm-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #86868B;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
-.carousel-fade-left { 
-    left: 0; 
-    background: linear-gradient(to right, #FAFAFC 10%, transparent); 
+
+/* Iframe Restraints */
+.reel-iframe-wrapper {
+    width: 100%;
+    height: 580px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #FAFAFC; /* Neutral background while loading */
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
 }
-.carousel-fade-right { 
-    right: 0; 
-    background: linear-gradient(to left, #FAFAFC 10%, transparent); 
+
+.instagram-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    transform: scale(1.01); /* Crops native iframe borders */
 }
+
 
 /* =========================================
-   UNIVERSAL RESPONSIVENESS (Mobile & Tablet)
+   UNIVERSAL MOBILE RESPONSIVENESS
    ========================================= */
 
-@media (min-width: 1400px) {
-    /* Center the track perfectly on massive monitors */
-    .reels-track { justify-content: center; }
-    .carousel-fade-left, .carousel-fade-right { display: none; }
-}
-
-@media (max-width: 1024px) {
-    .reels-track { gap: 1.5rem; }
-    .reel-card { flex: 0 0 320px; height: 560px; }
+@media (max-width: 900px) {
+    .section-header h2 { font-size: 2.5rem; }
 }
 
 @media (max-width: 768px) {
-    .reels-section { padding: 5rem 0 4rem; }
+    .reels-section { 
+        padding: 5rem 0; /* Flush to screen edges on mobile */
+    } 
     
-    /* Turn off side fades on mobile to give more screen real estate */
-    .carousel-fade-left, .carousel-fade-right { display: none; }
+    .section-header { 
+        padding: 0 5%; 
+    }
+    
+    .section-header h2 { 
+        font-size: 2.2rem; 
+    }
+    
+    .growth-trendline {
+        height: 40%; /* Shrink SVG height so it doesn't overlap header text */
+        bottom: 0;
+    }
     
     .reels-track {
-        gap: 1rem;
-        padding: 1rem 5vw 2rem;
+        gap: 1.2rem;
+        padding: 1rem 5% 3rem 5%;
+        margin: 0; /* Reset margins for clean mobile scrolling */
     }
     
-    .reel-card {
-        flex: 0 0 85vw; /* Card takes 85% of screen width, teasing the next card */
-        max-width: 340px; 
-        height: 540px;
-        border-radius: 20px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Lighter shadow for mobile performance */
+    .apple-reel-card {
+        width: 300px; /* Slimmer for phone screens */
+        border-radius: 28px;
+        padding: 12px;
     }
     
-    /* Disable hover lift on touch devices */
-    .reel-card:hover {
-        transform: none;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-    }
-}
-
-/* =========================================
-   FIRM-RELATED BACKGROUND ANIMATIONS
-   ========================================= */
-
-/* 1. The Animated Market Trendline */
-.growth-trendline {
-    position: absolute;
-    bottom: -10%; left: 0;
-    width: 100%; height: 60%;
-    opacity: 0.6;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.growth-trendline path {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-    animation: drawTrend 8s linear infinite;
-}
-
-@keyframes drawTrend {
-    0% { stroke-dashoffset: 2000; }
-    50% { stroke-dashoffset: 0; }
-    100% { stroke-dashoffset: -2000; }
-}
-
-/* 2. The Live "Recording" Pulse in Header */
-.live-pulse {
-    display: inline-block;
-    width: 10px; height: 10px;
-    background-color: #EF4444; /* Alert Red */
-    border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-    animation: pulseRed 2s infinite;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-@keyframes pulseRed {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-}
-
-@keyframes soundBounce { 0% { transform: scaleY(0.5); } 100% { transform: scaleY(1.2); } }
-
-/* Bottom Text */
-.reel-info {
-    position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
-    background: rgba(20, 20, 22, 0.6);
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 20px; padding: 1rem;
-}
-
-.reel-views {
-    display: flex; align-items: center; gap: 6px;
-    color: #10B981; font-size: 0.75rem; font-weight: 800; margin-bottom: 6px;
-}
-.reel-info p { color: #FFFFFF; font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin: 0; }
-
-/* =========================================
-   UNIVERSAL RESPONSIVENESS (The Magic Math)
-   ========================================= */
-
-/* 1. LARGE DESKTOP (Perfectly Centered, No Scroll) */
-@media (min-width: 1350px) {
-    .reels-track {
-        justify-content: center;
-        padding-right: 5%; /* Resets asymmetrical padding */
-        overflow-x: visible; /* Disables scroll */
-    }
-}
-
-/* 2. LAPTOP & TABLET (Horizontal Swipe) */
-@media (max-width: 1349px) {
-    .reels-track {
-        padding-right: 15vw; /* Leaves room at end of scroll */
-    }
-}
-
-/* 3. MOBILE (Scale cards to fit perfectly) */
-@media (max-width: 768px) {
-    .reels-section { padding: 5rem 0 4rem; }
-    .reels-track { gap: 1rem; padding: 1rem 5%; padding-right: 10vw; }
-    
-    .reel-card {
-        flex: 0 0 75vw; /* Card takes 75% of screen, showing next card naturally */
-        border-radius: 24px;
+    .reel-iframe-wrapper {
+        height: 510px; /* Shorter for phone screens */
+        border-radius: 16px;
     }
     
-    /* Disables heavy hover effects on touch devices for performance */
-    .reel-card:hover { transform: none; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); }
-    .glass-sheen { display: none; }
+    /* Disable edge gradients on mobile to maximize viewable area */
+    .carousel-fade-left, .carousel-fade-right { 
+        display: none; 
+    }
 }
-
 /* =========================================
    VIP CONCIERGE EXIT NOTIFICATION (Animated)
    ========================================= */
